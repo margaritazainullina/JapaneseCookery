@@ -5,9 +5,9 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="example" namespace="/example" extends="struts-default">
-        <action name="HelloWorld" class="example.HelloWorld">
-            <result name="success" type="dispatcher">/example/HelloWorld.jsp</result>
+    <package name="public" namespace="/" extends="struts-default">
+        <action name="index">
+            <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
         </action>
     </package>
 </struts>

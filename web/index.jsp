@@ -1,0 +1,1 @@
+<%response.sendRedirect("index?request_locale=ru");%>
