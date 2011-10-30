@@ -22,7 +22,7 @@
                 </s:url>
                 <s:a href="%{url}">Русский</s:a>
             </li>
-            
+
             <li>
                 <s:url id="url" action="index">
                     <s:param name="request_locale">jp</s:param>
@@ -32,5 +32,8 @@
 
             </li>
         </ul>
+        <s:url id="url" action="login" namespace="/" />
+        <s:a href="%{url}">Залогиниться</s:a>
+
     </body>
 </html>
