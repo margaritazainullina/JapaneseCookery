@@ -6,7 +6,22 @@
 
 <struts>
     <package name="private" namespace="/private" extends="struts-default">
+         <interceptors>
+            <interceptor name="authentication" class="interceptor.Authentication"/>
+            <interceptor-stack name="privateStack">
+                <interceptor-ref name="authentication" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="privateStack" />
         
+        <global-results>
+            <result name="login">/WEB-INF/public/login.jsp</result>
+        </global-results>
+        
+        <action name="index">
+            <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
+        </action> 
     </package>
 </struts>
 

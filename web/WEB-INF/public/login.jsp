@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Авторизуйтесь, пожалуйста!</h1>
-        <s:form action="index" namespace="/private" name="authorization" label="Авторизация">
+        <s:form action="authentification" namespace="/private" name="authorization" label="Авторизация">
             <s:actionerror />
             <s:textfield name="email" label="e-mail"/>
             <s:password name="password" label="пароль"/>

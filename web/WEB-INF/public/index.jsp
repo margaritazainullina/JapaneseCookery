@@ -34,6 +34,9 @@
         </ul>
         <s:url id="url" action="login" namespace="/" />
         <s:a href="%{url}">Залогиниться</s:a>
+               <br/>
+        <s:url id="url" action="index" namespace="/private" />
+        <s:a href="%{url}">Зайти в секретную часть</s:a>
 
     </body>
 </html>

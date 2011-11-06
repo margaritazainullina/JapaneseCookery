@@ -12,6 +12,9 @@
         <action name="login">
             <result name="success" type="dispatcher">/WEB-INF/public/login.jsp</result>
         </action>
+         <action name="authentication" class="action.Authentication" method="execute">
+            <result name="success" type="dispatcher">/WEB-INF/public/login.jsp</result>
+        </action>
     </package>
 </struts>
 
