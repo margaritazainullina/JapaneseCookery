@@ -37,6 +37,8 @@
                <br/>
         <s:url id="url" action="index" namespace="/private" />
         <s:a href="%{url}">Зайти в секретную часть</s:a>
+        <br/>
+        <s:debug/>
 
     </body>
 </html>
