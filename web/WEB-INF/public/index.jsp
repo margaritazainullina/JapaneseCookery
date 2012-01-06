@@ -14,31 +14,25 @@
                     <s:param name="request_locale">en</s:param>
                 </s:url>
                 <s:a href="%{url}">English</s:a>
-            </li>
+                </li>
 
-            <li>
+                <li>
                 <s:url id="url" action="index">
                     <s:param name="request_locale">ru</s:param>
                 </s:url>
                 <s:a href="%{url}">Русский</s:a>
-            </li>
-
-            <li>
+                </li>
+                <li>
                 <s:url id="url" action="index">
                     <s:param name="request_locale">jp</s:param>
                 </s:url>
-
                 <s:a href="%{url}">日本語</s:a>
-
-            </li>
-        </ul>
+                </li>
+            </ul>
         <s:url id="url" action="login" namespace="/" />
-        <s:a href="%{url}">Залогиниться</s:a>
-               <br/>
+        <s:a href="%{url}">Залогиниться</s:a><br/>
         <s:url id="url" action="index" namespace="/private" />
-        <s:a href="%{url}">Зайти в секретную часть</s:a>
-        <br/>
+        <s:a href="%{url}">Зайти в секретную часть</s:a><br/>
         <s:debug/>
-
     </body>
 </html>

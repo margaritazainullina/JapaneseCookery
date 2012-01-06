@@ -7,18 +7,16 @@ import org.apache.struts2.interceptor.SessionAware;
 import service.UserService;
 
 public class Authentication extends ActionSupport implements SessionAware {
-
     private Map<String, Object> session;
     private UserService userService;
     private String email;
     private String password;
-    
 
     public String execute() throws Exception {
         User user1 = userService.authenticateUser(email, password);
         if (user1!=null) {
             session.put("user", user1);
-              return SUCCESS;
+            return SUCCESS;
         }
         else return INPUT;
     }
@@ -51,5 +49,4 @@ public class Authentication extends ActionSupport implements SessionAware {
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
-    
 }
