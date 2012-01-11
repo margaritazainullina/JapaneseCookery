@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Японская кулинария</title>
     </head>
     <body>
         <h1><s:text name="index.message"/></h1>
@@ -29,8 +29,11 @@
                 <s:a href="%{url}">日本語</s:a>
                 </li>
             </ul>
+        <s:url id="url" action="register" namespace="/" />
+        <s:a href="%{url}">Зарегистрироваться</s:a><br/>
         <s:url id="url" action="login" namespace="/" />
         <s:a href="%{url}">Залогиниться</s:a><br/>
+        
         <s:url id="url" action="index" namespace="/private" />
         <s:a href="%{url}">Зайти в секретную часть</s:a><br/>
         <s:debug/>

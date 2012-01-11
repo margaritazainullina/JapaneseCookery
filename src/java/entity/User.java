@@ -3,7 +3,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 @Entity(name="user")
 @Table(name = "USERS")
-public class User implements Serializable{
+public class User implements Serializable {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)   
@@ -17,9 +17,15 @@ public class User implements Serializable{
     @Column(name = "last_name", length=255)   
     private String lastName;
     @Column(name = "sex", nullable = false)   
-    private Boolean sex;
+    private String sex;
     public User(){};
-
+    public User(String mail, String pwd, String fName, String lName, String sex){
+        this.setEmail(mail);
+        this.setPassword(pwd);
+        this.setFirstName(fName);
+        this.setLastName(lName);
+        this.setSex(sex);
+    };
     public String getEmail() {
         return email;
     }
@@ -60,12 +66,11 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public Boolean getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
-    
 }

@@ -22,6 +22,7 @@
                 hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
                 hibernate.show_sql=true
                 hibernate.hbm2ddl.auto=update
+                hibernate.transaction.auto_close_session=true
             </value>
         </property>
     </bean>

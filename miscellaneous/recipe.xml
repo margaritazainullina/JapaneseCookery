@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<info>Суп мисо по класическому рецепту. Время приготовления 10 мин.</info>
-	<prepare>
-		<ingredient amount="2" unit="ст.л.">Мисо-паста</ingredient>
-		<ingredient amount="2" unit="ст.л.">Вакамэ</ingredient>
-		<ingredient amount="1" unit="ч.л.">Даси</ingredient>
-		<ingredient amount="100" unit="г.">Тофу</ingredient>
-	</prepare>
-	<cook>
-		<step>Растворить мисо и влить в кипящую воду.</step>
-		<step>Добавить даси.</step>
-		<step>Вакаме намочить и добавить в суп.</step>
-		<step>Положить нарезаное тофу в миску и налить супа.</step>
-	</cook>
+    <info>Суп мисо по класическому рецепту. Время приготовления 10 мин.</info>
+    <prepare>
+        <ingredient amount="2" unit="ст.л.">Мисо-паста</ingredient>
+        <ingredient amount="2" unit="ст.л.">Вакамэ</ingredient>
+        <ingredient amount="1" unit="ч.л.">Даси</ingredient>
+        <ingredient amount="100" unit="г.">Тофу</ingredient>
+    </prepare>
+    <cook>
+        <step>Растворить мисо и влить в кипящую воду.</step>
+        <step>Добавить даси.</step>
+        <step>Вакаме намочить и добавить в суп.</step>
+        <step>Положить нарезаное тофу в миску и налить супа.</step>
+    </cook>
 </root>

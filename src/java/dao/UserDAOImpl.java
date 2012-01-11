@@ -17,5 +17,12 @@ public class UserDAOImpl implements UserDAO {
         List<User> users = template.find("FROM user u WHERE u.email = ? and u.password = ?", params);
         if (users==null || users.size()==0) return null;
         else return users.get(0);
-    }    
+    }
+
+    @Override
+    public User create(String mail, String pwd, String fName, String lName, String sex) {
+        User user = new User(mail, pwd, fName, lName, sex);
+        template.save(user);
+        return user;
+    }
 }

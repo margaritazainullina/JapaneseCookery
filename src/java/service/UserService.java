@@ -17,4 +17,7 @@ public class UserService {
     public User authenticateUser(String email, String password) {
         return userDAO.getByPassword(email, password);
     }
+    public User createUser(String mail, String pwd, String fName, String lName, String sex) {
+        return userDAO.create(mail, pwd, fName, lName, sex);
+    }
 }
