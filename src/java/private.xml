@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
-<!DOCTYPE struts PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">
-
 <struts>
     <package name="private" namespace="/private" extends="struts-default">
          <interceptors>
@@ -22,6 +19,8 @@
         <action name="index">
             <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
         </action> 
+        <action name="fileUpload" class="action.FileUpload">
+            <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
+        </action> 
     </package>
 </struts>
-

@@ -9,7 +9,7 @@
             <result name="success" type="dispatcher">/WEB-INF/public/login.jsp</result>
         </action>
         <action name="register" class="action.Register">
-            <result name="success" type="dispatcher">/WEB-INF/public/register.jsp</result>
+            <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
             <result name="input" type="dispatcher">/WEB-INF/public/register.jsp</result>
         </action>        
          <action name="authentication" class="action.Authentication">

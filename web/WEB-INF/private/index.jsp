@@ -1,17 +1,19 @@
-<%-- 
-    Document   : index
-    Created on : Oct 28, 2011, 7:32:02 PM
-    Author     : jrita
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Мой аккаунт</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <s:if test="#session.user">
+            <h4>Здравствуйте, <s:property value="#session.user.firstName"/>!</h4>        
+        </s:if>
+        <h1>Рита, что будешь делать дальше?</h1>
+        <s:form action="fileUpload" method="post" namespace="private" enctype="multipart/form-data" >
+            <s:file name="userImage" label="Ваше фото" />
+            <s:submit />
+        </s:form>        
+        <s:debug/>
     </body>
 </html>

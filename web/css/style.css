@@ -1,0 +1,32 @@
+* {margin: 0; padding: 0;} 
+
+html,body {
+	height: 100%; 
+	font-family: Verdana; 
+	font-size: 11pt;
+	background-color: #ffffcc; 
+	color: #333; 
+}
+.main { 
+	min-height: 100%;
+}
+* html .main { 
+	height: 100%; 
+}
+.hFooter { 
+	height: 40px; 
+}
+.footer { 
+	height: 40px; 
+	margin-top: -40px; 
+	color: #999999; 
+	font-size: 8pt;
+	font-family: Verdana; 
+	font-weight: normal;
+}
+.title {
+  color: #a52a2a; 
+  font-size: 16pt;
+  font-family: Monotype Corsiva; 
+  font-weight: normal;
+}

@@ -6,6 +6,17 @@
         <title>Японская кулинария</title>
     </head>
     <body>
+        <s:if test="#session.user">
+            <h4>Здравствуйте, <s:property value="#session.user.firstName"/>!</h4>        
+        </s:if>
+        <s:else>
+            <h4>Вы не авторизованы</h4>
+             <s:url id="urlLogin" action="login"/>
+             <s:a href="%{urlLogin}">Вход</s:a> /
+             <s:url id="urlRegister" action="register"/>
+             <s:a href="%{urlRegister}">Регистрация</s:a>
+        </s:else>
+
         <h1><s:text name="index.message"/></h1>
         <h3>Languages</h3>
         <ul>
@@ -33,7 +44,7 @@
         <s:a href="%{url}">Зарегистрироваться</s:a><br/>
         <s:url id="url" action="login" namespace="/" />
         <s:a href="%{url}">Залогиниться</s:a><br/>
-        
+
         <s:url id="url" action="index" namespace="/private" />
         <s:a href="%{url}">Зайти в секретную часть</s:a><br/>
         <s:debug/>

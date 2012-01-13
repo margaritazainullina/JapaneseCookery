@@ -18,6 +18,10 @@ public class User implements Serializable {
     private String lastName;
     @Column(name = "sex", nullable = false)   
     private String sex;
+    @Lob
+    @Column(name = "photo", nullable = true)   
+    private byte[] photo;
+    
     public User(){};
     public User(String mail, String pwd, String fName, String lName, String sex){
         this.setEmail(mail);
@@ -73,4 +77,11 @@ public class User implements Serializable {
     public void setSex(String sex) {
         this.sex = sex;
     }
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }    
 }

@@ -20,4 +20,7 @@ public class UserService {
     public User createUser(String mail, String pwd, String fName, String lName, String sex) {
         return userDAO.create(mail, pwd, fName, lName, sex);
     }
+    public void save(User user) {
+        userDAO.save(user);
+    }
 }

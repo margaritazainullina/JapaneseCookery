@@ -2,15 +2,22 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import entity.User;
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
 import service.UserService;
 
-public class Register extends ActionSupport {
+public class Register extends ActionSupport implements SessionAware {
+    private Map<String, Object> session;
     private UserService userService;
     private String firstName, lastName, password, email, sex;
 
     public String execute() throws Exception {
         User user = userService.createUser(email, password, firstName, lastName, sex);
-        return SUCCESS;
+        if (user == null) return INPUT;
+        else {
+            session.put("user", user);
+            return SUCCESS;
+        }
     }
     @Override
     public void validate() {
@@ -68,5 +75,8 @@ public class Register extends ActionSupport {
     public void setSex(String sex) {
         this.sex = sex;
     }
-  
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.session = map;
+    }    
 }
