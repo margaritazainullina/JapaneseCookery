@@ -6,6 +6,10 @@
         <link rel=StyleSheet HREF="css/style.css" type="text/css"> 
     </head>
     <body>
+        <s:if test="#session.user">
+            <h4>Здравствуйте, <s:property value="#session.user.firstName"/>!</h4>        
+        </s:if>
+        <s:else><h4>Вы не авторизованы</h4></s:else>        
         <div class="main">
             Введите данные для регистрации <br/><br/>
             <s:form action="register" namespace="/" name="register" label="Авторизация">

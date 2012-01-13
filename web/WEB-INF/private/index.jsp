@@ -6,8 +6,14 @@
         <title>Мой аккаунт</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <h3>Hello <s:property value="#session.user.firstName" /></h3>
+        <s:if test="#session.user">
+            <h4>Здравствуйте, <s:property value="#session.user.firstName"/>!</h4>        
+        </s:if>
+        <h1>Рита, что будешь делать дальше?</h1>
+        <s:form action="fileUpload" method="post" enctype="multipart/form-data" >
+            <s:file name="userImage" label="Ваше фото" />
+            <s:submit />
+        </s:form>        
         <s:debug/>
     </body>
 </html>
