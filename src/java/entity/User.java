@@ -18,6 +18,7 @@ public class User implements Serializable {
     private String lastName;
     @Column(name = "sex", nullable = false)   
     private String sex;
+    
     public User(){};
     public User(String mail, String pwd, String fName, String lName, String sex){
         this.setEmail(mail);

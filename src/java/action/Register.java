@@ -68,5 +68,4 @@ public class Register extends ActionSupport {
     public void setSex(String sex) {
         this.sex = sex;
     }
-  
 }
