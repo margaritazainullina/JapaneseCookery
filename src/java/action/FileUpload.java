@@ -2,10 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import entity.User;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 import service.UserService;
@@ -25,14 +22,8 @@ public class FileUpload extends ActionSupport implements SessionAware {
             User user = (User) session.get("user");
             user.setPhoto(fileContent);
             userService.save(user);
-            
-            
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found" + e);
-        } catch (IOException ioe) {
-            System.out.println("Exception while reading the file " + ioe);
-        }
+        } catch (FileNotFoundException e){}
+        catch (IOException ioe) {}
         return SUCCESS;
     }
 

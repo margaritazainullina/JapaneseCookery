@@ -3,7 +3,7 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <package name="private" namespace="/private" extends="struts-default">
-         <interceptors>
+        <interceptors>
             <interceptor name="authentication" class="interceptor.Authentication"/>
             <interceptor-stack name="privateStack">
                 <interceptor-ref name="authentication" />
@@ -20,7 +20,20 @@
             <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
         </action> 
         <action name="fileUpload" class="action.FileUpload">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
+        </action>
+        <action name="showPhoto" class="action.ShowPhoto">
+            <result name="success" type="stream">
+                <param name="contentType">image/jpeg</param>
+                <param name="inputName">imageStream</param>
+                <param name="contentDisposition">attachment;filename="photo.jpg"</param>
+                <param name="bufferSize">1024</param>    
+            </result>
         </action> 
     </package>
 </struts>

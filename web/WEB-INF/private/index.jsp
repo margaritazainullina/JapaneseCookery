@@ -14,7 +14,10 @@
             <s:file name="userImage" label="Ваше фото" />
             <s:submit />
         </s:form> 
-
+        Uploaded Image:
+	<br/>
+        <s:url id="url" action="showPhoto" /> 
+        <img src="<s:property value='#url'/>" width="100" height="250"/>
         <s:debug/>
     </body>
 </html>
