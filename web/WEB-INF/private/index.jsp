@@ -17,7 +17,7 @@
         Uploaded Image:
 	<br/>
         <s:url id="url" action="showPhoto" /> 
-        <img src="<s:property value='#url'/>" width="100" height="250"/>
+        <img src="<s:property value='#url'/>" width="200"/>
         <s:debug/>
     </body>
 </html>
