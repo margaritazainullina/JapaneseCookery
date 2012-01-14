@@ -13,7 +13,8 @@
         <s:form action="fileUpload" method="post" namespace="private" enctype="multipart/form-data" >
             <s:file name="userImage" label="Ваше фото" />
             <s:submit />
-        </s:form>        
+        </s:form> 
+
         <s:debug/>
     </body>
 </html>
