@@ -3,6 +3,7 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.InputStream;
 import java.util.Map;
+import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ParameterAware;
 
 public class ShowImage extends ActionSupport implements ParameterAware{
@@ -20,6 +21,8 @@ public class ShowImage extends ActionSupport implements ParameterAware{
     @Override
     public String execute() throws Exception {
         imageStream = ShowImage.class.getResourceAsStream("/misc/boy.jpg");
+        Logger log = Logger.getLogger("common");
+        log.info(parameters);
         //imageStream = ShowImage.class.getResourceAsStream("/misc/" + parameters.get("src")[0]);
         return SUCCESS;
     }

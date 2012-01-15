@@ -21,9 +21,7 @@
             <img src="<s:property value='#url'/>" width="160"/>
         </s:if>
         <s:else>
-            <s:url id="url_default" namespace="/" action="showImage" > 
-                <s:param name="src">boy.jpg</s:param>
-            </s:url>
+            <s:url id="url_default" namespace="/" action="showImage?src=boy" />
             <img src="<s:property value='#url_default'/>" width="160"/>
         </s:else>            
         <s:debug/>

@@ -22,7 +22,6 @@
                 <s:submit value="Зарегистрироваться"/><br/>
                 <s:submit type="reset" value="Очистить"/> 
             </s:form>        
-
             <div class="hFooter"></div>
         </div>
         <div class="footer"><hr/>
