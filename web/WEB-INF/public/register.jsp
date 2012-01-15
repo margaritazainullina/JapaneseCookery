@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Регистрация</title>
-        <link rel=StyleSheet HREF="css/style.css" type="text/css"> 
+        <link rel=StyleSheet HREF="css/style.css" type="text/css"/> 
     </head>
     <body>
         <s:if test="#session.user">
