@@ -16,6 +16,14 @@
             <result name="success" type="redirect">/private/index</result>
             <result name="input">/WEB-INF/public/login.jsp</result> 
         </action>
+        <action name="showImage" class="action.ShowImage">
+            <result name="success" type="stream">
+                <param name="contentType">image/jpeg</param>
+                <param name="inputName">imageStream</param>
+                <param name="contentDisposition">attachment;filename="photo.jpg"</param>
+                <param name="bufferSize">1024</param>    
+            </result>
+        </action> 
     </package>
 </struts>
 

@@ -15,9 +15,15 @@
             <s:submit />
         </s:form> 
         Uploaded Image:
-	<br/>
-        <s:url id="url" action="showPhoto" /> 
-        <img src="<s:property value='#url'/>" width="200"/>
+        <br/>
+        <s:if test="#session.user.photo">
+            <s:url id="url" namespace="/private" action="showPhoto" /> 
+            <img src="<s:property value='#url'/>" width="160"/>
+        </s:if>
+        <s:else>
+            <s:url id="url" namespace="/" action="showImage" /> 
+            <img src="<s:property value='#url'/>" width="160"/>
+        </s:else>            
         <s:debug/>
     </body>
 </html>
