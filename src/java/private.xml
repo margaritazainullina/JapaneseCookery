@@ -35,8 +35,12 @@
                 <param name="bufferSize">1024</param>    
             </result>
         </action> 
-        <action name="recipe_builder">
+        <action name="recipeBuilder">
             <result name="success" type="dispatcher">/WEB-INF/private/recipe_builder.jsp</result>
         </action> 
+        <action name="recipeCreate" class="action.RecipeCreate">
+            <result name="success" type="dispatcher">/WEB-INF/private/recipe_builder.jsp</result>
+        </action>        
+        
     </package>
 </struts>

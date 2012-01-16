@@ -32,7 +32,7 @@
             </s:url>
             <img src="<s:property value='#url'/>" width="160"/>
         </s:else>  
-        <s:url id="url" namespace="/private" action="recipe_builder"/>
+        <s:url id="url" namespace="/private" action="recipeBuilder"/>
         <s:a href="%{url}">Создать новый рецепт</s:a>
         <s:debug/>
     </body>
