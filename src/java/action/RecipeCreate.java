@@ -4,17 +4,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Recipe;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
+import org.w3c.dom.Document;
+import service.RecipeService;
 
 public class RecipeCreate extends ActionSupport implements SessionAware {
+    private RecipeService recipeService;
     public static final String BACK = "back";
     private Map<String, Object> session;  
     private Recipe recipe; 
+    private Document doc;
     private String text;
     
     public String execute() throws Exception {
         this.recipe = getRecipe();
+        this.doc = getDocument();
         recipe.setXml(text);
-        session.put("recipe", recipe);
+        
+        recipeService.save(recipe);
         
         return SUCCESS;
     }
@@ -25,7 +31,10 @@ public class RecipeCreate extends ActionSupport implements SessionAware {
     }    
     private Recipe getRecipe(){
         Recipe recipe = (Recipe) session.get("recipe");
-        if (recipe==null) recipe = new Recipe();
+        if (recipe==null) {
+            recipe = new Recipe();
+            session.put("recipe", recipe);
+        }
         return recipe;
     }
 
@@ -39,5 +48,17 @@ public class RecipeCreate extends ActionSupport implements SessionAware {
     public String delete() throws Exception {
         session.remove("recipe");
         return BACK;
+    }
+
+    public RecipeService getRecipeService() {
+        return recipeService;
+    }
+
+    public void setRecipeService(RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
+
+    private Document getDocument() {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

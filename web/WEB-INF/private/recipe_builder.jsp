@@ -13,7 +13,7 @@
                 <s:hidden name="operation" value="info"/>
             </s:if>
             <s:textarea name="text" rows="4" cols="100" />
-            <s:submit value="ok" />
+            <s:submit value="Добавить" />
         </s:form>
         
         <s:url id="url_delete" namespace="/private" action="recipeCreate" method="delete"/>
