@@ -20,8 +20,16 @@
             <s:url id="url" namespace="/private" action="showPhoto" /> 
             <img src="<s:property value='#url'/>" width="160"/>
         </s:if>
+        <s:elseif test="#session.user.sex=='Male'">
+            <s:url id="url" namespace="/" action="showImage"> 
+                 <s:param name="src">boy.jpg</s:param>
+            </s:url>
+            <img src="<s:property value='#url'/>" width="160"/>
+        </s:elseif>
         <s:else>
-            <s:url id="url" namespace="/" action="showImage" /> 
+            <s:url id="url" namespace="/" action="showImage">
+                <s:param name="src">girl.jpg</s:param>
+            </s:url>
             <img src="<s:property value='#url'/>" width="160"/>
         </s:else>            
         <s:debug/>

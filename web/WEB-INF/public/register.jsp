@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Регистрация</title>
-        <link rel=StyleSheet HREF="css/style.css" type="text/css"> 
+        <link rel=StyleSheet HREF="css/style.css" type="text/css"/> 
     </head>
     <body>
         <s:if test="#session.user">
@@ -22,7 +22,6 @@
                 <s:submit value="Зарегистрироваться"/><br/>
                 <s:submit type="reset" value="Очистить"/> 
             </s:form>        
-
             <div class="hFooter"></div>
         </div>
         <div class="footer"><hr/>

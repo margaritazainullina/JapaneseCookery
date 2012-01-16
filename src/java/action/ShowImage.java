@@ -1,13 +1,17 @@
 package action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.InputStream;
 import java.util.Map;
-import org.apache.struts2.interceptor.ParameterAware;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.log4j.Logger;
+import org.apache.struts.chain.contexts.ServletActionContext;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
-public class ShowImage extends ActionSupport implements ParameterAware{
+public class ShowImage extends ActionSupport implements ServletRequestAware{
     private InputStream imageStream;
-    private Map<String, String[]> parameters;
+    private HttpServletRequest request;
 
     public InputStream getImageStream() {
         return imageStream;
@@ -19,13 +23,16 @@ public class ShowImage extends ActionSupport implements ParameterAware{
 
     @Override
     public String execute() throws Exception {
-        imageStream = ShowImage.class.getResourceAsStream("/misc/boy.jpg");
-        //imageStream = ShowImage.class.getResourceAsStream("/misc/" + parameters.get("src")[0]);
+        //imageStream = ShowImage.class.getResourceAsStream("/misc/boy.jpg");
+        Logger log = Logger.getLogger("common");
+        log.info(request.getParameter("src"));
+        imageStream = ShowImage.class.getResourceAsStream("/misc/" + request.getParameter("src"));
         return SUCCESS;
     }
 
     @Override
-    public void setParameters(Map<String, String[]> maps) {
-        this.parameters = parameters;
+    public void setServletRequest(HttpServletRequest hsr) {
+        this.request = hsr;
     }
+
 }
