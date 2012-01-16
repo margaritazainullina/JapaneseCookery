@@ -22,7 +22,7 @@
         </s:if>
         <s:elseif test="#session.user.sex=='Male'">
             <s:url id="url" namespace="/" action="showImage"> 
-                 <s:param name="src">boy.jpg</s:param>
+                <s:param name="src">boy.jpg</s:param>
             </s:url>
             <img src="<s:property value='#url'/>" width="160"/>
         </s:elseif>
@@ -31,7 +31,9 @@
                 <s:param name="src">girl.jpg</s:param>
             </s:url>
             <img src="<s:property value='#url'/>" width="160"/>
-        </s:else>            
+        </s:else>  
+        <s:url id="url" namespace="/private" action="recipe_builder"/>
+        <s:a href="%{url}">Создать новый рецепт</s:a>
         <s:debug/>
     </body>
 </html>
