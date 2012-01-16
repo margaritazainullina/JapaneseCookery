@@ -12,15 +12,19 @@
                 <s:label value="Заполните info часть рецепта" />
                 <s:hidden name="operation" value="info"/>
             </s:if>
-            <s:textarea name="text" rows="4" cols="100">
-                
-            </s:textarea>
+            <s:textarea name="text" rows="4" cols="100" />
             <s:submit value="ok" />
         </s:form>
+        
+        <s:url id="url_delete" namespace="/private" action="recipeCreate" method="delete"/>
+        <s:a href="%{url_delete}">Удалить рецепт и вернуться в свой профиль</s:a>
+        
+
+        
         <div id="recipeDisplay">
             <h2>Отображение рецепта</h2>
             <s:if test="#session.recipe">
-                
+                <s:label value="%{#session.recipe.xml}" />
             </s:if>
             <s:else>
                 <s:label value="Рецепт пустой" />
