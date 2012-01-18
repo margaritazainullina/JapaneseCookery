@@ -21,5 +21,20 @@
     </bean>
     <bean name="register" class="action.Register">
         <property name="userService" ref="userService"/>
+    </bean>   
+    
+    
+    <bean name="recipeDao" class="dao.RecipeDAOImpl">
+        <property name="template" ref="hibernateTemplate"/>
+    </bean>
+    <bean name="recipeService" parent="abstractTransactionProxy">
+        <property name="target">
+            <bean class="service.RecipeService">
+                <property name="recipeDAO" ref="recipeDao"/>
+            </bean>
+        </property>
     </bean>    
+    <bean name="recipeCreate" class="action.RecipeCreate">
+        <property name="recipeService" ref="recipeService"/>
+    </bean>     
 </beans>

@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
-import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 public class ShowImage extends ActionSupport implements ServletRequestAware{
@@ -23,7 +22,6 @@ public class ShowImage extends ActionSupport implements ServletRequestAware{
 
     @Override
     public String execute() throws Exception {
-        //imageStream = ShowImage.class.getResourceAsStream("/misc/boy.jpg");
         Logger log = Logger.getLogger("common");
         log.info(request.getParameter("src"));
         imageStream = ShowImage.class.getResourceAsStream("/misc/" + request.getParameter("src"));

@@ -15,6 +15,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>entity.User</value>
+                <value>entity.Recipe</value>
            </list>
         </property>
         <property name="hibernateProperties">

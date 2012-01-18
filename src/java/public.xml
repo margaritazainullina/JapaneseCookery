@@ -24,6 +24,9 @@
                 <param name="bufferSize">1024</param>    
             </result>
         </action> 
+        <action name="fake">
+            <result name="success" type="dispatcher">/WEB-INF/public/fake.jsp</result>
+        </action>
     </package>
 </struts>
 
