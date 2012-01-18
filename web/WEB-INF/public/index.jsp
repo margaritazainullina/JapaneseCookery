@@ -42,16 +42,16 @@
             <s:a href="fake"><div class="menu">Дессерты</div></s:a>
             <s:url id="url" action="index" namespace="/private" />
             <div class="menu"><s:a href="%{url}">Мой профиль</s:a><br/></div>
-            <div class="hint">А знаете ли вы, что ....</div>
+                <div class="hint">А знаете ли вы, что ....</div>
 
-            <div class="context">
-                <h2>Рецепт дня:</h2>
-                <div class="title">Роллы с тунцом</div> 
+                <div class="content">
+                    <h2>Рецепт дня:</h2>
+                    <div class="title">Роллы с тунцом</div> 
                 <s:url id="maguro" namespace="/" action="showImage"> 
                     <s:param name="src">maguro.jpg</s:param>
                 </s:url>
                 <img src="<s:property value='#maguro'/>" width="550" height="341" alt="Роллы с тунцом"/>
-
+                <br/>
                 <s:a href="fake">Читать рецепт</s:a>
 
                 </div>
