@@ -95,8 +95,15 @@
                 <s:a href="%{url}">日本語</s:a>
                 </div>
                 <hr/>
-            <s:a href="my_recipies"><div class="menu">Мои рецепты</div></s:a>
-            <s:a href="add_recipe"><div class="menu">Добавить рецепт</div></s:a>
+                
+                <s:url id="fake" namespace="/" action="fake"/>
+                <s:a href="%{fake}"><div class="menu">Мои рецепты</div></s:a>
+               
+                <s:url id="url" namespace="/private" action="recipeBuilder"/>
+                <s:a href="%{url}"><div class="menu">Добавить рецепт</div></s:a>
+                
+            
+            
             <div class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
 
             <div class="context">

@@ -10,7 +10,7 @@
         <s:form action="recipeCreate" namespace="/private">
             <s:if test="#session.recipe==null">
                 <s:label value="Заполните info часть рецепта" />
-                <s:hidden name="operation" value="info"/>
+                <s:set name="xpath" scope="session" value="root/info" />
             </s:if>
             <s:textarea name="text" rows="4" cols="100" />
             <s:submit value="Добавить" />

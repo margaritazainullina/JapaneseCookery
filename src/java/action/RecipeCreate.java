@@ -16,6 +16,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.apache.struts2.interceptor.SessionAware;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import service.RecipeService;
 
 public class RecipeCreate extends ActionSupport implements SessionAware {
@@ -78,6 +79,8 @@ public class RecipeCreate extends ActionSupport implements SessionAware {
             factory.setNamespaceAware(true); // never forget this!
             DocumentBuilder builder = factory.newDocumentBuilder();
             doc = builder.newDocument();
+            Element root = doc.createElement("root");
+            doc.appendChild(root);
             session.put("doc", doc);
         }
         return doc;
