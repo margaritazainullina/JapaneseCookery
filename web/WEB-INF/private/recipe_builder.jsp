@@ -19,8 +19,6 @@
         <s:url id="url_delete" namespace="/private" action="recipeCreate" method="delete"/>
         <s:a href="%{url_delete}">Удалить рецепт и вернуться в свой профиль</s:a>
         
-
-        
         <div id="recipeDisplay">
             <h2>Отображение рецепта</h2>
             <s:if test="#session.recipe">
