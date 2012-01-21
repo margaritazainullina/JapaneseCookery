@@ -5,76 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>Клуб рецептов японской кулинарии</title>
-        <style type="text/css">
-            * {margin: 0; padding: 0;} 
-
-            html,body {
-                height: 100%; 
-                font-family: Verdana; 
-                font-size: 11pt;
-                background-color: #ffffcc; 
-                color: #333; 
-            }
-            .main { 
-                min-height: 100%;
-                position: relative;
-            }
-            * html .main { 
-                height: 100%; 
-            }
-            .hFooter { 
-                height: 30px; 
-            }
-            .footer { 
-                height: 30px; 
-                margin-top: -30px; 
-                color: #999999; 
-                font-size: 9pt;
-                font-family: Verdana; 
-                font-weight: normal;
-            }
-            .maintitle {
-                color: #a52a2a; 
-                font-size: 24pt;
-                font-family: Monotype Corsiva; 
-                font-weight: normal;
-                margin: 10px; 
-            }
-            .menu{
-                position: relative;
-                border: solid 1px black;
-                width: 200px; 
-                height: 35px;
-                margin: 1px; 
-                background: #a52a2a;
-                font-size: 14pt;
-                font-family: Verdana; 
-                color: #ffffcc;
-            }
-            .hint {
-                font-size: 12pt;
-                margin: 1px; 
-                border: dashed 1px black;
-                width: 200px; 
-                height: 350px;
-            }
-            .context{
-                font-size: 12pt;
-                font-family: Verdana; 
-                font-weight: normal;
-                position: absolute;
-                left: 220px; 
-                top:90px;
-                margin: 5px;
-            }
-            .title{
-                color:#a52a2a;
-                margin: 10px;
-                font-size: 20pt;
-            }
-            a.none{
-                text-decoration: none; 
-            } </style>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
     </head>
     <body>
         <div class="main">
@@ -95,6 +26,8 @@
                 <s:a href="%{url}">日本語</s:a>
                 </div>
                 <hr/>
+                 <s:url id="exit" namespace="/private" action="exit"/>
+                 <s:a href="%{exit}"><div class="menu">Выйти</div></s:a>
                 
                 <s:url id="fake" namespace="/" action="fake"/>
                 <s:a href="%{fake}"><div class="menu">Мои рецепты</div></s:a>
@@ -102,8 +35,6 @@
                 <s:url id="url" namespace="/private" action="recipeBuilder"/>
                 <s:a href="%{url}"><div class="menu">Добавить рецепт</div></s:a>
                 
-            
-            
             <div class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
 
             <div class="context">

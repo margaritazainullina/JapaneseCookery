@@ -19,6 +19,11 @@
         <action name="index">
             <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
         </action> 
+        
+        <action name="exit" class="action.Exit">
+            <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
+        </action>         
+        
         <action name="fileUpload" class="action.FileUpload">
             <interceptor-ref name="fileUpload">
                 <param name="maximumSize">2097152</param>

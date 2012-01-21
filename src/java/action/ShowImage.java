@@ -22,8 +22,8 @@ public class ShowImage extends ActionSupport implements ServletRequestAware{
 
     @Override
     public String execute() throws Exception {
-        Logger log = Logger.getLogger("common");
-        log.info(request.getParameter("src"));
+//        Logger log = Logger.getLogger("common");
+//        log.info(request.getParameter("src"));
         imageStream = ShowImage.class.getResourceAsStream("/misc/" + request.getParameter("src"));
         return SUCCESS;
     }

@@ -4,14 +4,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Конструктор рецептов</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
     </head>
     <body>
         <h1>Конструктор рецептов</h1>
-        <s:form action="recipeCreate" namespace="/private">
+        <s:form theme="simple" action="recipeCreate" namespace="/private">
             <s:if test="#session.recipe==null">
                 <s:label value="Заполните info часть рецепта" />
-                <s:set name="xpath" scope="session" value="root/info" />
+                <s:set name="xpath" scope="session" value="'root/info'" />
             </s:if>
+            <s:elseif test="#session.recipe and #session.xpath=='root/info'">
+                <s:label value="Заполните prepare часть рецепта" />
+                <s:label value="Добавьте ингридиент" />
+                <s:set name="xpath" scope="session" value="'root/prepare'" />
+                <s:select list="{'чайная ложка', 'столовая ложка', 'грамм'}" 
+                          name="unit" label="Выберите единицу измерения" />
+                <s:textfield label="количество" name="amount" />
+            </s:elseif>            
             <s:textarea name="text" rows="4" cols="100" />
             <s:submit value="Добавить" />
         </s:form>
