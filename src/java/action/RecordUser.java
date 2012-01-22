@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 import service.UserService;
 
-public class Register extends ActionSupport implements SessionAware {
+public class RecordUser extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
     private UserService userService;
     private String firstName, lastName, password, email, sex;
@@ -19,15 +19,6 @@ public class Register extends ActionSupport implements SessionAware {
             return SUCCESS;
         }
     }
-    @Override
-    public void validate() {
-        if (isEmptyString(email)) addFieldError("email", "Не указан логин");
-        if (isEmptyString(password)) addFieldError("password", "Не указан пароль");
-    }
-    private boolean isEmptyString(String value) {
-        return value == null || "".equals(value.trim());
-    }
-
     public UserService getUserService() {
         return userService;
     }

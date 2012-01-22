@@ -6,9 +6,13 @@
             <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
         </action>
         <action name="login">
-            <result name="success" type="dispatcher">/WEB-INF/public/login.jsp</result>
+            <result>/WEB-INF/public/login.jsp</result>
         </action>
-        <action name="register" class="action.Register">
+        <action name="register">
+            <result>/WEB-INF/public/register.jsp</result>
+        </action>  
+        
+        <action name="record_user" class="action.RecordUser">
             <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
             <result name="input" type="dispatcher">/WEB-INF/public/register.jsp</result>
         </action>        

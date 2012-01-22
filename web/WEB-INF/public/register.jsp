@@ -37,28 +37,28 @@
             <hr/>
             <div class="content">
                 Введите данные для регистрации <br/>
-                <s:form action="register" namespace="/" name="register" label="Авторизация" theme="simple">
-                    <s:actionerror />
+                <s:actionerror theme="xhtml" />
+                <s:form action="record_user" namespace="/" name="record_user" label="Авторизация" theme="simple">
                     <table>
                         <tr>
                             <td><label for="firstName">Имя</label></td>
-                            <td> <s:textfield name="firstName"  maxLength="50" size="20" /></td>
+                            <td> <s:textfield name="firstName" theme="xhtml" maxLength="50" size="20" /></td>
                         </tr>
                         <tr> 
                             <td> <label for="lastName">Фамилия</label> </td>
-                            <td> <s:textfield name="lastName" maxLength="50" size="20" /></td>
+                            <td> <s:textfield name="lastName" theme="xhtml" maxLength="50" size="20" /></td>
                         </tr>
                         <tr> 
                             <td> <label for="email">E-mail</label> </td>
-                            <td> <s:textfield name="email" maxLength="50" size="20" /></td>
+                            <td> <s:textfield name="email" theme="xhtml" maxLength="50" size="20" /></td>
                         </tr>
                         <tr> 
                             <td> <label for="password">Пароль</label> </td>
-                            <td> <s:password name="password" showPassword="true" maxLength="50" size="20"/></td>
+                            <td> <s:password name="password" theme="xhtml" showPassword="true" maxLength="50" size="20"/></td>
                         </tr>
                         <tr> 
                             <td> <label for="sex">Пол</label> </td>
-                            <td> <s:radio name="sex" list="{'Male', 'Female'}" /></td>
+                            <td> <s:radio name="sex" list="{'Male', 'Female'}" theme="xhtml" /></td>
                         </tr>
                         <tr>
                             <td> <s:submit type="submit" value="OK"/></td>

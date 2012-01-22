@@ -1,18 +1,13 @@
 package action;
 
 import entity.Recipe;
-import java.io.StringWriter;
 import java.util.Map;
 import org.w3c.dom.*;
-import javax.xml.xpath.*;
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
 import service.RecipeService;
+import util.UtilXML;
 
 public class RecipeCreate extends ActionSupport implements SessionAware {
     private RecipeService recipeService;
@@ -21,32 +16,30 @@ public class RecipeCreate extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
     private Recipe recipe;
     private Document doc;
-    private String text;
+    private String xpath, text;
 
+    @Override
     public String execute() throws Exception {
-        this.recipe = getRecipe();
-        this.doc = getDocument();
-
-        String path = (String) session.get("xpath");
+        this.recipe =(Recipe) session.get("recipe");
+        this.doc = (Document) session.get("doc");
+        this.xpath = (String) session.get("xpath"); 
         
-        log.info("path = " + path);
-        if (path.equals("root/info")) {
-            Element info = doc.createElement("info");
+        if (xpath.equals("root/info")) {
+            NodeList infoList = doc.getElementsByTagName("info");
+            Node info = infoList.item(0);
             Node txt = doc.createTextNode(text);
             info.appendChild(txt);
-            Element root = doc.getDocumentElement();
-            root.appendChild(info);
-        } else if (path.equals("root/prepare")&!checkIfElementExists(doc, "root/prepare")) {
-            Element prepare = doc.createElement("prepare");
-            Element ingredient = doc.createElement("ingredient");
+            session.put("xpath", "root/prepare");
+        } else if (xpath.equals("root/prepare")) {
+            NodeList prepareList = doc.getElementsByTagName("prepare");
+            Node prepare = prepareList.item(0);
             Node txt = doc.createTextNode(text);
+            Element ingredient = doc.createElement("ingredient");
             ingredient.appendChild(txt);
             prepare.appendChild(ingredient);
-            Element root = doc.getDocumentElement();
-            root.appendChild(prepare);
         }
 
-        recipe.setXml(getXMLasString(doc));
+        recipe.setXml(UtilXML.getXMLasString(doc));
         recipeService.save(recipe);
         return SUCCESS;
     }
@@ -54,15 +47,6 @@ public class RecipeCreate extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = map;
-    }
-
-    private Recipe getRecipe() {
-        recipe = (Recipe) session.get("recipe");
-        if (recipe == null) {
-            recipe = new Recipe();
-            session.put("recipe", recipe);
-        }
-        return recipe;
     }
 
     public String getText() {
@@ -76,6 +60,7 @@ public class RecipeCreate extends ActionSupport implements SessionAware {
     public String delete() throws Exception {
         session.remove("recipe");
         session.remove("xpath");
+        session.remove("doc");
         return BACK;
     }
 
@@ -85,42 +70,5 @@ public class RecipeCreate extends ActionSupport implements SessionAware {
 
     public void setRecipeService(RecipeService recipeService) {
         this.recipeService = recipeService;
-    }
-
-    private Document getDocument() throws ParserConfigurationException {
-        doc = (Document) session.get("doc");
-        if (doc == null) {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            factory.setNamespaceAware(true); // never forget this!
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            doc = builder.newDocument();
-            Element root = doc.createElement("root");
-            doc.appendChild(root);
-            session.put("doc", doc);
-        }
-        return doc;
-    }
-
-    public static String getXMLasString(Document doc) throws TransformerConfigurationException, TransformerException {
-        TransformerFactory transfac = TransformerFactory.newInstance();
-        Transformer trans = transfac.newTransformer();
-        trans.setOutputProperty(OutputKeys.METHOD, "xml");
-        trans.setOutputProperty(OutputKeys.INDENT, "yes");
-        trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
-
-        StringWriter sw = new StringWriter();
-        StreamResult result = new StreamResult(sw);
-        DOMSource source = new DOMSource(doc.getDocumentElement());
-
-        trans.transform(source, result);
-        return sw.toString();
-    }
-
-    public static Boolean checkIfElementExists(Document doc, String xPath) throws XPathExpressionException {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        NodeList nodes = (NodeList) xpath.evaluate(xPath, doc, XPathConstants.NODESET);
-        log.info("nodes = " + nodes);
-        if (nodes == null) return false;
-        else return true;
     }
 }

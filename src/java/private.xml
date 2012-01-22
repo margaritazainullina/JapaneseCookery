@@ -40,7 +40,7 @@
                 <param name="bufferSize">1024</param>    
             </result>
         </action> 
-        <action name="recipeBuilder">
+        <action name="recipeBuilder" class="action.RecipeInitiate">
             <result name="success" type="dispatcher">/WEB-INF/private/recipe_builder.jsp</result>
         </action> 
         <action name="recipeCreate" class="action.RecipeCreate">

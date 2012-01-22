@@ -5,25 +5,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Конструктор рецептов</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
-        <style> .errorMessage { color:red; }</style>
+        <style> .errorMessage{ color:red; }</style>
     </head>
     <body>
         <h1>Конструктор рецептов</h1>
-        <s:form theme="simple" action="recipeCreate" namespace="/private">
-            <s:if test="#session.recipe==null">
+        <s:form theme="xhtml" action="recipeCreate" namespace="/private">
+            <s:if test="#session.xpath=='root/info'">
                 <s:label value="Заполните info часть рецепта" />
-                <s:set name="xpath" scope="session" value="'root/info'" />
+                <s:textarea name="text" rows="4" cols="100" />
+                <s:submit value="Добавить" />
             </s:if>
-            <s:elseif test="#session.recipe and #session.xpath=='root/info'">
+            <s:if test="#session.xpath=='root/prepare'">
                 <s:label value="Заполните prepare часть рецепта" />
                 <s:label value="Добавьте ингридиент" />
-                <s:set name="xpath" scope="session" value="'root/prepare'" />
                 <s:select list="{'чайная ложка', 'столовая ложка', 'грамм'}" 
                           name="unit" label="Выберите единицу измерения" />
                 <s:textfield label="количество" name="amount" />
-            </s:elseif>            
-            <s:textarea name="text" rows="4" cols="100" />
-            <s:submit value="Добавить" />
+                <s:textarea name="text" rows="4" cols="100" />
+                <s:submit value="Добавить" />
+            </s:if>            
+
         </s:form>
         
         <s:url id="url_delete" namespace="/private" action="recipeCreate" method="delete"/>

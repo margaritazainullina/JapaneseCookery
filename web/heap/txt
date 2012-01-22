@@ -1,0 +1,7 @@
+    public static Boolean checkIfElementExists(Document doc, String xPath) throws XPathExpressionException {
+        XPath xpath = XPathFactory.newInstance().newXPath();
+        NodeList nodes = (NodeList) xpath.evaluate(xPath, doc, XPathConstants.NODESET);
+        log.info("nodes = " + nodes);
+        if (nodes == null) return false;
+        else return true;
+    }

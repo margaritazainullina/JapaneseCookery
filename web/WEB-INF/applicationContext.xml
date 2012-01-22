@@ -19,10 +19,9 @@
     <bean name="authentication" class="action.Authentication">
         <property name="userService" ref="userService"/>
     </bean>
-    <bean name="register" class="action.Register">
+    <bean name="record_user" class="action.RecordUser">
         <property name="userService" ref="userService"/>
     </bean>   
-    
     
     <bean name="recipeDao" class="dao.RecipeDAOImpl">
         <property name="template" ref="hibernateTemplate"/>
