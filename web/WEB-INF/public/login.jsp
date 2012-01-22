@@ -4,44 +4,55 @@
     <head>
         <title>Регистрация</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
+        <style>.errormessage {color: red;}</style>
     </head>
     <body>
-       <div class="main">
-            <s:a href="index"><div class="maintitle" align="center">Клуб рецептов японской кулинарии</div></s:a>
+        <div class="main">
+            <div class="maintitle" align="center">Клуб рецептов японской кулинарии</div>
             <hr/><s:if test="#session.user">
                 Здравствуйте, <s:property value="#session.user.firstName"/>!        
             </s:if>
             <s:else>
                 Вы не авторизованы
-                <s:url id="urlLogin" action="login"/>
+                <s:url id="urlLogin" action="login" namespace="/"/>
                 <s:a href="%{urlLogin}">Вход</s:a> /
-                <s:url id="urlRegister" action="register"/>
+                <s:url id="urlRegister" action="register" namespace="/"/>
                 <s:a href="%{urlRegister}">Регистрация</s:a>
             </s:else>
             <div class="language">
                 Язык:
-                <s:url id="url" action="index">
+                <s:url id="url" action="index" namespace="/">
                     <s:param name="request_locale">en</s:param>
                 </s:url>
                 <s:a href="%{url}">English /</s:a>
-                <s:url id="url" action="index">
+                <s:url id="url" action="index" namespace="/">
                     <s:param name="request_locale">ru</s:param>
                 </s:url>
                 <s:a href="%{url}">Русский /</s:a>
-                <s:url id="url" action="index">
+                <s:url id="url" action="index" namespace="/">
                     <s:param name="request_locale">jp</s:param>
                 </s:url>
                 <s:a href="%{url}">日本語</s:a>
-                </div>
-                <hr/>
+            </div>
+            <hr/>
             <div class="content">
-            Авторизуйтесь, пожалуйста!<br/>
-        <s:form action="authentication" namespace="/" name="authorization" label="Авторизация">
-            <s:actionerror />
-            <s:textfield name="email" label="e-mail"/>
-            <s:password name="password" label="пароль"/>
-            <s:submit value="Войти"/>
-        </s:form>   
+                Авторизуйтесь, пожалуйста!<br/>
+
+                <s:form action="authentication" namespace="/" name="authorization" label="Авторизация" theme="simple">
+                    <s:actionerror /><table>
+                        <tr>
+                            <td><label for="email">e-mail</label></td>
+                            <td><s:textfield name="email" id="e-mail"/></td>
+                        </tr>
+                        <tr> 
+                            <td> <label for="password">Пароль</label> </td>
+                            <td><s:password name="password" id="password"/></td>
+                        </tr>
+                        <tr> 
+                            <td rowspan="2"> <s:submit value="Войти"/></td>
+                        </tr>
+                    </table>
+                </s:form> 
             </div>
             <div class="hFooter"></div>
         </div>

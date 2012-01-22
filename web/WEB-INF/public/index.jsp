@@ -8,38 +8,39 @@
     </head>
     <body>
         <div class="main">
-            <s:a href="index"><div class="maintitle" align="center">Клуб рецептов японской кулинарии</div></s:a>
+            <div class="maintitle" align="center">Клуб рецептов японской кулинарии</div>
             <hr/><s:if test="#session.user">
-                <h4>Здравствуйте, <s:property value="#session.user.firstName"/>!</h4>        
+                Здравствуйте, <s:property value="#session.user.firstName"/>!        
             </s:if>
             <s:else>
                 Вы не авторизованы
-                <s:url id="urlLogin" action="login"/>
+                <s:url id="urlLogin" action="login" namespace="/"/>
                 <s:a href="%{urlLogin}">Вход</s:a> /
-                <s:url id="urlRegister" action="register"/>
+                <s:url id="urlRegister" action="register" namespace="/"/>
                 <s:a href="%{urlRegister}">Регистрация</s:a>
             </s:else>
-
-            Язык:
-            <s:url id="url" action="index">
-                <s:param name="request_locale">en</s:param>
-            </s:url>
-            <s:a href="%{url}">English /</s:a>
-            <s:url id="url" action="index">
-                <s:param name="request_locale">ru</s:param>
-            </s:url>
-            <s:a href="%{url}">Русский /</s:a>
-            <s:url id="url" action="index">
-                <s:param name="request_locale">jp</s:param>
-            </s:url>
-            <s:a href="%{url}">日本語</s:a>
-
+            <div class="language">
+                Язык:
+                <s:url id="url" action="index" namespace="/">
+                    <s:param name="request_locale">en</s:param>
+                </s:url>
+                <s:a href="%{url}">English /</s:a>
+                <s:url id="url" action="index" namespace="/">
+                    <s:param name="request_locale">ru</s:param>
+                </s:url>
+                <s:a href="%{url}">Русский /</s:a>
+                <s:url id="url" action="index" namespace="/">
+                    <s:param name="request_locale">jp</s:param>
+                </s:url>
+                <s:a href="%{url}">日本語</s:a>
+                </div>
                 <hr/>
-            <s:a href="fake"><div class="menu">Супы</div></s:a>
-            <s:a href="fake"><div class="menu">Лапша</div></s:a>
-            <s:a href="fake"><div class="menu">Суши/Роллы</div></s:a>
-            <s:a href="fake"><div class="menu">Другие блюда</div></s:a>
-            <s:a href="fake"><div class="menu">Дессерты</div></s:a>
+                <s:url id="fake" namespace="/" action="fake"/> 
+            <s:a href="%{fake}"><div class="menu">Супы</div></s:a>
+            <s:a href="%{fake}"><div class="menu">Лапша</div></s:a>
+            <s:a href="%{fake}"><div class="menu">Суши/Роллы</div></s:a>
+            <s:a href="%{fake}"><div class="menu">Другие блюда</div></s:a>
+            <s:a href="%{fake}"><div class="menu">Дессерты</div></s:a>
             <s:url id="url" action="index" namespace="/private" />
             <div class="menu"><s:a href="%{url}">Мой профиль</s:a><br/></div>
                 <div class="hint">А знаете ли вы, что ....</div>
@@ -52,22 +53,16 @@
                 </s:url>
                 <img src="<s:property value='#maguro'/>" width="550" height="341" alt="Роллы с тунцом"/>
                 <br/>
-                <s:a href="fake">Читать рецепт</s:a>
+                <s:a href="%{fake}">Читать рецепт</s:a>
 
                 </div>
-            <s:url id="url" action="register" namespace="/" />
-            <s:a href="%{url}">Зарегистрироваться</s:a><br/>
-            <s:url id="url" action="login" namespace="/" />
-            <s:a href="%{url}">Залогиниться</s:a><br/>
-
-            <s:url id="url" action="index" namespace="/private" />
-            <s:a href="%{url}">Зайти в секретную часть</s:a><br/>
-            <s:debug/>
+            
             <div class="hFooter"></div>
         </div>
         <div class="footer"><hr/>
             <h4>© Клуб рецептов Зайнуллиной Маргариты. 2011 
                 При использовании материалов ссылка на сайт обязательна.</h4>
-        </div>       
+        </div>     
+                <s:debug/>
     </body>
 </html>
