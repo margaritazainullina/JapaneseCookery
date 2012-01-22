@@ -11,7 +11,8 @@ public class Authentication extends ActionSupport implements SessionAware {
     private UserService userService;
     private String email;
     private String password;
-
+    
+    @Override
     public String execute() throws Exception {
         User user1 = userService.authenticateUser(email, password);
         if (user1 != null) {
@@ -23,15 +24,7 @@ public class Authentication extends ActionSupport implements SessionAware {
         }
     }
 
-    private boolean isEmptyString(String value) {
-        return value == null || "".equals(value.trim());
-    }
-    @Override
-    public void validate() {
-        if (isEmptyString(email)) addFieldError("email", "Не указан логин");
-        if (isEmptyString(password)) addFieldError("password", "Не указан пароль");
-    }
-    
+
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = map;

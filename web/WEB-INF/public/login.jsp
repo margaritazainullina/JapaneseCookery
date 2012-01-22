@@ -37,16 +37,17 @@
             <hr/>
             <div class="content">
                 Авторизуйтесь, пожалуйста!<br/>
-
-                <s:form action="authentication" namespace="/" name="authorization" label="Авторизация" theme="simple">
-                    <s:actionerror /><table>
+            <s:actionerror theme="xhtml" />
+            <s:form action="authentication" theme="simple" namespace="/" name="authorization" 
+                    label="Авторизация">
+                    <table>
                         <tr>
                             <td><label for="email">e-mail</label></td>
-                            <td><s:textfield name="email" id="e-mail"/></td>
+                            <td><s:textfield theme="xhtml" name="email" id="email"/></td>
                         </tr>
                         <tr> 
                             <td> <label for="password">Пароль</label> </td>
-                            <td><s:password name="password" id="password"/></td>
+                            <td><s:password theme="xhtml" name="password" id="password"/></td>
                         </tr>
                         <tr> 
                             <td rowspan="2"> <s:submit value="Войти"/></td>
