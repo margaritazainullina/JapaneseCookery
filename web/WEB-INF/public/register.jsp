@@ -62,7 +62,7 @@
                         </tr>
                         <tr>
                             <td> <s:submit type="submit" value="OK"/></td>
-                            <td> <s:submit type="reset" value="Очистить"/> 
+                            <td><s:reset type="button" key="reset" value="Очистить" />
                             </td>
                         </tr>
                     </table>
