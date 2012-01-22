@@ -24,8 +24,19 @@
                 <s:textarea name="text" rows="4" cols="100" />
                 <s:submit value="Добавить" />
             </s:if>            
-
+            <s:if test="#session.xpath=='root/cook'">
+                <s:label value="Заполните cook часть рецепта" />
+                <s:label value="Добавьте step" />
+                <s:textarea name="text" rows="4" cols="100" />
+                <s:submit value="Добавить" />
+            </s:if> 
         </s:form>
+        
+        <s:url id="url_cook" namespace="/private" action="recipeCreate" method="cook"/>
+        <s:a href="%{url_cook}">Перейти к разделу "готовка"</s:a>
+        
+        <s:url id="url_complete" namespace="/private" action="recipeCreate" method="complete"/>
+        <s:a href="%{url_complete}">Сохранить рецепт и вернуться в свой профиль</s:a>        
         
         <s:url id="url_delete" namespace="/private" action="recipeCreate" method="delete"/>
         <s:a href="%{url_delete}">Удалить рецепт и вернуться в свой профиль</s:a>
@@ -33,7 +44,9 @@
         <div id="recipeDisplay">
             <h2>Отображение рецепта</h2>
             <s:if test="#session.recipe">
-                <s:label value="%{#session.recipe.xml}" />
+                <code>
+                    <s:property value="%{#session.recipe.xml}" />
+                </code>
             </s:if>
             <s:else>
                 <s:label value="Рецепт пустой" />

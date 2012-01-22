@@ -13,4 +13,9 @@ public class RecipeDAOImpl implements RecipeDAO {
     public void setTemplate(HibernateTemplate template) {
         this.template = template;
     }
+
+    @Override
+    public void delete(Recipe recipe) {
+        template.delete(recipe);
+    }
 }

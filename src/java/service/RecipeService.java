@@ -16,4 +16,7 @@ public class RecipeService {
     public void save(Recipe recipe) {
         recipeDAO.save(recipe);
     }    
+    public void delete(Recipe recipe) {
+        recipeDAO.delete(recipe);
+    }       
 }
