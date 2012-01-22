@@ -30,7 +30,7 @@ html,body {
     font-size: 24pt;
     font-family: Monotype Corsiva; 
     font-weight: normal;
-    margin: 10px; 
+    margin: 15px; 
 }
 .menu{
     position: relative;
@@ -48,7 +48,7 @@ html,body {
     margin: 1px; 
     border: dashed 1px black;
     width: 200px; 
-    height: 330px;
+    height: 320px;
 }
 .content{
     font-size: 12pt;

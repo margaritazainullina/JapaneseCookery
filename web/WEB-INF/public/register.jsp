@@ -4,42 +4,69 @@
     <head>
         <title>Регистрация</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" /> 
+        <style>.errormessage {color: red;}</style>
     </head>
     <body>
-        <div class="main">
-        <s:if test="#session.user">
-            <h4>Здравствуйте, <s:property value="#session.user.firstName"/>!</h4>        
-        </s:if>
-        <s:else><h4>Вы не авторизованы</h4></s:else>        
-        <div class="language">
+        <div class="main"> 
+            <div class="maintitle" align="center">Клуб рецептов японской кулинарии</div>
+            <hr/><s:if test="#session.user">
+                Здравствуйте, <s:property value="#session.user.firstName"/>!        
+            </s:if>
+            <s:else>
+                Вы не авторизованы
+                <s:url id="urlLogin" action="login"/>
+                <s:a href="%{urlLogin}">Вход</s:a> /
+                <s:url id="urlRegister" action="register"/>
+                <s:a href="%{urlRegister}">Регистрация</s:a>
+            </s:else>
+            <div class="language">
                 Язык:
-                <s:url id="url" action="index">
+                <s:url id="url" action="index" namespace="/">
                     <s:param name="request_locale">en</s:param>
                 </s:url>
                 <s:a href="%{url}">English /</s:a>
-                <s:url id="url" action="index">
+                <s:url id="url" action="index" namespace="/">
                     <s:param name="request_locale">ru</s:param>
                 </s:url>
                 <s:a href="%{url}">Русский /</s:a>
-                <s:url id="url" action="index">
+                <s:url id="url" action="index" namespace="/" >
                     <s:param name="request_locale">jp</s:param>
                 </s:url>
                 <s:a href="%{url}">日本語</s:a>
-                </div>
+            </div>
             <hr/>
             <div class="content">
-                
-            Введите данные для регистрации <br/><br/>
-            <s:form action="register" namespace="/" name="register" label="Авторизация">
-                <s:actionerror />
-                <s:textfield name="firstName" label="Имя"  maxLength="50" size="20" />
-                <s:textfield name="lastName" label="Фамилия"  maxLength="50" size="20" />
-                <s:textfield name="email" label="Email" maxLength="50" size="20" />
-                <s:password name="password" label="Пароль" showPassword="true" maxLength="50" size="20"/>
-                <s:radio name="sex" label="Пол" list="{'Male', 'Female'}" />
-                <s:submit value="Зарегистрироваться"/><br/>
-                <s:submit type="reset" value="Очистить"/> 
-            </s:form>     
+                Введите данные для регистрации <br/>
+                <s:form action="register" namespace="/" name="register" label="Авторизация" theme="simple">
+                    <s:actionerror />
+                    <table>
+                        <tr>
+                            <td><label for="firstName">Имя</label></td>
+                            <td> <s:textfield name="firstName"  maxLength="50" size="20" /></td>
+                        </tr>
+                        <tr> 
+                            <td> <label for="lastName">Фамилия</label> </td>
+                            <td> <s:textfield name="lastName" maxLength="50" size="20" /></td>
+                        </tr>
+                        <tr> 
+                            <td> <label for="email">E-mail</label> </td>
+                            <td> <s:textfield name="email" maxLength="50" size="20" /></td>
+                        </tr>
+                        <tr> 
+                            <td> <label for="password">Пароль</label> </td>
+                            <td> <s:password name="password" showPassword="true" maxLength="50" size="20"/></td>
+                        </tr>
+                        <tr> 
+                            <td> <label for="sex">Пол</label> </td>
+                            <td> <s:radio name="sex" list="{'Male', 'Female'}" /></td>
+                        </tr>
+                        <tr>
+                            <td> <s:submit type="submit" value="OK"/></td>
+                            <td> <s:submit type="reset" value="Очистить"/> 
+                            </td>
+                        </tr>
+                    </table>
+                </s:form> 
             </div>
             <div class="hFooter"></div>
         </div>
