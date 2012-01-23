@@ -19,6 +19,11 @@
             <message>Введите email</message> 
         </field-validator>
     </field>
+     <field name="email">
+        <field-validator type="email">
+            <message>Неправильный email</message> 
+        </field-validator>
+    </field>
     <field name="password">
         <field-validator type="requiredstring">
             <param name="trim">true</param>

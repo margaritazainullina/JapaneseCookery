@@ -3,6 +3,10 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <package name="private" namespace="/private" extends="struts-default">
+        <result-types>
+            <result-type name="recipe" class="result.RecipeResult" />
+        </result-types>
+        
         <interceptors>
             <interceptor name="authentication" class="interceptor.Authentication"/>
             <interceptor-stack name="privateStack">
@@ -11,11 +15,11 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="privateStack" />
-        
+       
         <global-results>
             <result name="login">/WEB-INF/public/login.jsp</result>
         </global-results>
-        
+      
         <action name="index">
             <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
         </action> 
@@ -48,5 +52,11 @@
             <result name="back" type="redirect">index</result>
         </action>        
         
+        <action name="recipePreview" class="action.RecipePreview">
+            <result name="success" type="recipe">
+                <param name="xsltLocation">/misc/recipe.xslt</param>
+            </result>
+        </action>        
+       
     </package>
 </struts>
