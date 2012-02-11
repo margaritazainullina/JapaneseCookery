@@ -3,10 +3,6 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <package name="private" namespace="/private" extends="struts-default">
-        <result-types>
-            <result-type name="recipe" class="result.RecipeResult" />
-        </result-types>
-        
         <interceptors>
             <interceptor name="authentication" class="interceptor.Authentication"/>
             <interceptor-stack name="privateStack">
@@ -53,8 +49,9 @@
         </action>        
         
         <action name="recipePreview" class="action.RecipePreview">
-            <result name="success" type="recipe">
-                <param name="xsltLocation">/misc/recipe.xslt</param>
+            <result name="success" type="xslt">
+                <param name="stylesheetLocation">/xsl/recipe1.xslt</param>
+                <param name="matchingPattern">^/result/[^/*]$</param>
             </result>
         </action>        
        

@@ -8,15 +8,12 @@
                 <link rel="stylesheet" type="text/css" href="style.css"/>
             </head>
             <body>
-                <xsl:value-of select="ingredient"/>
                 <xsl:apply-templates />
             </body>
         </html>
     </xsl:template>
     <xsl:template match="info">
-        <h1>
-            <p><xsl:value-of select="."/></p> 
-        </h1>
+        <h1><p><xsl:value-of select="."/></p></h1>
     </xsl:template>	
     <xsl:template match="prepare">
         <p><xsl:apply-templates select="ingredient"/><br/></p>

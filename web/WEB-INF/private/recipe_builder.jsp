@@ -42,12 +42,9 @@
         <s:a href="%{url_delete}">Удалить рецепт и вернуться в свой профиль</s:a>
 
         <div id="recipeDisplay">
-            <h2>Отображение рецепта</h2>
+            <h4>Отображение рецепта</h4>
             <s:action executeResult="true" name="recipePreview" />
-
-            <code>
-                <s:property value="%{#session.recipe.xml}" />
-            </code>
         </div>
+        <s:debug />
     </body>
 </html>
