@@ -49,9 +49,9 @@
 
             <div class="content">
                 <div class="title">Мой профиль</div> 
-                Имя:<br/>
-                Фамилия:<br/>
-                e-mail:<br/>
+                Имя: <s:property value="#session.user.firstName"/><br/>
+                Фамилия: <s:property value="#session.user.lastName"/><br/>
+                e-mail: <s:property value="#session.user.email"/><br/>
                 <s:if test="#session.user.photo">
             <s:url id="url" namespace="/private" action="showPhoto" /> 
             <img src="<s:property value='#url'/>" width="160"/>
