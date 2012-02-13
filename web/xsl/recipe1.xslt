@@ -4,8 +4,5 @@
     <xsl:template match="result">
         <xsl:apply-templates />
     </xsl:template>
-    <xsl:template match="info">
-        <h1><xsl:value-of select="."/></h1>
-    </xsl:template>    
 
 </xsl:stylesheet>

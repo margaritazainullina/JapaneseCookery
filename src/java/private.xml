@@ -52,6 +52,7 @@
             <result name="success" type="xslt">
                 <param name="stylesheetLocation">/xsl/recipe1.xslt</param>
                 <param name="matchingPattern">^/result/[^/*]$</param>
+                <param name="exposedValue">{info, ingredients, steps}</param>
             </result>
         </action>        
        
