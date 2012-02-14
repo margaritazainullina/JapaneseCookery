@@ -2,17 +2,16 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
     <xsl:output method="html" omit-xml-declaration="yes" version="4.0" encoding="UTF-8" indent="yes"/>
     <xsl:template match="result">
-        <table>
+        <table border="1px">
             <tr>
                 <th><xsl:value-of select="info"/></th>
             </tr>
-            <xsl:for-each select="ingredients/*">
+            <xsl:for-each select="ingredients/item">
                 <tr>
                     <td>
-                        <xsl:value-of select="."/><xsl:text> </xsl:text>
-                        <xsl:value-of select="item/amount"/><xsl:text> </xsl:text>
-                        <xsl:value-of select="*/unit/*"/><xsl:text> </xsl:text>
-                        <xsl:value-of select="*/content/*"/>
+                        <xsl:value-of select="unit"/><xsl:text> </xsl:text>
+                        <xsl:value-of select="amount"/><xsl:text> </xsl:text>
+                        <xsl:value-of select="content"/>
                     </td>
                 </tr>
             </xsl:for-each>

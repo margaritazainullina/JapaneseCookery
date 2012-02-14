@@ -1,12 +1,12 @@
 package entity;
 
 public class Ingredient {
-    private String amount;
     private String unit;
+    private String amount;    
     private String content;
     
     public Ingredient(){}
-    public Ingredient(String amount, String unit, String content){
+    public Ingredient(String unit, String amount, String content){
         setAmount(amount);
         setUnit(unit);
         setContent(content);

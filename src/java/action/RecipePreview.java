@@ -26,7 +26,9 @@ public class RecipePreview extends ActionSupport implements SessionAware {
         // Заполним поле ingredient        
         NodeList ingredientNodes = doc.getElementsByTagName("ingredient");
         for (int i = 0; i < ingredientNodes.getLength(); i++) {
-            ingredients.add(new Ingredient("1", "2", ingredientNodes.item(i).getTextContent()));
+            NamedNodeMap map = ingredientNodes.item(i).getAttributes();
+            ingredients.add(new Ingredient(map.getNamedItem("unit").getTextContent(), 
+                    map.getNamedItem("amount").getTextContent(), ingredientNodes.item(i).getTextContent()));
         }
         // Заполним поле ingredient        
         NodeList stepNodes = doc.getElementsByTagName("step");
