@@ -8,7 +8,12 @@
             </tr>
             <xsl:for-each select="ingredients/*">
                 <tr>
-                    <td><xsl:value-of select="."/></td>
+                    <td>
+                        <xsl:value-of select="."/><xsl:text> </xsl:text>
+                        <xsl:value-of select="item/amount"/><xsl:text> </xsl:text>
+                        <xsl:value-of select="*/unit/*"/><xsl:text> </xsl:text>
+                        <xsl:value-of select="*/content/*"/>
+                    </td>
                 </tr>
             </xsl:for-each>
             <xsl:for-each select="steps/*">

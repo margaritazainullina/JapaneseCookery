@@ -1,16 +1,16 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import entity.Ingredient;
 import java.util.*;
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.w3c.dom.*;
 
 public class RecipePreview extends ActionSupport implements SessionAware {
-
     private Map<String, Object> session;
     private String info;
-    private List<String> ingredients = new ArrayList<String>();
+    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
     private List<String> steps = new ArrayList<String>();
     private static Logger log = Logger.getLogger("common");
 
@@ -26,7 +26,7 @@ public class RecipePreview extends ActionSupport implements SessionAware {
         // Заполним поле ingredient        
         NodeList ingredientNodes = doc.getElementsByTagName("ingredient");
         for (int i = 0; i < ingredientNodes.getLength(); i++) {
-            ingredients.add(ingredientNodes.item(i).getTextContent());
+            ingredients.add(new Ingredient("1", "2", ingredientNodes.item(i).getTextContent()));
         }
         // Заполним поле ingredient        
         NodeList stepNodes = doc.getElementsByTagName("step");
@@ -34,14 +34,6 @@ public class RecipePreview extends ActionSupport implements SessionAware {
             steps.add(stepNodes.item(i).getTextContent());
         }
         return SUCCESS;
-    }
-
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
     }
 
     public List<String> getSteps() {
@@ -63,5 +55,13 @@ public class RecipePreview extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = map;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
