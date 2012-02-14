@@ -10,8 +10,8 @@ public class RecipePreview extends ActionSupport implements SessionAware {
 
     private Map<String, Object> session;
     private String info;
-    private List ingredients = new ArrayList();
-    private List steps = new ArrayList();
+    private List<String> ingredients = new ArrayList<String>();
+    private List<String> steps = new ArrayList<String>();
     private static Logger log = Logger.getLogger("common");
 
     @Override
@@ -28,23 +28,27 @@ public class RecipePreview extends ActionSupport implements SessionAware {
         for (int i = 0; i < ingredientNodes.getLength(); i++) {
             ingredients.add(ingredientNodes.item(i).getTextContent());
         }
-
+        // Заполним поле ingredient        
+        NodeList stepNodes = doc.getElementsByTagName("step");
+        for (int i = 0; i < stepNodes.getLength(); i++) {
+            steps.add(stepNodes.item(i).getTextContent());
+        }
         return SUCCESS;
     }
 
-    public List getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List ingredients) {
+    public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public List getSteps() {
+    public List<String> getSteps() {
         return steps;
     }
 
-    public void setSteps(List steps) {
+    public void setSteps(List<String> steps) {
         this.steps = steps;
     }
 

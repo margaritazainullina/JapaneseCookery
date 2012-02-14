@@ -2,7 +2,7 @@ package result;
 
 import java.io.*;
 import java.net.URL;
-import java.util.*;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.ErrorListener;
 import javax.xml.transform.OutputKeys;
@@ -28,11 +28,15 @@ import com.opensymphony.xwork2.util.TextParseUtil;
 import com.opensymphony.xwork2.util.ValueStack;
 import com.opensymphony.xwork2.util.logging.Logger;
 import com.opensymphony.xwork2.util.logging.LoggerFactory;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.struts2.views.xslt.AdapterFactory;
 import org.apache.struts2.views.xslt.ServletURIResolver;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class XSLTResult implements Result {
-
+    private static org.apache.log4j.Logger LOG4j = org.apache.log4j.Logger.getLogger("common");
     private static final long serialVersionUID = 6424691441777176763L;
 
     /** Log instance for this result. */
@@ -82,8 +86,7 @@ public class XSLTResult implements Result {
     }
 
     public void setStylesheetLocation(String location) {
-        if (location == null)
-            throw new IllegalArgumentException("Null location");
+        if (location == null) throw new IllegalArgumentException("Null location");
         this.stylesheetLocation = location;
     }
 
@@ -144,7 +147,6 @@ public class XSLTResult implements Result {
             location = TextParseUtil.translateVariables(location, stack);
         }
 
-
         try {
             HttpServletResponse response = ServletActionContext.getResponse();
 
@@ -156,12 +158,10 @@ public class XSLTResult implements Result {
             if (location != null) {
                 templates = getTemplates(location);
                 transformer = templates.newTransformer();
-            } else
-                transformer = TransformerFactory.newInstance().newTransformer();
+            } else transformer = TransformerFactory.newInstance().newTransformer();
 
             transformer.setURIResolver(getURIResolver());
             transformer.setErrorListener(new ErrorListener() {
-
                 public void error(TransformerException exception)
                         throws TransformerException {
                     throw new StrutsException("Error transforming result", exception);
@@ -172,9 +172,7 @@ public class XSLTResult implements Result {
                 }
 
                 public void warning(TransformerException exception) throws TransformerException {
-                    if (LOG.isWarnEnabled()) {
-                	LOG.warn(exception.getMessage(), exception);
-                    }
+                    if (LOG.isWarnEnabled()) LOG.warn(exception.getMessage(), exception);
                 }
             });
 
@@ -196,6 +194,10 @@ public class XSLTResult implements Result {
 
             Source xmlSource = getDOMSourceForStack(result);
 
+            // added by budi
+            printDOMSource((DOMSource) xmlSource);
+            // ----end -----            
+            
             // Transform the source XML to System.out.
             if (LOG.isDebugEnabled()) {
         	LOG.debug("xmlSource = " + xmlSource);
@@ -261,8 +263,37 @@ public class XSLTResult implements Result {
         return templates;
     }
 
-    protected Source getDOMSourceForStack(Object value)
-            throws IllegalAccessException, InstantiationException {
+    protected Source getDOMSourceForStack(Object value) throws IllegalAccessException, InstantiationException {
         return new DOMSource(getAdapterFactory().adaptDocument("result", value) );
     }
+    // added by budi
+    private void printDOMSource(DOMSource source) {
+        StringBuilder sb = new StringBuilder(1024);
+        Node node = source.getNode();
+        printNode(node, sb, 0);
+        LOG4j.info(sb.toString());
+    }
+    
+    private void printNode(Node node, StringBuilder sb, int indent) {
+        String nodeName = node.getNodeName();
+
+        StringBuilder spaces = new StringBuilder();
+        for (int i = 0; i < indent; i++) spaces.append("    ");
+        
+        sb.append(spaces);
+        sb.append("<" + nodeName + ">\n");
+        
+        if (node.getNodeType() == Node.TEXT_NODE) {
+            sb.append(spaces).append("    ").append(node.getNodeValue() + "\n");
+        }
+
+        NodeList nodeList = node.getChildNodes();
+        int childCount = nodeList.getLength();
+        for (int i = 0; i < childCount; i++) {
+            Node childNode = nodeList.item(i);
+            printNode(childNode, sb, indent + 1);
+        }
+        sb.append(spaces);
+        sb.append("</" + nodeName + ">\n");
+    }    
 }
