@@ -20,9 +20,11 @@ public class RecipeInitiate extends ActionSupport implements SessionAware {
         Element info = doc.createElement("info");
         Element prepare = doc.createElement("prepare");
         Element cook = doc.createElement("cook");
+        Element image = doc.createElement("image");
         root.appendChild(info);
         root.appendChild(prepare);
         root.appendChild(cook);
+        root.appendChild(image);
         doc.appendChild(root);
         session.put("doc", doc);
         Recipe recipe = new Recipe();

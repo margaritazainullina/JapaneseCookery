@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import service.RecipeService;
 import util.UtilXML;
 
-public class RecipeCreate extends ActionSupport implements SessionAware {
+public class RecipeProduction extends ActionSupport implements SessionAware {
     private RecipeService recipeService;
     public static final String BACK = "back";
     private static Logger log = Logger.getLogger("common");

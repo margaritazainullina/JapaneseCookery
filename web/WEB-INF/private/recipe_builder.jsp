@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Конструктор рецептов</h1>
-        <s:form theme="xhtml" action="recipeCreate" namespace="/private">
+        <s:form theme="xhtml" action="recipeProduction" namespace="/private">
             <s:if test="#session.xpath=='root/info'">
                 <s:label value="Заполните info часть рецепта" />
                 <s:textarea name="text" rows="4" cols="100" />
@@ -32,13 +32,13 @@
             </s:if> 
         </s:form>
 
-        <s:url id="url_cook" namespace="/private" action="recipeCreate" method="cook"/>
+        <s:url id="url_cook" namespace="/private" action="recipeProduction" method="cook"/>
         <s:a href="%{url_cook}">Перейти к разделу "готовка"</s:a>
 
-        <s:url id="url_complete" namespace="/private" action="recipeCreate" method="complete"/>
+        <s:url id="url_complete" namespace="/private" action="recipeProduction" method="complete"/>
         <s:a href="%{url_complete}">Сохранить рецепт и вернуться в свой профиль</s:a>        
 
-        <s:url id="url_delete" namespace="/private" action="recipeCreate" method="delete"/>
+        <s:url id="url_delete" namespace="/private" action="recipeProduction" method="delete"/>
         <s:a href="%{url_delete}">Удалить рецепт и вернуться в свой профиль</s:a>
 
         <div id="recipeDisplay">

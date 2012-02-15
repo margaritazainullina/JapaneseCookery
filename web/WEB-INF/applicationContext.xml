@@ -33,7 +33,7 @@
             </bean>
         </property>
     </bean>    
-    <bean name="recipeCreate" class="action.RecipeCreate">
+    <bean name="recipeProduction" class="action.RecipeProduction">
         <property name="recipeService" ref="recipeService"/>
     </bean>     
 </beans>
