@@ -12,7 +12,10 @@ public class Recipe implements Serializable {
     private Long id;
     @Lob
     @Column(name = "xml", nullable = true)   
-    private String xml;  
+    private String xml; 
+    @Lob
+    @Column(name = "image", nullable = true)   
+    private byte[] image;            
 
     public Recipe() {}
 
@@ -30,5 +33,13 @@ public class Recipe implements Serializable {
 
     public void setXml(String xml) {
         this.xml = xml;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

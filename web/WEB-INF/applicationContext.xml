@@ -19,7 +19,7 @@
     <bean name="authentication" class="action.Authentication">
         <property name="userService" ref="userService"/>
     </bean>
-    <bean name="record_user" class="action.RecordUser">
+    <bean name="recordUser" class="action.RecordUser">
         <property name="userService" ref="userService"/>
     </bean>   
     

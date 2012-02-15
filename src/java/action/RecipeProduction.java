@@ -68,6 +68,11 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
     
+    public String image() {
+        session.put("xpath", "root/image");
+        return SUCCESS;
+    }    
+    
     public String complete() throws Exception {
         session.remove("recipe");
         session.remove("xpath");
