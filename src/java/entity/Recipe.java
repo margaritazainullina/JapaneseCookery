@@ -13,7 +13,8 @@ public class Recipe implements Serializable {
     @Lob
     @Column(name = "xml", nullable = true)   
     private String xml; 
-
+    @Transient
+    private Boolean isPhotoAdded;
     public Recipe() {}
 
     public Long getId() {
@@ -30,5 +31,9 @@ public class Recipe implements Serializable {
 
     public void setXml(String xml) {
         this.xml = xml;
+    }
+    
+    public Boolean getIsPhotoAdded() {
+        return true;
     }
 }

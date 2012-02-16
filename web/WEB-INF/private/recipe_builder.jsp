@@ -59,6 +59,10 @@
             <div id="recipeDisplay">
                 <h4>Отображение рецепта</h4>
             <s:action executeResult="true" name="recipePreview" />
+            <s:if test="#session.recipe.isPhotoAdded">
+              <h4>Отображение фото рецепта</h4>
+                              
+            </s:if>
         </div>
         <s:debug />
     </body>
