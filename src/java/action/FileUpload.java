@@ -14,6 +14,8 @@ public class FileUpload extends ActionSupport implements SessionAware {
     private String userImageContentType;
     private String userImageFileName;
 
+    public FileUpload() {}
+    
     public String execute() {
         try {
             FileInputStream fin = new FileInputStream(userImage);

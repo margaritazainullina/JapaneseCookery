@@ -57,6 +57,14 @@
                 <param name="stylesheetLocation">/xsl/recipe1.xslt</param>
                 <param name="matchingPattern">^/result/[^/*]$</param>
             </result>
-        </action>        
+        </action>  
+        <action name="imageUpload" class="action.ImageUpload">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success" type="dispatcher">/WEB-INF/private/recipe_builder.jsp</result>
+        </action>
     </package>
 </struts>

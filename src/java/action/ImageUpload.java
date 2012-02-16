@@ -4,8 +4,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import entity.Recipe;
 import java.io.*;
 import java.util.Map;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.apache.struts2.interceptor.SessionAware;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 import service.RecipeService;
+import util.UtilXML;
 
 public class ImageUpload extends ActionSupport implements SessionAware {
     private RecipeService recipeService;
@@ -14,14 +19,21 @@ public class ImageUpload extends ActionSupport implements SessionAware {
     private String imageContentType;
     private String imageFileName;
 
-    public String execute() {
+    public ImageUpload() {}
+
+    public String execute() throws TransformerConfigurationException, TransformerException {
         try {
             FileInputStream fin = new FileInputStream(image);
             byte[] fileContent = new byte[(int) image.length()];
             fin.read(fileContent);
             Recipe recipe = (Recipe) session.get("recipe");
-            recipe.setImage(fileContent);
-            //recipeService.save();
+            // Добавление байтового представления в xml
+            // 1. Получить doc
+            Document doc = (Document) session.get("doc");
+            NodeList imageList = doc.getElementsByTagName("image");
+            imageList.item(0).setTextContent(new String(fileContent));
+            recipe.setXml(UtilXML.getXMLasString(doc));
+            recipeService.save(recipe);
         } catch (FileNotFoundException e){}
         catch (IOException ioe) {}
         return SUCCESS;
