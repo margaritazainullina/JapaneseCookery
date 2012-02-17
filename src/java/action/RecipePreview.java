@@ -41,28 +41,22 @@ public class RecipePreview extends ActionSupport implements SessionAware {
     public List<String> getSteps() {
         return steps;
     }
-
     public void setSteps(List<String> steps) {
         this.steps = steps;
     }
-
     public String getInfo() {
         return info;
     }
-
     public void setInfo(String info) {
         this.info = info;
     }
-
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = map;
     }
-
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
-
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }

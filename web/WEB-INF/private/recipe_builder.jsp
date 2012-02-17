@@ -61,7 +61,9 @@
             <s:action executeResult="true" name="recipePreview" />
             <s:if test="#session.recipe.isPhotoAdded">
               <h4>Отображение фото рецепта</h4>
-                              
+              <s:url id="url" namespace="/private" action="recipeShowPhoto" /> 
+             <img src="<s:property value='#url'/>" width="160"/>
+             
             </s:if>
         </div>
         <s:debug />
