@@ -21,6 +21,8 @@ public class Recipe implements Serializable {
     @Lob
     @Column(name = "xml", nullable = true)
     private String xml;
+    @Column(name = "category", nullable = false)    
+    private String category;
     @Transient
     private Boolean isPhotoAdded;
 
@@ -45,9 +47,13 @@ public class Recipe implements Serializable {
     public Long getRecipe_id() {
         return recipe_id;
     }
-
     public void setRecipe_id(Long recipe_id) {
         this.recipe_id = recipe_id;
     }
-    
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

@@ -16,6 +16,7 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     public static final String BACK = "back";
     private static Logger log = Logger.getLogger("common");
     private Map<String, Object> session;
+    private String category;
     private String text, unit;
     private Integer amount;
 
@@ -29,6 +30,7 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
             Node info = infoList.item(0);
             Node txt = doc.createTextNode(text);
             info.appendChild(txt);
+            recipe.setCategory(category);
             session.put("xpath", "root/prepare");
         } else if (((String) session.get("xpath")).equals("root/prepare")) {
             NodeList prepareList = doc.getElementsByTagName("prepare");
@@ -115,5 +117,13 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
 
     public void setText(String text) {
         this.text = text;
-    }    
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

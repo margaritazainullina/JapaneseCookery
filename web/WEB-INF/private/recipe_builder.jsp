@@ -13,6 +13,7 @@
             <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                 <s:label value="Заполните info часть рецепта" />
                 <s:textarea name="text" rows="4" cols="100" value="" />
+                <s:select list="categories" name="category" />
                 <s:submit value="Добавить" />
             </s:form>
         </s:if>

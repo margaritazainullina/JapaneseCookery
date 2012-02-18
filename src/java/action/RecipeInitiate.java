@@ -1,7 +1,7 @@
 package action;
 
 import entity.*;
-import java.util.Map;
+import java.util.*;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
 import org.apache.struts2.interceptor.SessionAware;
@@ -9,7 +9,17 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class RecipeInitiate extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
+    private List<String> categories;
 
+    public RecipeInitiate() {
+        categories = new ArrayList<String>();
+        categories.add("супы");
+        categories.add("лапша");
+        categories.add("суши");
+        categories.add("десерты");
+        categories.add("другое");
+    }
+    
     @Override
     public String execute() throws Exception {
         session.put("doc", initDoc());
@@ -38,5 +48,12 @@ public class RecipeInitiate extends ActionSupport implements SessionAware {
         root.appendChild(image);
         doc.appendChild(root);
         return doc;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 }

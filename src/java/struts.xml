@@ -5,7 +5,4 @@
 <struts>
     <include file="public.xml"/>
     <include file="private.xml"/>
-    <!-- Configuration for the default package. -->
-    <package name="default" extends="struts-default">
-    </package>
 </struts>
