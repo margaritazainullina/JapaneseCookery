@@ -9,7 +9,6 @@
     </head>
     <body>
         <h1>Конструктор рецептов</h1>
-
         <s:if test="#session.xpath=='root/info'">
             <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                 <s:label value="Заполните info часть рецепта" />
@@ -43,7 +42,6 @@
                 <s:submit />
             </s:form> 
         </s:if>             
-
         <s:url id="url_cook" namespace="/private" action="recipeProduction" method="cook"/>
         <s:a href="%{url_cook}">Перейти к разделу "готовка"</s:a>
 
@@ -55,15 +53,13 @@
 
         <s:url id="url_delete" namespace="/private" action="recipeProduction" method="delete"/>
         <s:a href="%{url_delete}">Удалить рецепт и вернуться в свой профиль</s:a>
-
-            <div id="recipeDisplay">
-                <h4>Отображение рецепта</h4>
+        <div id="recipeDisplay">
+            <h4>Отображение рецепта</h4>
             <s:action executeResult="true" name="recipePreview" />
             <s:if test="#session.recipe.isPhotoAdded">
               <h4>Отображение фото рецепта</h4>
               <s:url id="url" namespace="/private" action="recipeShowPhoto" /> 
              <img src="<s:property value='#url'/>" width="160"/>
-             
             </s:if>
         </div>
         <s:debug />
