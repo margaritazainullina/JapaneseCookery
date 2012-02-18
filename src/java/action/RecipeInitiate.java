@@ -1,6 +1,6 @@
 package action;
 
-import entity.Recipe;
+import entity.*;
 import java.util.Map;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
@@ -12,6 +12,17 @@ public class RecipeInitiate extends ActionSupport implements SessionAware {
 
     @Override
     public String execute() throws Exception {
+        session.put("doc", initDoc());
+        session.put("recipe", new Recipe());
+        session.put("xpath", "root/info");
+        return SUCCESS;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.session = map;
+    }
+    private Document initDoc() throws ParserConfigurationException{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true); // never forget this!
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -26,15 +37,6 @@ public class RecipeInitiate extends ActionSupport implements SessionAware {
         root.appendChild(cook);
         root.appendChild(image);
         doc.appendChild(root);
-        session.put("doc", doc);
-        Recipe recipe = new Recipe();
-        session.put("recipe", recipe);
-        session.put("xpath", "root/info");
-        return SUCCESS;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.session = map;
+        return doc;
     }
 }

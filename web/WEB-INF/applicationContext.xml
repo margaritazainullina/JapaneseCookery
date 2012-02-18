@@ -35,6 +35,7 @@
     </bean>    
     <bean name="recipeProduction" class="action.RecipeProduction">
         <property name="recipeService" ref="recipeService"/>
+        <property name="userService" ref="userService"/>        
     </bean>     
     <bean name="imageUpload" class="action.ImageUpload">
         <property name="recipeService" ref="recipeService"/>

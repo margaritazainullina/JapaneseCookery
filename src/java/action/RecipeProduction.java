@@ -1,16 +1,18 @@
 package action;
 
-import entity.Recipe;
+import entity.*;
 import java.util.Map;
 import org.w3c.dom.*;
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
-import service.RecipeService;
+import service.*;
 import util.UtilXML;
 
 public class RecipeProduction extends ActionSupport implements SessionAware {
     private RecipeService recipeService;
+    private UserService userService;
+    
     public static final String BACK = "back";
     private static Logger log = Logger.getLogger("common");
     private Map<String, Object> session;
@@ -45,24 +47,11 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
             step.appendChild(txt);
             cook.appendChild(step);
         }
-
         recipe.setXml(UtilXML.getXMLasString(doc));
-        recipeService.save(recipe);
+
         return SUCCESS;
     }
 
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.session = map;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
     public String cook() {
         session.put("xpath", "root/cook");
         return SUCCESS;
@@ -74,6 +63,11 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     }    
     
     public String complete() throws Exception {
+        User user = (User)session.get("user");
+        Recipe recipe =(Recipe) session.get("recipe");
+        user.getRecipes().add(recipe);
+        userService.save(user);
+        recipeService.save(recipe);
         session.remove("recipe");
         session.remove("xpath");
         session.remove("doc");
@@ -81,7 +75,6 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     }
     
     public String delete() throws Exception {
-        recipeService.delete((Recipe)session.get("recipe"));
         session.remove("recipe");
         session.remove("xpath");
         session.remove("doc");
@@ -91,24 +84,36 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     public RecipeService getRecipeService() {
         return recipeService;
     }
-
     public void setRecipeService(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
-
+    public UserService getUserService() {
+        return userService;
+    }
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
     public String getUnit() {
         return unit;
     }
-
     public void setUnit(String unit) {
         this.unit = unit;
     }
-
     public Integer getAmount() {
         return amount;
     }
-
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.session = map;
+    }
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }    
 }

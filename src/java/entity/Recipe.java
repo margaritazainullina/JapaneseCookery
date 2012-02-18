@@ -1,14 +1,10 @@
 package entity;
 
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import javax.persistence.*;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.CharacterData;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import util.UtilXML;
@@ -21,7 +17,7 @@ public class Recipe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long recipe_id;
     @Lob
     @Column(name = "xml", nullable = true)
     private String xml;
@@ -29,12 +25,7 @@ public class Recipe implements Serializable {
     private Boolean isPhotoAdded;
 
     public Recipe() {}
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+
     public String getXml() {
         return xml;
     }
@@ -45,26 +36,18 @@ public class Recipe implements Serializable {
     public Boolean getIsPhotoAdded() throws ParserConfigurationException, SAXException, IOException {
         Document doc = UtilXML.getDocumentFromString(xml);
         NodeList imageList = doc.getElementsByTagName("image");
-//        log.info("imageList.getLength() -> " + imageList.getLength());
-//        log.info("imageList.item(0).getNodeValue() -> " + imageList.item(0).getNodeValue());
-//        log.info("imageList.item(0).getNodeName() -> " + imageList.item(0).getNodeName());
-//        log.info("imageList.item(0).getTextContent() -> " + imageList.item(0).getTextContent());
-//        log.info("xml -> " + xml);
 
         byte[] image = imageList.item(0).getTextContent().getBytes();
-        if (image.length > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        if (image.length > 0) return true;
+        else return false;
     }
 
-//    public static String getCharacterDataFromElement(Element e) {
-//        Node child = e.getFirstChild();
-//        if (child instanceof CharacterData) {
-//            CharacterData cd = (CharacterData) child;
-//            return cd.getData();
-//        }
-//        return "";
-//    }
+    public Long getRecipe_id() {
+        return recipe_id;
+    }
+
+    public void setRecipe_id(Long recipe_id) {
+        this.recipe_id = recipe_id;
+    }
+    
 }

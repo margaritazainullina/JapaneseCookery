@@ -1,6 +1,10 @@
 package entity;
+
+import java.util.*;
 import java.io.Serializable;
 import javax.persistence.*;
+
+
 @Entity(name="user")
 @Table(name = "USERS")
 public class User implements Serializable {
@@ -22,6 +26,12 @@ public class User implements Serializable {
     @Column(name = "photo", nullable = true)   
     private byte[] photo;
     
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+      name="user_recipe",joinColumns={@JoinColumn(name="id")},inverseJoinColumns={@JoinColumn(name="recipe_id")}
+    )    
+    private Set<Recipe> recipes = new HashSet<Recipe>(0);
+    
     public User(){};
     public User(String mail, String pwd, String fName, String lName, String sex){
         this.setEmail(mail);
@@ -33,55 +43,49 @@ public class User implements Serializable {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     public String getSex() {
         return sex;
     }
-
     public void setSex(String sex) {
         this.sex = sex;
     }
     public byte[] getPhoto() {
         return photo;
     }
-
     public void setPhoto(byte[] photo) {
         this.photo = photo;
-    }    
+    }
+    public Set<Recipe> getRecipes() {
+        return recipes;
+    }
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
+    }
 }

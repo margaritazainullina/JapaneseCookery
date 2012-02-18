@@ -15,7 +15,7 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="privateStack" />
-       
+       <default-action-ref name="index"/>
         <global-results>
             <result name="login">/WEB-INF/public/login.jsp</result>
         </global-results>
