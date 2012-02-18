@@ -4,7 +4,6 @@ import java.util.*;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 @Entity(name="user")
 @Table(name = "USERS")
 public class User implements Serializable {
@@ -25,10 +24,10 @@ public class User implements Serializable {
     @Lob
     @Column(name = "photo", nullable = true)   
     private byte[] photo;
-    
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
-      name="user_recipe",joinColumns={@JoinColumn(name="id")},inverseJoinColumns={@JoinColumn(name="recipe_id")}
+      name="user_recipe",joinColumns={@JoinColumn(name="id")},
+      inverseJoinColumns={@JoinColumn(name="recipe_id")}
     )    
     private Set<Recipe> recipes = new HashSet<Recipe>(0);
     
