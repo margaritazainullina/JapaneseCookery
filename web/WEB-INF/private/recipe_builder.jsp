@@ -13,7 +13,7 @@
         <s:if test="#session.xpath=='root/info'">
             <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                 <s:label value="Заполните info часть рецепта" />
-                <s:textarea name="text" rows="4" cols="100" />
+                <s:textarea name="text" rows="4" cols="100" value="" />
                 <s:submit value="Добавить" />
             </s:form>
         </s:if>
@@ -23,8 +23,8 @@
                 <s:label value="Добавьте ингридиент" />
                 <s:select list="{'чайная ложка', 'столовая ложка', 'грамм'}" 
                           name="unit" label="Выберите единицу измерения" />
-                <s:textfield label="количество" name="amount" />
-                <s:textarea name="text" rows="4" cols="100" />
+                <s:textfield label="количество" name="amount" value=""/>
+                <s:textarea name="text" rows="4" cols="100" value="" />
                 <s:submit value="Добавить" />
             </s:form>
         </s:if>            
@@ -32,7 +32,7 @@
             <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                 <s:label value="Заполните cook часть рецепта" />
                 <s:label value="Добавьте step" />
-                <s:textarea name="text" rows="4" cols="100" />
+                <s:textarea name="text" rows="4" cols="100" value="" />
                 <s:submit value="Добавить" />
             </s:form>
         </s:if> 

@@ -5,9 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.codec.binary.Base64;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 public class RecipeShowPhoto extends ActionSupport implements SessionAware{
     private Map<String, Object> session;  
@@ -26,8 +24,7 @@ public class RecipeShowPhoto extends ActionSupport implements SessionAware{
     public String execute() throws Exception {
         Document doc = (Document) session.get("doc");
         NodeList imageList = doc.getElementsByTagName("image");
-        Node imageNode = imageList.item(0);
-        String str = imageNode.getTextContent();
+        String str = imageList.item(0).getTextContent();
         byte[] decoded = Base64.decodeBase64(str.getBytes());
         imageStream = new ByteArrayInputStream(decoded);
         return SUCCESS;
