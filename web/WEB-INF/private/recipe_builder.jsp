@@ -12,8 +12,9 @@
         <s:if test="#session.xpath=='root/info'">
             <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                 <s:label value="Заполните info часть рецепта" />
-                <s:textarea name="text" rows="4" cols="100" value="" />
-                <s:select list="categories" name="category" />
+                <s:textfield name="name" value="" label="Название"/>
+                <s:textarea name="info" rows="4" cols="100" value="" label="Краткая информация" />
+                <s:select list="categories" name="category" label="Выберите категорию рецепта" />
                 <s:submit value="Добавить" />
             </s:form>
         </s:if>
