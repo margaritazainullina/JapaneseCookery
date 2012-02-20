@@ -9,6 +9,7 @@ import org.w3c.dom.*;
 
 public class RecipePreview extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
+    private String recipeName;
     private String info;
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
     private List<String> steps = new ArrayList<String>();
@@ -22,7 +23,11 @@ public class RecipePreview extends ActionSupport implements SessionAware {
         info = infoList.item(0).getTextContent();
         if (info.isEmpty()) {
             info = "Здесь будет отображаться рецепт!";
+            recipeName=""; // если info пустое, то и recipeName тоже пустое
         }
+        // Заполним поле recipeName
+        NodeList recipeNameList = doc.getElementsByTagName("name");
+        recipeName = recipeNameList.item(0).getTextContent();
         // Заполним поле ingredient        
         NodeList ingredientNodes = doc.getElementsByTagName("ingredient");
         for (int i = 0; i < ingredientNodes.getLength(); i++) {
@@ -59,5 +64,13 @@ public class RecipePreview extends ActionSupport implements SessionAware {
     }
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
     }
 }

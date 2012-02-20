@@ -53,7 +53,7 @@
         
         <action name="recipePreview" class="action.RecipePreview">
             <result name="success" type="xsltWithRawXML">
-                <param name="stylesheetLocation">/xsl/recipe1.xslt</param>
+                <param name="stylesheetLocation">/xsl/recipe2.xslt</param>
                 <param name="matchingPattern">^/result/[^/*]$</param>
             </result>
         </action>  
