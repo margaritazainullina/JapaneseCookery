@@ -36,11 +36,13 @@
                 <s:a href="%{url}">日本語</s:a>
                 </div>
                 <hr/>
+                 <s:url id="main" namespace="/" action="index"/>
+                 <s:a href="%{main}"><div class="menu">Главная</div></s:a>
                  <s:url id="exit" namespace="/private" action="exit"/>
                  <s:a href="%{exit}"><div class="menu">Выйти</div></s:a>
                 
-                <s:url id="fake" namespace="/" action="fake"/>
-                <s:a href="%{fake}"><div class="menu">Мои рецепты</div></s:a>
+                <s:url id="myRecipies" namespace="/private" action="myRecipies"/>
+                <s:a href="%{myRecipies}"><div class="menu">Мои рецепты</div></s:a>
                
                 <s:url id="url" namespace="/private" action="recipeBuilder"/>
                 <s:a href="%{url}"><div class="menu">Добавить рецепт</div></s:a>

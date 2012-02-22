@@ -10,11 +10,11 @@ import service.*;
 import util.UtilXML;
 
 public class RecipeProduction extends ActionSupport implements SessionAware {
+    private static Logger log = Logger.getLogger("common");    
     private RecipeService recipeService;
     private UserService userService;
-    
     public static final String BACK = "back";
-    private static Logger log = Logger.getLogger("common");
+
     private Map<String, Object> session;
     private String category;
     private String recipeName, info, unit, text;
