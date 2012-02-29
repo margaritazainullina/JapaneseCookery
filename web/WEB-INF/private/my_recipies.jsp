@@ -47,10 +47,13 @@
 
             <div class="content">
                 <div class="title">Мои рецепты</div> 
-                    <s:form theme="xhtml" action="myRecipies" namespace="/private">
-                        <s:select list="categories" name="category" label="Выберите категорию рецепта" emptyOption="false" />
-                        <s:submit value="Показать" />
-                    </s:form>
+                <s:form theme="xhtml" action="myRecipies" namespace="/private">
+                  <s:select list="categories" name="category" label="Выберите категорию рецепта" emptyOption="false" />
+                  <s:submit value="Показать" />
+                </s:form>
+                <div>
+                    
+                </div>
             </div>
             <div class="hFooter"></div>
         </div>

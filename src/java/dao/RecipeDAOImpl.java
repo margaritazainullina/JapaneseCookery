@@ -1,6 +1,8 @@
 package dao;
 
 import entity.Recipe;
+import entity.User;
+import java.util.List;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class RecipeDAOImpl implements RecipeDAO {
@@ -17,5 +19,11 @@ public class RecipeDAOImpl implements RecipeDAO {
     @Override
     public void delete(Recipe recipe) {
         template.delete(recipe);
+    }
+
+    @Override
+    public List<Recipe> getRecipies(User user) {
+        List recipies = (List) template.find("from Recipe where user=?", user);
+        return null;
     }
 }

@@ -1,7 +1,8 @@
 package service;
 
 import dao.RecipeDAO;
-import entity.Recipe;
+import entity.*;
+import java.util.*;
 
 public class RecipeService {
     private RecipeDAO recipeDAO;
@@ -18,5 +19,8 @@ public class RecipeService {
     }    
     public void delete(Recipe recipe) {
         recipeDAO.delete(recipe);
-    }       
+    } 
+    public List<Recipe> getRecipies(User user){
+        return recipeDAO.getRecipies(user);
+    }
 }
