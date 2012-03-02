@@ -39,6 +39,7 @@
                 Введите данные для регистрации <br/>
                 <s:actionerror theme="xhtml" />
                 <s:form action="record_user" namespace="/" name="record_user" label="Авторизация" theme="simple">
+                    <s:token/>
                     <table>
                         <tr>
                             <td><label for="firstName">Имя</label></td>

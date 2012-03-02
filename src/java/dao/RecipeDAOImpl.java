@@ -23,7 +23,8 @@ public class RecipeDAOImpl implements RecipeDAO {
 
     @Override
     public List<Recipe> getRecipies(User user) {
-        List recipies = (List) template.find("from Recipe where user=?", user);
-        return null;
+        List<Recipe> recipies = (List<Recipe>) template.find("from Recipe");
+        //List<Recipe> recipies = (List<Recipe>) template.find("from Recipe where user=?", user);
+        return recipies;
     }
 }

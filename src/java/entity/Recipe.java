@@ -9,7 +9,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import util.UtilXML;
 
-@Entity(name = "recipe")
+@Entity(name = "Recipe")
 @Table(name = "RECIPE")
 public class Recipe implements Serializable {
     @Transient
@@ -55,5 +55,9 @@ public class Recipe implements Serializable {
     }
     public void setCategory(String category) {
         this.category = category;
+    }
+    @Override
+    public String toString(){
+        return this.getXml();
     }
 }

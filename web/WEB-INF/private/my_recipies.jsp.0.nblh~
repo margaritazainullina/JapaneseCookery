@@ -54,7 +54,7 @@
                 <div>
                     <ul>
                         <s:iterator value="recipies" var="recipe">
-                            <li><s:property value="xml" /></li>
+                            <li><s:property value="category" /></li>
                             <hr size="1px" />
                         </s:iterator>
                     </ul>

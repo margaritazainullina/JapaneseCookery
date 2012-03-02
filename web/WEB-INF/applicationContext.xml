@@ -40,4 +40,8 @@
     <bean name="imageUpload" class="action.ImageUpload">
         <property name="recipeService" ref="recipeService"/>
     </bean>
+    
+    <bean name="recipeViewMyRecipies" class="action.RecipeViewMyRecipies">
+        <property name="recipeService" ref="recipeService"/>
+    </bean>     
 </beans>

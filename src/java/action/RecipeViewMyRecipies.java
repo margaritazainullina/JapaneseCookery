@@ -1,12 +1,14 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import entity.Recipe;
+import entity.*;
 import java.util.*;
 import org.apache.log4j.Logger;
+import org.apache.struts2.interceptor.SessionAware;
 import service.RecipeService;
 
-public class RecipeViewMyRecipies extends ActionSupport {
+public class RecipeViewMyRecipies extends ActionSupport implements SessionAware {
+    private Map<String, Object> session;    
     private RecipeService recipeService;
     private static Logger log = Logger.getLogger("common");    
     private Map<Integer, String> categories;
@@ -22,10 +24,11 @@ public class RecipeViewMyRecipies extends ActionSupport {
         categories.put(4, "десерты");
         categories.put(5, "другое");
         category = "0";
-        // recipies = recipeService.
-     }
+    }
+    
     public String execute() throws Exception {
-        log.info("category  -> " + category);
+        recipies = recipeService.getRecipies((User) session.get("user"));
+        log.info("recipies.get(0).getXml() -> " + recipies.get(0).getXml());
         return SUCCESS;
     }
     public Map<Integer, String> getCategories() {
@@ -34,29 +37,26 @@ public class RecipeViewMyRecipies extends ActionSupport {
     public void setCategories(Map<Integer, String> categories) {
         this.categories = categories;
     }
-
     public String getCategory() {
         return category;
     }
-
     public void setCategory(String category) {
         this.category = category;
     }
-
     public RecipeService getRecipeService() {
         return recipeService;
     }
-
     public void setRecipeService(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
-
     public List<Recipe> getRecipies() {
         return recipies;
     }
-
     public void setRecipies(List<Recipe> recipies) {
         this.recipies = recipies;
     }
-        
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.session = map;
+    } 
 }
