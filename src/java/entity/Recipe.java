@@ -12,8 +12,7 @@ import util.UtilXML;
 @Entity(name = "Recipe")
 @Table(name = "RECIPE")
 public class Recipe implements Serializable {
-    @Transient
-    private static Logger log = Logger.getLogger("common");
+    // private static Logger log = Logger.getLogger("common");
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

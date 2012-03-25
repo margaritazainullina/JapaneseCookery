@@ -10,7 +10,7 @@ import service.*;
 import util.UtilXML;
 
 public class RecipeProduction extends ActionSupport implements SessionAware {
-    private static Logger log = Logger.getLogger("common");    
+    // private static Logger log = Logger.getLogger("common");    
     private RecipeService recipeService;
     private UserService userService;
     public static final String BACK = "back";
@@ -72,6 +72,7 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     
     public String complete() throws Exception {
         User user = (User)session.get("user");
+        userService.update(user);
         Recipe recipe =(Recipe) session.get("recipe");
         user.getRecipes().add(recipe);
         userService.save(user);

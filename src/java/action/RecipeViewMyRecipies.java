@@ -10,7 +10,7 @@ import service.RecipeService;
 public class RecipeViewMyRecipies extends ActionSupport implements SessionAware {
     private Map<String, Object> session;    
     private RecipeService recipeService;
-    private static Logger log = Logger.getLogger("common");    
+    // private static Logger log = Logger.getLogger("common");    
     private Map<Integer, String> categories;
     private String category;
     private List<Recipe> recipies;
@@ -28,7 +28,7 @@ public class RecipeViewMyRecipies extends ActionSupport implements SessionAware 
     
     public String execute() throws Exception {
         recipies = recipeService.getRecipies((User) session.get("user"));
-        log.info("recipies.get(0).getXml() -> " + recipies.get(0).getXml());
+        // log.info("recipies.get(0).getXml() -> " + recipies.get(0).getXml());
         return SUCCESS;
     }
     public Map<Integer, String> getCategories() {

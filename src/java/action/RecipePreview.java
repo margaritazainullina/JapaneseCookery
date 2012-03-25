@@ -13,7 +13,7 @@ public class RecipePreview extends ActionSupport implements SessionAware {
     private String info;
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
     private List<String> steps = new ArrayList<String>();
-    private static Logger log = Logger.getLogger("common");
+    // private static Logger log = Logger.getLogger("common");
 
     @Override
     public String execute() throws Exception {

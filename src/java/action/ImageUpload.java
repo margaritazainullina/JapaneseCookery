@@ -19,7 +19,7 @@ public class ImageUpload extends ActionSupport implements SessionAware {
     private File image;
     private String imageContentType;
     private String imageFileName;
-    private static Logger log = Logger.getLogger("common");    
+    // private static Logger log = Logger.getLogger("common");    
         
     public ImageUpload() {}
     
@@ -41,10 +41,10 @@ public class ImageUpload extends ActionSupport implements SessionAware {
             recipe.setXml(UtilXML.getXMLasString(doc));
             recipeService.save(recipe);
         } catch(FileNotFoundException e){
-            log.info("FileNotFoundException");
+            //log.info("FileNotFoundException");
         }
         catch (IOException ioe) {
-            log.info("IOException");
+            //log.info("IOException");
         }
         return SUCCESS;
     }

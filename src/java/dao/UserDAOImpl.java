@@ -30,4 +30,9 @@ public class UserDAOImpl implements UserDAO {
     public void save(User user) {
         template.saveOrUpdate(user);
     }
+
+    @Override
+    public void update(User user) {
+        template.update(user);
+    }
 }
