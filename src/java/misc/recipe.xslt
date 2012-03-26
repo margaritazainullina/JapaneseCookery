@@ -2,15 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
     <xsl:output method="html" omit-xml-declaration="yes" version="4.0" encoding="UTF-8" indent="yes"/>
     <xsl:template match="/root">
-        <html>
-            <head>
-                <title>Клуб рецептов японской кухни</title>
-                <link rel="stylesheet" type="text/css" href="style.css"/>
-            </head>
-            <body>
-                <xsl:apply-templates />
-            </body>
-        </html>
+        <xsl:apply-templates />
     </xsl:template>
     <xsl:template match="info">
         <h1><p><xsl:value-of select="."/></p></h1>

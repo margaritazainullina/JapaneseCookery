@@ -4,10 +4,15 @@ import java.io.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import org.xml.sax.*;
 
 public class UtilXML {
@@ -32,8 +37,19 @@ public class UtilXML {
         trans.transform(source, result);
         return sw.toString();
     }
-    public static String xsltTransform(Document doc, String xslt){
-        
-        return null;
+    public static String xsltTransform(String xmlString){
+        String result = null;
+        try {
+            StringWriter writer = new StringWriter();
+            StringReader reader = new StringReader(xmlString);
+            
+            TransformerFactory factory = TransformerFactory.newInstance();
+            StreamSource xslt = new StreamSource(UtilXML.class.getResourceAsStream("/misc/recipe.xslt"));
+            Transformer transformer = factory.newTransformer(xslt);
+           
+            transformer.transform(new StreamSource(reader), new StreamResult(writer));
+            result = writer.toString();
+        } catch (Exception ex) { }
+        return result;
     }
 }

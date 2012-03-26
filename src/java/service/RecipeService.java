@@ -23,4 +23,8 @@ public class RecipeService {
     public List<Recipe> getRecipies(User user){
         return recipeDAO.getRecipies(user);
     }
+
+    public void update(Recipe recipe) {
+        recipeDAO.update(recipe);
+    }
 }
