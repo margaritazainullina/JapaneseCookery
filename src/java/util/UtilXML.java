@@ -32,4 +32,8 @@ public class UtilXML {
         trans.transform(source, result);
         return sw.toString();
     }
+    public static String xsltTransform(Document doc, String xslt){
+        
+        return null;
+    }
 }
