@@ -26,7 +26,7 @@ public class User implements Serializable {
     private byte[] photo;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
-      name="user_recipe",joinColumns={@JoinColumn(name="id")},
+      name="user_recipe",joinColumns={@JoinColumn(name="user_id")},
       inverseJoinColumns={@JoinColumn(name="recipe_id")}
     )    
     private Set<Recipe> recipes;

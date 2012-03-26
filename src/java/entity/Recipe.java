@@ -22,6 +22,8 @@ public class Recipe implements Serializable {
     private String xml;
     @Column(name = "category", nullable = false)    
     private String category;
+    @Column(name = "html", nullable = true)
+    private String html;      
     @Transient
     private Boolean isPhotoAdded;
 
@@ -58,5 +60,11 @@ public class Recipe implements Serializable {
     @Override
     public String toString(){
         return this.getXml();
+    }
+    public String getHtml() {
+        return html;
+    }
+    public void setHtml(String html) {
+        this.html = html;
     }
 }
