@@ -13,7 +13,6 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     // private static Logger log = Logger.getLogger("common");    
     private RecipeService recipeService;
     private UserService userService;
-    public static final String BACK = "back";
 
     private Map<String, Object> session;
     private String category;
@@ -80,24 +79,18 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
         session.remove("recipe");
         session.remove("xpath");
         session.remove("doc");
-        return BACK;
+        return INPUT;
     }
     
     public String delete() throws Exception {
         session.remove("recipe");
         session.remove("xpath");
         session.remove("doc");
-        return BACK;
+        return INPUT;
     }
 
-    public RecipeService getRecipeService() {
-        return recipeService;
-    }
     public void setRecipeService(RecipeService recipeService) {
         this.recipeService = recipeService;
-    }
-    public UserService getUserService() {
-        return userService;
     }
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -149,5 +142,4 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
-
 }
