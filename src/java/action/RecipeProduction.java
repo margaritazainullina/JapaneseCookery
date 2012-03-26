@@ -70,18 +70,20 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     }    
     
     public String complete() throws Exception {
-        User user = (User)session.get("user");
-        userService.update(user);
-        Recipe recipe =(Recipe) session.get("recipe");
-        
-        recipe.setHtml(UtilXML.xsltTransform(recipe.getXml()));
-        recipeService.save(recipe);
-        user.getRecipes().add(recipe);
-        userService.save(user);
-        session.remove("recipe");
-        session.remove("xpath");
-        session.remove("doc");
-        return INPUT;
+        String xPath = (String) session.get("xpath");
+        if (xPath.equals("root/image")|xPath.equals("root/cook")) {
+            User user = (User)session.get("user");
+            userService.update(user);
+            Recipe recipe =(Recipe) session.get("recipe");
+            recipe.setHtml(UtilXML.xsltTransform(recipe.getXml()));
+            recipeService.save(recipe);
+            user.getRecipes().add(recipe);
+            userService.save(user);
+            session.remove("recipe");
+            session.remove("xpath");
+            session.remove("doc");
+            return INPUT;
+        }else return INPUT;
     }
     
     public String delete() throws Exception {
