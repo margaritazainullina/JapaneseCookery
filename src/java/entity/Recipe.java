@@ -22,6 +22,7 @@ public class Recipe implements Serializable {
     private String xml;
     @Column(name = "category", nullable = false)    
     private String category;
+    @Lob    
     @Column(name = "html", nullable = true)
     private String html;      
     @Transient

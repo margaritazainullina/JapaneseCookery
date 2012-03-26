@@ -27,4 +27,9 @@ public class RecipeDAOImpl implements RecipeDAO {
         //List<Recipe> recipies = (List<Recipe>) template.find("from Recipe where user=?", user);
         return recipies;
     }
+
+    @Override
+    public void update(Recipe recipe) {
+        template.update(recipe);
+    }
 }

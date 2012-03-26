@@ -73,9 +73,11 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
         User user = (User)session.get("user");
         userService.update(user);
         Recipe recipe =(Recipe) session.get("recipe");
+        
+        recipe.setHtml(UtilXML.xsltTransform(recipe.getXml()));
+        recipeService.save(recipe);
         user.getRecipes().add(recipe);
         userService.save(user);
-        recipeService.save(recipe);
         session.remove("recipe");
         session.remove("xpath");
         session.remove("doc");
