@@ -97,4 +97,20 @@ public class User implements Serializable {
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        final User user = (User) o;
+        return getUsername().equals(user.getUsername());
+    }
+    public int hashCode() {
+        return getUsername().hashCode();
+    }
+    public String toString() {
+        return "User ('" + getId() + "'), " + "Username: '" + getUsername() + "'";
+    }
+    private String getUsername() {
+        return lastName + " " + firstName;
+    }    
 }
