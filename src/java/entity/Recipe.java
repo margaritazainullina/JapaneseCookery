@@ -16,7 +16,7 @@ public class Recipe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long recipe_id;
+    private Long id;
     @Lob
     @Column(name = "xml", nullable = true)
     private String xml;
@@ -46,12 +46,6 @@ public class Recipe implements Serializable {
         else return false;
     }
 
-    public Long getRecipe_id() {
-        return recipe_id;
-    }
-    public void setRecipe_id(Long recipe_id) {
-        this.recipe_id = recipe_id;
-    }
     public String getCategory() {
         return category;
     }
@@ -68,4 +62,22 @@ public class Recipe implements Serializable {
     public void setHtml(String html) {
         this.html = html;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Recipe)) return false;
+
+        final Recipe recipe = (Recipe) o;
+        return getHtml().equals(recipe.getHtml());
+    }
+    public int hashCode() {
+        return getHtml().hashCode();
+    }    
 }
