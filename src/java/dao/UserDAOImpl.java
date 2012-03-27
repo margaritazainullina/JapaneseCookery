@@ -15,7 +15,7 @@ public class UserDAOImpl implements UserDAO {
     public User getByPassword(String email, String pwd) {
         String[] params = {email, pwd};
         List<User> users = template.find("FROM user u WHERE u.email = ? and u.password = ?", params);
-        if (users==null || users.size()==0) return null;
+        if (users==null || users.isEmpty()) return null;
         else return users.get(0);
     }
 
