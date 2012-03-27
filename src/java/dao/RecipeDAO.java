@@ -8,4 +8,5 @@ public interface RecipeDAO {
     public void delete(Recipe recipe);
     public List<Recipe> getRecipies(User user);
     public void update(Recipe recipe);
+    public Recipe find(Long id);
 }

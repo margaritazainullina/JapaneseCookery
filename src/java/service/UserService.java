@@ -1,7 +1,8 @@
 package service;
 
 import dao.UserDAO;
-import entity.*;
+import entity.Recipe;
+import entity.User;
 
 public class UserService {
     private UserDAO userDAO;
@@ -26,5 +27,13 @@ public class UserService {
     
     public void update(User user) {
         userDAO.update(user);
+    }
+    public User find(Long id){
+        return userDAO.find(id);
+    }
+    public void addRecipeToUser(Long userId, Recipe recipe){
+        User user = find(userId);
+        user.getRecipes().add(recipe);
+        save(user);
     }
 }

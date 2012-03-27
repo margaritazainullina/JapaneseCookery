@@ -32,4 +32,11 @@ public class RecipeDAOImpl implements RecipeDAO {
     public void update(Recipe recipe) {
         template.update(recipe);
     }
+    @Override
+    public Recipe find(Long id) {
+        Long[] params = {id};
+        List<Recipe> recipies = template.find("FROM Recipe u WHERE u.id = ?", params);
+        if (recipies==null || recipies.isEmpty()) return null;
+        else return recipies.get(0);        
+    }    
 }

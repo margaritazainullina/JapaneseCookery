@@ -72,13 +72,11 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     public String complete() throws Exception {
         String xPath = (String) session.get("xpath");
         if (xPath.equals("root/image")|xPath.equals("root/cook")) {
-            Recipe recipe =(Recipe) session.get("recipe");
+            Recipe recipe = (Recipe) session.get("recipe");
             recipe.setHtml(UtilXML.xsltTransform(recipe.getXml()));
             recipeService.save(recipe);
             User user = (User)session.get("user");
-            userService.update(user);
-            user.getRecipes().add(recipe);
-            userService.save(user);
+            userService.addRecipeToUser(user.getId(), recipe);
             session.remove("recipe");
             session.remove("xpath");
             session.remove("doc");

@@ -78,12 +78,6 @@ public class User implements Serializable {
     public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
-//    public Set<Recipe> getRecipes() {
-//        return recipes;
-//    }
-//    public void setRecipes(Set<Recipe> recipes) {
-//        this.recipes = recipes;
-//    }
     @OneToMany(cascade = CascadeType.ALL, fetch=javax.persistence.FetchType.LAZY)
     @JoinTable(
       name="user_recipe", joinColumns={@JoinColumn(name="user_id")},
@@ -92,24 +86,23 @@ public class User implements Serializable {
     public Set<Recipe> getRecipes() {
         return recipes;
     }
-
     public void setRecipes(Set<Recipe> recipes) {
         this.recipes = recipes;
     }
+    @Override    
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
 
         final User user = (User) o;
-        return getUsername().equals(user.getUsername());
+        return (lastName + " " + firstName).equals(user.lastName + " " + user.firstName);
     }
+    @Override    
     public int hashCode() {
-        return getUsername().hashCode();
+        return (lastName + " " + firstName).hashCode();
     }
+    @Override
     public String toString() {
-        return "User ('" + getId() + "'), " + "Username: '" + getUsername() + "'";
+        return "User ('" + getId() + "'), " + "Username: '" + (lastName + " " + firstName) + "'";
     }
-    private String getUsername() {
-        return lastName + " " + firstName;
-    }    
 }

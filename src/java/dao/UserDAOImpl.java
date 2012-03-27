@@ -35,4 +35,12 @@ public class UserDAOImpl implements UserDAO {
     public void update(User user) {
         template.update(user);
     }
+
+    @Override
+    public User find(Long id) {
+        Long[] params = {id};
+        List<User> users = template.find("FROM user u WHERE u.id = ?", params);
+        if (users==null || users.isEmpty()) return null;
+        else return users.get(0);        
+    }
 }

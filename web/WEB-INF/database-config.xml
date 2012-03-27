@@ -46,6 +46,7 @@
                 <prop key="create*">PROPAGATION_REQUIRED,-Exception</prop>
                 <prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
                 <prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>
+                <prop key="addRecipeToUser">PROPAGATION_REQUIRED,-Exception</prop>
             </props>
         </property>
     </bean>
