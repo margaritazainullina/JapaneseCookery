@@ -29,7 +29,7 @@ public class User implements Serializable {
       name="user_recipe",joinColumns={@JoinColumn(name="user_id")},
       inverseJoinColumns={@JoinColumn(name="recipe_id")}
     )    
-    private Set<Recipe> recipes;
+    private List<Recipe> recipes;
     
     public User(){};
     public User(String mail, String pwd, String fName, String lName, String sex){
@@ -38,7 +38,8 @@ public class User implements Serializable {
         this.setFirstName(fName);
         this.setLastName(lName);
         this.setSex(sex);
-        this.recipes = new HashSet<Recipe>(0);
+        // this.recipes = new HashSet<Recipe>(0);
+        this.recipes = new ArrayList<Recipe>();
     };
     public String getEmail() {
         return email;
@@ -82,10 +83,18 @@ public class User implements Serializable {
     public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
-    public Set<Recipe> getRecipes() {
+//    public Set<Recipe> getRecipes() {
+//        return recipes;
+//    }
+//    public void setRecipes(Set<Recipe> recipes) {
+//        this.recipes = recipes;
+//    }
+
+    public List<Recipe> getRecipes() {
         return recipes;
     }
-    public void setRecipes(Set<Recipe> recipes) {
+
+    public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }
 }
