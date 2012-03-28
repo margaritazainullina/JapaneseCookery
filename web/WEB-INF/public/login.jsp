@@ -39,7 +39,7 @@
                 Авторизуйтесь, пожалуйста!<br/>
             <s:actionerror theme="xhtml" />
             <s:form action="authentication" theme="simple" namespace="/" name="authorization" 
-                    label="Авторизация">
+                    label="Авторизация" >
                     <table>
                         <tr>
                             <td><label for="email">e-mail</label></td>
