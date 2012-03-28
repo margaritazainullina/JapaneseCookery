@@ -3,6 +3,7 @@ package service;
 import dao.UserDAO;
 import entity.Recipe;
 import entity.User;
+import java.util.*;
 
 public class UserService {
     private UserDAO userDAO;
@@ -33,7 +34,10 @@ public class UserService {
     }
     public void addRecipeToUser(Long userId, Recipe recipe){
         User user = find(userId);
-        user.getRecipes().add(recipe);
+        user.getRecipies().add(recipe);
         save(user);
     }
+    public Set<Recipe> getRecipies(User user){
+        return userDAO.getRecipies(user);
+    }    
 }

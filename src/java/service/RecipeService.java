@@ -20,10 +20,6 @@ public class RecipeService {
     public void delete(Recipe recipe) {
         recipeDAO.delete(recipe);
     } 
-    public List<Recipe> getRecipies(User user){
-        return recipeDAO.getRecipies(user);
-    }
-
     public void update(Recipe recipe) {
         recipeDAO.update(recipe);
     }

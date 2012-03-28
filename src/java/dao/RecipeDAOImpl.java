@@ -22,13 +22,6 @@ public class RecipeDAOImpl implements RecipeDAO {
     }
 
     @Override
-    public List<Recipe> getRecipies(User user) {
-        List<Recipe> recipies = (List<Recipe>) template.find("from Recipe");
-        //List<Recipe> recipies = (List<Recipe>) template.find("from Recipe where user=?", user);
-        return recipies;
-    }
-
-    @Override
     public void update(Recipe recipe) {
         template.update(recipe);
     }

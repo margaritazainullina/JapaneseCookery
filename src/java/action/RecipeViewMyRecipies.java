@@ -5,15 +5,15 @@ import entity.*;
 import java.util.*;
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
-import service.RecipeService;
+import service.UserService;
 
 public class RecipeViewMyRecipies extends ActionSupport implements SessionAware {
     private Map<String, Object> session;    
-    private RecipeService recipeService;
+    private UserService userService;
     // private static Logger log = Logger.getLogger("common");    
     private Map<Integer, String> categories;
     private String category;
-    private List<Recipe> recipies;
+    private Set<Recipe> recipies;
    
     public RecipeViewMyRecipies() {
         categories = new HashMap<Integer, String>();
@@ -27,7 +27,7 @@ public class RecipeViewMyRecipies extends ActionSupport implements SessionAware 
     }
     
     public String execute() throws Exception {
-        recipies = recipeService.getRecipies((User) session.get("user"));
+        recipies = userService.getRecipies((User) session.get("user"));
         // log.info("recipies.get(0).getXml() -> " + recipies.get(0).getXml());
         return SUCCESS;
     }
@@ -43,20 +43,47 @@ public class RecipeViewMyRecipies extends ActionSupport implements SessionAware 
     public void setCategory(String category) {
         this.category = category;
     }
-    public RecipeService getRecipeService() {
-        return recipeService;
+
+    public Set<Recipe> getRecipies() {
+        Set<Recipe> list = new HashSet<Recipe>();
+        if (category.equals("0")){
+            return list = recipies;
+        } else if (category.equals("1")){
+            for (Recipe recipe : recipies){
+                if (recipe.getCategory().equals("супы")) list.add(recipe);
+            }
+        } else if (category.equals("2")){
+            for (Recipe recipe : recipies){
+                if (recipe.getCategory().equals("лапша")) list.add(recipe);
+            }
+        } else if (category.equals("3")){
+            for (Recipe recipe : recipies){
+                if (recipe.getCategory().equals("суши")) list.add(recipe);
+            }
+        } else if (category.equals("4")){
+            for (Recipe recipe : recipies){
+                if (recipe.getCategory().equals("десерты")) list.add(recipe);
+            }
+        } else if (category.equals("5")){
+            for (Recipe recipe : recipies){
+                if (recipe.getCategory().equals("другое")) list.add(recipe);
+            }
+        } 
+        return list;
     }
-    public void setRecipeService(RecipeService recipeService) {
-        this.recipeService = recipeService;
-    }
-    public List<Recipe> getRecipies() {
-        return recipies;
-    }
-    public void setRecipies(List<Recipe> recipies) {
+    public void setRecipies(Set<Recipe> recipies) {
         this.recipies = recipies;
     }
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = map;
-    } 
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }

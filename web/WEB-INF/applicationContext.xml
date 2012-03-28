@@ -42,6 +42,6 @@
         <property name="recipeService" ref="recipeService"/>
     </bean>
     <bean name="recipeViewMyRecipies" class="action.RecipeViewMyRecipies">
-        <property name="recipeService" ref="recipeService"/>
+        <property name="userService" ref="userService"/>
     </bean>     
 </beans>

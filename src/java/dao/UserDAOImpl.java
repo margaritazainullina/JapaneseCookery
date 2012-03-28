@@ -1,7 +1,8 @@
 package dao;
 
-import entity.User;
+import entity.*;
 import java.util.List;
+import java.util.Set;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class UserDAOImpl implements UserDAO {
@@ -41,4 +42,9 @@ public class UserDAOImpl implements UserDAO {
         User user = (User) template.get(User.class, id);
         return user;
     }
+    @Override
+    public Set<Recipe> getRecipies(User user) {
+        Set<Recipe> recipies = (Set<Recipe>) template.find("select recipes from user u where u = ?", user);
+        return recipies;
+    }    
 }

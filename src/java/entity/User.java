@@ -14,7 +14,7 @@ public class User implements Serializable {
     private String lastName;
     private String sex;
     private byte[] photo;
-    private Set<Recipe> recipes;
+    private Set<Recipe> recipies;
     
     public User(){};
     public User(String mail, String pwd, String fName, String lName, String sex){
@@ -23,8 +23,7 @@ public class User implements Serializable {
         this.setFirstName(fName);
         this.setLastName(lName);
         this.setSex(sex);
-        this.recipes = new HashSet<Recipe>(0);
-        //this.recipes = new ArrayList<Recipe>();
+        this.recipies = new HashSet<Recipe>(0);
     };
     @Column(name = "email", nullable = false, unique=true, length=255)       
     public String getEmail() {
@@ -83,11 +82,11 @@ public class User implements Serializable {
       name="user_recipe", joinColumns={@JoinColumn(name="user_id")},
       inverseJoinColumns={@JoinColumn(name="recipe_id")}
     )    
-    public Set<Recipe> getRecipes() {
-        return recipes;
+    public Set<Recipe> getRecipies() {
+        return recipies;
     }
-    public void setRecipes(Set<Recipe> recipes) {
-        this.recipes = recipes;
+    public void setRecipies(Set<Recipe> recipies) {
+        this.recipies = recipies;
     }
     @Override    
     public boolean equals(Object o) {
