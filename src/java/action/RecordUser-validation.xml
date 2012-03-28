@@ -28,11 +28,4 @@
             <message>Введите пароль</message> 
         </field-validator>
     </field>
-    <field name="sex">
-        <field-validator type="requiredstring">
-            <param name="trim">true</param>
-            <message>Введите пароль</message> 
-        </field-validator>
-    </field>    
-    
 </validators>
