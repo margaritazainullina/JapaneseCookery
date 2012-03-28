@@ -9,48 +9,50 @@
     </head>
     <body>
         <div class="main">
-            <div class="maintitle" align="center">Клуб рецептов японской кулинарии</div>
-            <hr/><s:if test="#session.user">
-                Здравствуйте, <s:property value="#session.user.firstName"/>!        
-            </s:if>
-            <s:else>
-                Вы не авторизованы
-                <s:url id="urlLogin" action="login" namespace="/"/>
-                <s:a href="%{urlLogin}">Вход</s:a> /
-                <s:url id="urlRegister" action="register" namespace="/"/>
-                <s:a href="%{urlRegister}">Регистрация</s:a>
-            </s:else>
-            <div class="language">
-                Язык:
-                <s:url id="url" action="index" namespace="/">
-                    <s:param name="request_locale">en</s:param>
-                </s:url>
-                <s:a href="%{url}">English /</s:a>
-                <s:url id="url" action="index" namespace="/">
-                    <s:param name="request_locale">ru</s:param>
-                </s:url>
-                <s:a href="%{url}">Русский /</s:a>
-                <s:url id="url" action="index" namespace="/">
-                    <s:param name="request_locale">jp</s:param>
-                </s:url>
-                <s:a href="%{url}">日本語</s:a>
-            </div>
+            <div class="maintitle" align="center">Клуб рецептов японской кухни</div>
             <hr/>
-
-            <s:url id="url_complete" namespace="/private" action="recipeProduction" method="complete"/>
-            <s:a href="%{url_complete}"><div class="menu">Сохранить рецепт</div></s:a>        
-
-            <s:url id="url_delete" namespace="/private" action="recipeProduction" method="delete"/>
-            <s:a href="%{url_delete}"><div class="menu"> Удалить рецепт</div></s:a>
-
-            <s:url id="url_cook" namespace="/private" action="recipeProduction" method="cook"/>
-            <s:a href="%{url_cook}"><div class="menu"> К разделу "готовка"</div></s:a>
-
-            <s:url id="url_image" namespace="/private" action="recipeProduction" method="image"/>
-            <s:a href="%{url_image}"><div class="menu"> Добавить фото</div></s:a>        
-
-            <div class="content">
-                <div class="title">Конструктор рецептов</div>
+            <div class="statusbar">
+                <s:if test="#session.user">
+                    <s:text name="hello.message"/> <s:property value="#session.user.firstName"/>!        
+                </s:if>
+                <s:else>
+                    <s:text name="notauthorized.message"/>
+                    <s:url id="urlLogin" action="login" namespace="/"/>
+                    <s:a href="%{urlLogin}"><s:text name="entry.message"/></s:a> /
+                    <s:url id="urlRegister" action="register" namespace="/"/>
+                    <s:a href="%{urlRegister}"><s:text name="register.message"/></s:a>
+                </s:else>
+                <div class="language">
+                    <s:text name="language.message"/>
+                    <s:url id="url" action="index" namespace="/">
+                        <s:param name="request_locale">en</s:param>
+                    </s:url>
+                    <s:a href="%{url}">English /</s:a>
+                    <s:url id="url" action="index" namespace="/">
+                        <s:param name="request_locale">ru</s:param>
+                    </s:url>
+                    <s:a href="%{url}">Русский /</s:a>
+                    <s:url id="url" action="index" namespace="/">
+                        <s:param name="request_locale">jp</s:param>
+                    </s:url>
+                    <s:a href="%{url}">日本語</s:a>
+                    </div>
+                </div>
+                <hr/>
+                <br/>
+                <ul class="menu">
+                    <li><s:url id="url_complete" namespace="/private" action="recipeProduction" method="complete"/>
+                    <s:a href="%{url_complete}">Сохранить рецепт</s:a> </li>
+                <li><s:url id="url_delete" namespace="/private" action="recipeProduction" method="delete"/>
+                    <s:a href="%{url_delete}">Удалить рецепт</s:a>
+                    </li>
+                    <li><s:url id="url_cook" namespace="/private" action="recipeProduction" method="cook"/>
+                    <s:a href="%{url_cook}">К разделу "готовка"</s:a></li>
+                <li><s:url id="url_image" namespace="/private" action="recipeProduction" method="image"/>
+                    <s:a href="%{url_image}">Добавить фото</s:a> </li>
+                </ul> 
+                <div class="content">
+                    <div class="title">Конструктор рецептов</div>
                 <s:if test="#session.xpath=='root/info'">
                     <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                         <s:textfield name="recipeName" value="" label="Название"/>
@@ -86,8 +88,8 @@
             </div>
             <br/>
             <hr/>
-            
-            <div id="recipeDisplay" class="recipeDisplay">
+
+            <div id="recipeDisplay" align="center">
                 <div class="title">Как будет отображаться рецепт</div>
                 <s:action executeResult="true" name="recipePreview" />
                 <s:if test="#session.recipe.isPhotoAdded">
@@ -100,9 +102,9 @@
         </div>
 
         <div class="hFooter"></div>
-        <div class="footer"><hr/>
-            <h4>© Клуб рецептов Зайнуллиной Маргариты. 2011 
-                При использовании материалов ссылка на сайт обязательна.</h4>
-        </div>           
-    </body>
+    </div>
+    <div class="footer"><hr/>
+        <div class="divfooter"><h4>©<s:text name="footer1.message"/><br/><s:text name="footer2.message"/></h4></div>
+    </div>         
+</body>
 </html>
