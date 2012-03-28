@@ -43,8 +43,9 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
     @Override
-    public Set<Recipe> getRecipies(User user) {
-        Set<Recipe> recipies = (Set<Recipe>) template.find("select recipes from user u where u = ?", user);
+    public List<Recipe> getRecipies(User user) {
+        List<Recipe> recipies = (List<Recipe>) template.find("from Recipe");
+        //Set<Recipe> recipies = (Set<Recipe>) template.find("select recipes from user u where u.id = ?", user.getId());
         return recipies;
     }    
 }

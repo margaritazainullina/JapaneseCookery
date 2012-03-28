@@ -37,7 +37,7 @@ public class UserService {
         user.getRecipies().add(recipe);
         save(user);
     }
-    public Set<Recipe> getRecipies(User user){
+    public List<Recipe> getRecipies(User user){
         return userDAO.getRecipies(user);
     }    
 }

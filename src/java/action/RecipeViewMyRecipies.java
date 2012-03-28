@@ -13,7 +13,7 @@ public class RecipeViewMyRecipies extends ActionSupport implements SessionAware 
     // private static Logger log = Logger.getLogger("common");    
     private Map<Integer, String> categories;
     private String category;
-    private Set<Recipe> recipies;
+    private List<Recipe> recipies;
    
     public RecipeViewMyRecipies() {
         categories = new HashMap<Integer, String>();
@@ -44,8 +44,8 @@ public class RecipeViewMyRecipies extends ActionSupport implements SessionAware 
         this.category = category;
     }
 
-    public Set<Recipe> getRecipies() {
-        Set<Recipe> list = new HashSet<Recipe>();
+    public List<Recipe> getRecipies() {
+        List<Recipe> list = new ArrayList<Recipe>();
         if (category.equals("0")){
             return list = recipies;
         } else if (category.equals("1")){
@@ -71,7 +71,7 @@ public class RecipeViewMyRecipies extends ActionSupport implements SessionAware 
         } 
         return list;
     }
-    public void setRecipies(Set<Recipe> recipies) {
+    public void setRecipies(List<Recipe> recipies) {
         this.recipies = recipies;
     }
     @Override

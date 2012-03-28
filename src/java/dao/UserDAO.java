@@ -1,7 +1,7 @@
 package dao;
 
 import entity.*;
-import java.util.Set;
+import java.util.*;
 
 public interface UserDAO {
     User getByPassword(String email, String pwd);
@@ -9,5 +9,5 @@ public interface UserDAO {
     void save(User user);
     void update(User user);
     public User find(Long id);    
-    public Set<Recipe> getRecipies(User user);
+    public List<Recipe> getRecipies(User user);
 }
