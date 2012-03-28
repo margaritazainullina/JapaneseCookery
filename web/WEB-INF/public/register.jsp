@@ -59,7 +59,7 @@
                         </tr>
                         <tr> 
                             <td> <label for="sex">Пол</label> </td>
-                            <td> <s:radio name="sex" list="{'Male', 'Female'}" theme="xhtml" /></td>
+                            <td> <s:radio name="sex" list="{'Male', 'Female'}" theme="xhtml" value="'Male'" /></td>
                         </tr>
                         <tr>
                             <td> <s:submit type="submit" value="OK"/></td>

@@ -44,7 +44,7 @@ public class UtilXML {
             StringReader reader = new StringReader(xmlString);
             
             TransformerFactory factory = TransformerFactory.newInstance();
-            StreamSource xslt = new StreamSource(UtilXML.class.getResourceAsStream("/misc/recipe.xslt"));
+            StreamSource xslt = new StreamSource(UtilXML.class.getResourceAsStream("/misc/html.xslt"));
             Transformer transformer = factory.newTransformer(xslt);
            
             transformer.transform(new StreamSource(reader), new StreamResult(writer));

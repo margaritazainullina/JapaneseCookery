@@ -1,6 +1,7 @@
 package dao;
 
-import entity.User;
+import entity.*;
+import java.util.*;
 
 public interface UserDAO {
     User getByPassword(String email, String pwd);
@@ -8,4 +9,5 @@ public interface UserDAO {
     void save(User user);
     void update(User user);
     public User find(Long id);    
+    public List<Recipe> getRecipies(User user);
 }

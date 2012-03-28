@@ -32,6 +32,9 @@
                     </tr>
                 </xsl:for-each> 
             </xsl:if>
+            <xsl:if test="image">
+                <tr><td><xsl:text>Есть фото!</xsl:text></td></tr>                
+            </xsl:if>            
         </table>
     </xsl:template>
 </xsl:stylesheet>

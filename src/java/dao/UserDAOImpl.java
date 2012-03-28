@@ -1,7 +1,8 @@
 package dao;
 
-import entity.User;
+import entity.*;
 import java.util.List;
+import java.util.Set;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class UserDAOImpl implements UserDAO {
@@ -38,9 +39,13 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User find(Long id) {
-        Long[] params = {id};
-        List<User> users = template.find("FROM user u WHERE u.id = ?", params);
-        if (users==null || users.isEmpty()) return null;
-        else return users.get(0);        
+        User user = (User) template.get(User.class, id);
+        return user;
     }
+    @Override
+    public List<Recipe> getRecipies(User user) {
+        List<Recipe> recipies = (List<Recipe>) template.find("from Recipe");
+        //Set<Recipe> recipies = (Set<Recipe>) template.find("select recipes from user u where u.id = ?", user.getId());
+        return recipies;
+    }    
 }
