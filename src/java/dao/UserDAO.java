@@ -9,5 +9,5 @@ public interface UserDAO {
     void save(User user);
     void update(User user);
     public User find(Long id);    
-    public List<Recipe> getRecipies(User user);
+    public List<Recipe> getRecipies(Long id);
 }

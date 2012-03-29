@@ -19,7 +19,7 @@
             <result name="login">/WEB-INF/public/login.jsp</result>
         </global-results>
       
-        <action name="index">
+        <action name="index" class="action.Index">
             <result name="success" type="dispatcher">/WEB-INF/private/index.jsp</result>
         </action> 
         

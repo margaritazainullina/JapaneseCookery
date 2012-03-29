@@ -27,7 +27,7 @@ public class RecipeViewMyRecipies extends ActionSupport implements SessionAware 
     }
     
     public String execute() throws Exception {
-        recipies = userService.getRecipies((User) session.get("user"));
+        recipies = userService.getRecipies(((User) session.get("user")).getId());
         // log.info("recipies.get(0).getXml() -> " + recipies.get(0).getXml());
         return SUCCESS;
     }
