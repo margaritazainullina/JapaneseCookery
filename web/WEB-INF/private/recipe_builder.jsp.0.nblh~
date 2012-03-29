@@ -9,8 +9,7 @@
     </head>
     <body>
         <div class="main">
-            <div class="maintitle" align="center"><s:text name="welcome.message"/></div>
-
+            <div class="maintitle" align="center">Клуб рецептов японской кухни</div>
             <hr/>
             <div class="statusbar">
                 <s:if test="#session.user">
@@ -23,7 +22,6 @@
                     <s:url id="urlRegister" action="register" namespace="/"/>
                     <s:a href="%{urlRegister}"><s:text name="register.message"/></s:a>
                 </s:else>
-
                 <div class="language">
                     <s:text name="language.message"/>
                     <s:url id="url" action="index" namespace="/">
