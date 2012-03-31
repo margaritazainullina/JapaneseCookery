@@ -68,10 +68,6 @@
 
         <div class="hFooter"></div>
     </div>
-    <div class="footer"><hr/>
-        <div class="divfooter"><h4>©<s:text name="footer1.message"/><br/><s:text name="footer2.message"/></h4></div>
-    </div>
-
-    <s:debug/>
+    <jsp:include page="/WEB-INF/common/footer.jsp" />    
 </body>
 </html>
