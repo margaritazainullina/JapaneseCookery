@@ -24,7 +24,10 @@
         </action> 
         
         <action name="exit" class="action.Exit">
-            <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="namespace">/</param>                
+            </result>
         </action>         
         
         <action name="fileUpload" class="action.FileUpload">
