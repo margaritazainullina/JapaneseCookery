@@ -23,4 +23,24 @@ public class RecipeService {
     public void update(Recipe recipe) {
         recipeDAO.update(recipe);
     }
+    public Recipe getRandomRecipeWithImage(){
+        Random rand = new Random(); 
+        List<Recipe> list = recipeDAO.getAllRecipies();
+        int size = list.size(), randomIndex;
+        boolean isFind = false;
+        Recipe recipe = null;
+        
+        while((size > 0) & (!isFind)){
+            randomIndex = rand.nextInt(size);
+            size = size - 1;
+            recipe = list.get(randomIndex);
+            isFind = recipe.getIsPhotoAdded();
+            if (!isFind) list.remove(randomIndex);
+        }
+        if (!isFind) {
+            recipe = new Recipe();
+            recipe.setHtml("Рецепт не найден!");
+        }
+        return recipe;
+    }
 }

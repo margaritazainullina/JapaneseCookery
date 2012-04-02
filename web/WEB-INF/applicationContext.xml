@@ -44,4 +44,7 @@
     <bean name="recipeViewMyRecipies" class="action.RecipeViewMyRecipies">
         <property name="userService" ref="userService"/>
     </bean>     
+    <bean name="publicIndex" class="action.Index">
+        <property name="recipeService" ref="recipeService"/>
+    </bean>    
 </beans>

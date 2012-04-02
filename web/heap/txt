@@ -1,23 +1,24 @@
-        <xsl:apply-templates />
+        InputStream stream = RecipeService.class.getResourceAsStream("/misc/dummyRecipe.xml");
+        StringWriter writer = new StringWriter();
+        try {
+            IOUtils.copy(stream, writer, "UTF-8");
+        } catch (IOException ex) { }
+        String theString = writer.toString();
+        String html = UtilXML.xsltTransform(theString);
+        dummyRecipe.setHtml(html);
 
-
+<xsl:apply-templates />
     <xsl:template match="info">
         <h1>Hello! <xsl:value-of select="."/></h1>
     </xsl:template>    
     <xsl:template match="ingredients">
         <h1>Hello! <xsl:value-of select="."/></h1>
-    </xsl:template>  
+</xsl:template>  
 
-
-
-
-
-
-
-    public static Boolean checkIfElementExists(Document doc, String xPath) throws XPathExpressionException {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        NodeList nodes = (NodeList) xpath.evaluate(xPath, doc, XPathConstants.NODESET);
-        log.info("nodes = " + nodes);
-        if (nodes == null) return false;
-        else return true;
-    }
+public static Boolean checkIfElementExists(Document doc, String xPath) throws XPathExpressionException {
+  XPath xpath = XPathFactory.newInstance().newXPath();
+  NodeList nodes = (NodeList) xpath.evaluate(xPath, doc, XPathConstants.NODESET);
+  log.info("nodes = " + nodes);
+  if (nodes == null) return false;
+  else return true;
+}

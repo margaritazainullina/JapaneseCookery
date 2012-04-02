@@ -56,13 +56,8 @@
 
             <div class="content">
                 <div class="recofday1"><s:text name="recofday.message"/></div>
-                <div class="recofday2" style="font-size:22px"><s:text name="maguro_maki.message"/></div> 
-                <s:url id="maguro" namespace="/" action="showImage"> 
-                    <s:param name="src">maguro.jpg</s:param>
-                </s:url>
-                <img src="<s:property value='#maguro'/>" width="550" height="341" alt="Роллы с тунцом"/>
-                <br/>
-                <s:a href="%{fake}"><s:text name="readrecipe.message"/></s:a>
+             
+                <s:property value="recipe.html" escape="false" />
             </div>
         </div>
 

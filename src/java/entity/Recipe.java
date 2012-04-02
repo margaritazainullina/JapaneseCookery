@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.*;
+import java.util.logging.Level;
 import javax.persistence.*;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.log4j.Logger;
@@ -37,13 +38,20 @@ public class Recipe implements Serializable {
         this.xml = xml;
     }
 
-    public Boolean getIsPhotoAdded() throws ParserConfigurationException, SAXException, IOException {
-        Document doc = UtilXML.getDocumentFromString(xml);
-        NodeList imageList = doc.getElementsByTagName("image");
-
-        byte[] image = imageList.item(0).getTextContent().getBytes();
-        if (image.length > 0) return true;
-        else return false;
+    public Boolean getIsPhotoAdded(){
+        try {
+            Document doc = UtilXML.getDocumentFromString(xml);
+            NodeList imageList = doc.getElementsByTagName("image");
+            byte[] image = imageList.item(0).getTextContent().getBytes();
+            if (image.length > 0) return true;
+        } catch (ParserConfigurationException ex) {
+            java.util.logging.Logger.getLogger(Recipe.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            java.util.logging.Logger.getLogger(Recipe.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(Recipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     public String getCategory() {

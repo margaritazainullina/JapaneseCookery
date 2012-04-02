@@ -31,5 +31,10 @@ public class RecipeDAOImpl implements RecipeDAO {
         List<Recipe> recipies = template.find("FROM Recipe u WHERE u.id = ?", params);
         if (recipies==null || recipies.isEmpty()) return null;
         else return recipies.get(0);        
-    }    
+    }
+
+    @Override
+    public List<Recipe> getAllRecipies() {
+        return template.find("FROM Recipe");
+    }
 }
