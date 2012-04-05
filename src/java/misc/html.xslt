@@ -2,7 +2,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
     <xsl:output method="html" omit-xml-declaration="yes" version="4.0" encoding="UTF-8" indent="yes"/>
     <xsl:template match="root">
-        <img src="heap/ella001.jpg" width="160">ella</img>
         <table border="0px" >
             <tr>
                 <td class="recipetitle">
