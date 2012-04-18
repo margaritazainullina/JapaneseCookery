@@ -13,29 +13,8 @@
             dojo.require("dojox.xml.parser");
             // обеспечить безопасное обращение к dtdg.Genie внутри addOnLoad
             dojo.addOnLoad(function() {
-                var dom1 = dojox.xml.parser.parse('<s:property value="recipe.xml" escape="false"/>');
-                // Walk DOM and attach into the display how many child nodes were parsed out.
-                var divNode = dojo.byId("xmlContent");
-                var docNode1 = dom1.documentElement;
-                divNode.appendChild(document.createTextNode("Document contains: " + docNode1.childNodes.length + " elements"));
-                
-                var schema = {
-                    rowtag: "contact",
-                    columns: [
-                        { tagname: "@name", label: "Name" },
-                        { tagname: "email", label: "Address" }
-                    ]
-                };
-                var xmlStr = '<?xml version="1.0"?>' +
-                                '<contacts>' +
-                                '<contact name="Able Baker"><email>able@example.com</email></contact>' +
-                                '<contact name="Careful Dodger"><email>dodger@example.com</email></contact>' +
-                                '<contact name="Eager Framer" personal="true"><email>framer@example.com</email>' +
-                                '</contact>' +
-                                '</contacts>';  // Read the XML data
-                var xmldoc = dojox.xml.parser.parse(xmlStr);           
-                dtdg.Recipe(xmldoc, schema, "addresses");  // Convert to an HTML table
-              //dtdg.Recipe();
+                var dom = dojox.xml.parser.parse('<s:property value="recipe.xml" escape="false"/>');
+                dtdg.Recipe(dom, "xmlContent"); // Convert to an HTML table
             });
         </script>
     </head>
@@ -88,10 +67,7 @@
                 <div class="hint"><s:text name="hint.message"/></div>
                 
             <div class="content">
-                <div class="recofday1"><s:text name="recofday.message"/></div>
-                <div id="addresses"></div>
                 <div id="xmlContent"></div>
-                <%--s:property value="recipe.html" escape="false" /--%>
             </div>
         </div>
         <div class="hFooter"></div>
