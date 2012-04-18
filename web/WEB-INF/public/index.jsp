@@ -7,36 +7,16 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/dojoroot/dojo/dojo.js"
             djConfig="isDebug:true" data-dojo-config="parseOnLoad: true"></script>
-
-        <script type="text/javascript">
-		dojo.require("dojox.xml.parser");
-		
-		dojo.ready(function(){
-		   // Parse text and generate an XML DOM
-		   var xml = "<tnode><node>Some Text</node><node>Some Other Text</node></tnode>";
-		   var dom = dojox.xml.parser.parse(xml);
-		
-		   // Walk DOM and attach into the display how many child nodes were parsed out.
-		   var ap = dojo.byId("xmlContent");
-		   var docNode = dom.documentElement;
-		   ap.appendChild(document.createTextNode("Document contains: " + docNode.childNodes.length + " elements"));
-		   ap.appendChild(document.createElement("br"));
-		   ap.appendChild(document.createElement("br"));
-		
-		   // Write text content into the display.
-		   for(var i = 0; i < docNode.childNodes.length; i++){
-			 ap.appendChild(document.createTextNode("Element: [" + i + "] contains text: " + 
-			 									dojox.xml.parser.textContent(docNode.childNodes[i])));
-			 ap.appendChild(document.createElement("br"));
-		   }
-		
-		   // Write out the XML text obtained from converting the DOM back.
-		   ap.appendChild(document.createElement("br"));
-		   ap.appendChild(document.createTextNode("Document XML: " + dojox.xml.parser.innerXML(docNode)));
-		   ap.appendChild(document.createElement("br"));
-		   ap.appendChild(document.createElement("br"));
-		});
-        </script>        
+            <script type="text/javascript">
+                // загрузить модуль
+                dojo.require("dtdg.Recipe");
+                // обеспечить безопасное обращение к dtdg.Genie внутри addOnLoad
+                dojo.addOnLoad(function() {
+                    // var g = new dtdg.Recipe;
+                    // g();
+                    dtdg.Recipe();
+                });
+            </script>
     </head>
     <body>
         <div class="main">
