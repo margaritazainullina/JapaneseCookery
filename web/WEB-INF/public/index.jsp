@@ -65,7 +65,7 @@
                 </ul> 
 
                 <div class="hint"><s:text name="hint.message"/></div>
-                
+                <div class="recofday1"><s:text name="recofday.message"/></div>
             <div class="content">
                 <div id="xmlContent"></div>
             </div>

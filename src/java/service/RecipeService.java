@@ -45,7 +45,7 @@ public class RecipeService {
     }
     public Recipe getRandomRecipe(){
         List<Recipe> list = recipeDAO.getAllRecipies();
-        Recipe recipe = list.get(1);
+        Recipe recipe = list.get(4);
         return recipe;
     }    
 }

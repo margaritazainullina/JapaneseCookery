@@ -16,7 +16,7 @@ public class Index extends ActionSupport {
     public Recipe getRecipe() {
         // return recipeService.getRandomRecipeWithImage();
         Recipe recipe = recipeService.getRandomRecipe();
-        recipe.setXml(recipe.getXml().replaceAll("[\\n,\\r]", ""));
+        //recipe.setXml(recipe.getXml().replaceAll("[\\n,\\r]", ""));
         return recipe;
     }
     public RecipeService getRecipeService() {
