@@ -1,6 +1,6 @@
 dojo.provide("dtdg.Recipe");
 dojo.require("dojox.xml.parser");
-dtdg.Recipe = function(xmldoc, element) {
+dtdg.Recipe = function(xmldoc, element, imageStr) {
     // Create the <table> element
     var table = document.createElement("table");
     // Create the header row of <th> elements in a <tr> in a <thead>
@@ -62,18 +62,21 @@ dtdg.Recipe = function(xmldoc, element) {
         table.appendChild(stepTr);
     }    
     // Покажем фотку если она есть!
+    var image = new Image();
+    image.src = 'data:image/png;base64,' + imageStr; //xmldoc.getElementsByTagName("image")[0].firstChild.data;
     var imgTr = document.createElement("tr");
     var imgCell = document.createElement("td");
-    var img = document.createElement("img");
-    img.setAttribute("alt", "альтернативный текст");
-    img.setAttribute("width", "200px");
-    img.setAttribute("height", "300px");
-    var lobImg = 'data:image/png;base64,' + xmldoc.getElementsByTagName("image")[0].firstChild.data;
+    //var img = document.createElement("img");
+   
+    //img.setAttribute("alt", "альтернативный текст");
+    //img.setAttribute("width", "200px");
+    //img.setAttribute("height", "300px");
+    //var lobImg = 'data:image/png;base64,' + xmldoc.getElementsByTagName("image")[0].firstChild.data;
     
-    img.setAttribute("src", lobImg);
+    //img.setAttribute("src", lobImg);
     
     
-    imgCell.appendChild(img);    
+    imgCell.appendChild(image);    
     imgTr.appendChild(imgCell);    
     table.appendChild(imgTr);
     
