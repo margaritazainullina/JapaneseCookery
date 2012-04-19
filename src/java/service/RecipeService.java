@@ -43,9 +43,9 @@ public class RecipeService {
         }
         return recipe;
     }
-    public Recipe getRandomRecipe(){
-        List<Recipe> list = recipeDAO.getAllRecipies();
-        Recipe recipe = list.get(4);
-        return recipe;
-    }    
+//    public Recipe getRandomRecipe(){
+//        List<Recipe> list = recipeDAO.getAllRecipies();
+//        Recipe recipe = list.get(6);
+//        return recipe;
+//    }    
 }

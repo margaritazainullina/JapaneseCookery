@@ -1,7 +1,6 @@
 dojo.provide("dtdg.Recipe");
 dojo.require("dojox.xml.parser");
 dtdg.Recipe = function(xmldoc, element, imageStr) {
-    // Create the <table> element
     var table = document.createElement("table");
     // Create the header row of <th> elements in a <tr> in a <thead>
     var thead = document.createElement("thead");
@@ -11,11 +10,10 @@ dtdg.Recipe = function(xmldoc, element, imageStr) {
     var name = xmldoc.getElementsByTagName("name")[0];
     cell.appendChild(document.createTextNode(name.firstChild.data));
     header.appendChild(cell);
-    // Put the header into the table
     thead.appendChild(header);
     table.appendChild(thead);
     
-    // Создаем tr
+    // Создаем ячейку с "информация"
     var trInfo = document.createElement("tr");
     var cellInfo = document.createElement("td");
     // Заполняем td значением тега info
@@ -63,23 +61,12 @@ dtdg.Recipe = function(xmldoc, element, imageStr) {
     }    
     // Покажем фотку если она есть!
     var image = new Image();
-    image.src = 'data:image/png;base64,' + imageStr; //xmldoc.getElementsByTagName("image")[0].firstChild.data;
+    image.src = 'data:image/jpg/png/gif;base64,' + imageStr; //xmldoc.getElementsByTagName("image")[0].firstChild.data;
     var imgTr = document.createElement("tr");
     var imgCell = document.createElement("td");
-    //var img = document.createElement("img");
-   
-    //img.setAttribute("alt", "альтернативный текст");
-    //img.setAttribute("width", "200px");
-    //img.setAttribute("height", "300px");
-    //var lobImg = 'data:image/png;base64,' + xmldoc.getElementsByTagName("image")[0].firstChild.data;
-    
-    //img.setAttribute("src", lobImg);
-    
-    
     imgCell.appendChild(image);    
     imgTr.appendChild(imgCell);    
     table.appendChild(imgTr);
-    
     table.frame = "border";
 
     if (typeof element == "string") element = document.getElementById(element);
