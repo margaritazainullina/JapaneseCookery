@@ -15,40 +15,40 @@
             </tr>
             <tr>
                 <td class="recipetitle2">
-                     <xsl:text>Ингридиенты</xsl:text>
+                    <xsl:text>Ингридиенты</xsl:text>
                 </td>
             </tr>            
-                <xsl:for-each select="prepare/ingredient">
-                    <tr>
-                        <td> 
-                            <xsl:value-of select="."/>
-                            <xsl:text> </xsl:text> 
-                        </td> 
-                         <td> 
-                            <xsl:value-of select="@amount"/>
-                            <xsl:text> </xsl:text> 
-                            <xsl:value-of select="@unit"/>
-                        </td>
-                    </tr>
-                </xsl:for-each>
+            <xsl:for-each select="prepare/ingredient">
                 <tr>
-                    <td class="recipetitle2">
-                        <xsl:text>Приготовление</xsl:text>
+                    <td> 
+                        <xsl:value-of select="."/>
+                        <xsl:text> </xsl:text> 
+                    </td> 
+                    <td> 
+                        <xsl:value-of select="@amount"/>
+                        <xsl:text> </xsl:text> 
+                        <xsl:value-of select="@unit"/>
                     </td>
-                </tr>                
-                <xsl:for-each select="cook/step">
-                    <tr>
-                        <td class="step">
-                            <xsl:text>Шаг </xsl:text>
-                            <xsl:value-of select="position()"/>
-                        </td>
-                    </tr>                    
-                    <tr>
-                        <td>
-                            <xsl:value-of select="."/>
-                        </td>
-                    </tr>
-                </xsl:for-each> 
+                </tr>
+            </xsl:for-each>
+            <tr>
+                <td class="recipetitle2">
+                    <xsl:text>Приготовление</xsl:text>
+                </td>
+            </tr>                
+            <xsl:for-each select="cook/step">
+                <tr>
+                    <td class="step">
+                        <xsl:text>Шаг </xsl:text>
+                        <xsl:value-of select="position()"/>
+                    </td>
+                </tr>                    
+                <tr>
+                    <td>
+                        <xsl:value-of select="."/>
+                    </td>
+                </tr>
+            </xsl:for-each> 
         </table>
     </xsl:template>
 </xsl:stylesheet>

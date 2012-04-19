@@ -3,7 +3,6 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Recipe;
 import service.RecipeService;
-import util.UtilXML;
 
 public class Index extends ActionSupport {
     private Recipe recipe;    
@@ -14,7 +13,9 @@ public class Index extends ActionSupport {
     }
 
     public Recipe getRecipe() {
-        return recipeService.getRandomRecipeWithImage();
+        Recipe recipe = recipeService.getRandomRecipeWithImage();
+        recipe.setXml(recipe.getXml().replaceAll("[\\n,\\r]", ""));
+        return recipe;
     }
     public RecipeService getRecipeService() {
         return recipeService;

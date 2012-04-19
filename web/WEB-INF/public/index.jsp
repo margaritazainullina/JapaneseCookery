@@ -5,11 +5,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title><s:text name="welcome.message"/></title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/dojoroot/dojo/dojo.js"
+            djConfig="isDebug:true" data-dojo-config="parseOnLoad: true"></script>
+        <script type="text/javascript">
+            // загрузить модуль
+            dojo.require("dtdg.Recipe");
+            dojo.require("dojox.xml.parser");
+            // обеспечить безопасное обращение к dtdg.Genie внутри addOnLoad
+            dojo.addOnLoad(function() {
+                var xml = '<s:property value="recipe.xml" escape="false"/>';
+                var dom = dojox.xml.parser.parse(xml);
+                var start = xml.indexOf("<image>", 0) + 7;
+                var stop = xml.indexOf("</image>", start);
+                var imageStr = xml.substr(start, stop - start);
+                dtdg.Recipe(dom, "xmlContent", imageStr); // Convert to an HTML table
+            });
+        </script>
     </head>
     <body>
         <div class="main">
             <div class="maintitle" align="center"><s:text name="welcome.message"/></div>
-            
+
             <hr/>
             <div class="statusbar">
                 <s:if test="#session.user">
@@ -37,10 +53,10 @@
                         <s:param name="request_locale">jp</s:param>
                     </s:url>
                     <s:a href="%{url}">日本語</s:a>
+                    </div>
                 </div>
-            </div>
-            <hr/>
-            <br/>
+                <hr/>
+                <br/>
             <s:url id="fake" namespace="/" action="fake"/>
             <ul class="menu">
                 <li><s:a href="%{fake}"><s:text name="soup.message"/></s:a></li>
@@ -50,17 +66,14 @@
                 <li><s:a href="%{fake}"><s:text name="desserts.message"/></s:a></li>
                 <li><s:url id="url" action="index" namespace="/private" />
                     <s:a href="%{url}"><s:text name="profile.message"/></s:a></li>
-            </ul> 
+                </ul> 
 
-            <div class="hint"><s:text name="hint.message"/></div>
-
-            <div class="content">
+                <div class="hint"><s:text name="hint.message"/></div>
                 <div class="recofday1"><s:text name="recofday.message"/></div>
-             
-                <s:property value="recipe.html" escape="false" />
+            <div class="content">
+                <div id="xmlContent"></div>
             </div>
         </div>
-
         <div class="hFooter"></div>
     </div>
     <jsp:include page="/WEB-INF/common/footer.jsp" />    
