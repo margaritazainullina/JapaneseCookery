@@ -37,15 +37,7 @@ public class RecipeService {
             isFind = recipe.getIsPhotoAdded();
             if (!isFind) list.remove(randomIndex);
         }
-        if (!isFind) {
-            recipe = new Recipe();
-            recipe.setHtml("Рецепт не найден!");
-        }
-        return recipe;
+        if (!isFind) return null;
+        else return recipe;
     }
-//    public Recipe getRandomRecipe(){
-//        List<Recipe> list = recipeDAO.getAllRecipies();
-//        Recipe recipe = list.get(6);
-//        return recipe;
-//    }    
 }

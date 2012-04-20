@@ -11,21 +11,27 @@
             // загрузить модуль
             dojo.require("dtdg.Recipe");
             dojo.require("dojox.xml.parser");
-            // обеспечить безопасное обращение к dtdg.Genie внутри addOnLoad
-            dojo.addOnLoad(function() {
-                var xml = '<s:property value="recipe.xml" escape="false"/>';
-                var dom = dojox.xml.parser.parse(xml);
-                var start = xml.indexOf("<image>", 0) + 7;
-                var stop = xml.indexOf("</image>", start);
-                var imageStr = xml.substr(start, stop - start);
-                dtdg.Recipe(dom, "xmlContent", imageStr); // Convert to an HTML table
-            });
+            <s:if test="#attr.recipe">
+                dojo.addOnLoad(function() {
+                    var xml = '<s:property value="recipe.xml" escape="false"/>';
+                    var dom = dojox.xml.parser.parse(xml);
+                    var start = xml.indexOf("<image>", 0) + 7;
+                    var stop = xml.indexOf("</image>", start);
+                    var imageStr = xml.substr(start, stop - start);
+                    dtdg.Recipe(dom, "xmlContent", imageStr); // Convert to an HTML table
+                });                
+            </s:if>
+            <s:else>
+                dojo.addOnLoad(function() {
+                   var a = dojo.byId("xmlContent");
+                   a.appendChild(document.createTextNode("Ни одного рецепта нет в базе"));
+                });                
+            </s:else>
         </script>
     </head>
     <body>
         <div class="main">
             <div class="maintitle" align="center"><s:text name="welcome.message"/></div>
-
             <hr/>
             <div class="statusbar">
                 <s:if test="#session.user">
