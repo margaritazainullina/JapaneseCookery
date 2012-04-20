@@ -11,10 +11,10 @@ public class Index extends ActionSupport {
     public String execute() throws Exception {
         return SUCCESS;
     }
-
+    // этот рецепт будет виден на index.jsp как случайный рецепт с фото
     public Recipe getRecipe() {
         Recipe recipe = recipeService.getRandomRecipeWithImage();
-        recipe.setXml(recipe.getXml().replaceAll("[\\n,\\r]", ""));
+        if (recipe != null) recipe.setXml(recipe.getXml().replaceAll("[\\n,\\r]", ""));
         return recipe;
     }
     public RecipeService getRecipeService() {
