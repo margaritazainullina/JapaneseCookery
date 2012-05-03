@@ -29,6 +29,15 @@
                 <param name="bufferSize">1024</param>    
             </result>
         </action> 
+        
+        <action name="getAjaxXML" class="action.Ajax">
+            <result name="success" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">xmlStream</param>
+                <param name="bufferSize">1024</param>    
+            </result>
+        </action>
+        
         <action name="fake">
             <result name="success" type="dispatcher">/WEB-INF/public/fake.jsp</result>
         </action>
