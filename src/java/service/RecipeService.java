@@ -40,4 +40,7 @@ public class RecipeService {
         if (!isFind) return null;
         else return recipe;
     }
+    public List<Recipe> getAllRecipe(){
+        return recipeDAO.getAllRecipies();
+    }
 }
