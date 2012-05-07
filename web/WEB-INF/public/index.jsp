@@ -5,29 +5,49 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title><s:text name="welcome.message"/></title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/dojoroot/dojo/dojo.js"
-            djConfig="isDebug:true" data-dojo-config="parseOnLoad: true"></script>
+        <style type="text/css">
+            @import "http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/claro.css";
+        </style>
         <script type="text/javascript">
-            // загрузить модуль
-            dojo.require("dtdg.Recipe");
-            dojo.require("dojox.xml.parser");
+            var dojoConfig = {
+                async: true, 
+                tlmSiblingOfDojo: false,
+                parseOnLoad: true, 
+                packages: [
+                    { location: "../dijit", name: "dijit" },
+                    { location: "../dojox", name: "dojox" },
+                    { location: ".",        name: "dojo" },                        
+                    { location: "/cook/js/recipies", name: "recipies" }
+                ]
+            };
+        </script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"
+                data-dojo-config="async: true">
+        </script>     
+
+        <script type="text/javascript"> 
             <s:if test="#attr.recipe">
-                dojo.addOnLoad(function() {
+                require(
+                ["dojo/dom", "dojox/xml/parser", "recipies/show", "dojo/domReady!"],
+                function(dom, parser, show) {
                     var xml = '<s:property value="recipe.xml" escape="false"/>';
-                    var dom = dojox.xml.parser.parse(xml);
+                    var dom = parser.parse(xml);
                     var start = xml.indexOf("<image>", 0) + 7;
                     var stop = xml.indexOf("</image>", start);
                     var imageStr = xml.substr(start, stop - start);
-                    dtdg.Recipe(dom, "xmlContent", imageStr); // Convert to an HTML table
-                });                
+                    show.recipe(dom, "xmlContent", imageStr); // Convert to an HTML table
+                } );           
             </s:if>
             <s:else>
-                dojo.addOnLoad(function() {
-                   var a = dojo.byId("xmlContent");
-                   a.appendChild(document.createTextNode("Ни одного рецепта нет в базе"));
-                });                
+                require(
+                ["dojo/dom", "dojo/domReady!"],
+                function(dom) {
+                    var a = dom.byId("xmlContent");
+                    a.appendChild(document.createTextNode("Ни одного рецепта нет в базе"));                
+                }                
+            );
             </s:else>
-        </script>
+        </script>         
     </head>
     <body>
         <div class="main">
@@ -75,7 +95,7 @@
                 </ul> 
 
                 <div class="hint"><s:text name="hint.message"/></div>
-                <div class="recofday1"><s:text name="recofday.message"/></div>
+            <div class="recofday1"><s:text name="recofday.message"/></div>
             <div class="content">
                 <div id="xmlContent"></div>
             </div>
