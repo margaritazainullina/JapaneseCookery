@@ -11,52 +11,38 @@
         <script type="text/javascript">
             var dojoConfig = {
                 async: true, 
-                baseUrl: "/cook/js/",
                 tlmSiblingOfDojo: false,
                 parseOnLoad: true, 
                 packages: [
-                    { name: "dojo", location: "//ajax.googleapis.com/ajax/libs/dojo/1.7.2/" },
-                    { name: "recipies", location: "./recipies" }
+                    { location: "../dijit", name: "dijit" },
+                    { location: "../dojox", name: "dojox" },
+                    { location: ".",        name: "dojo" },                        
+                    { location: "/cook/js/recipies", name: "recipies" }
                 ]
             };
         </script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"
                 data-dojo-config="async: true">
-        </script>        
+        </script>     
         <script type="text/javascript">
-            require(
-            ["dojo/on", "dojo/mouse", "recipies/show", "dojo/domReady!"],
-            function(on, mouse, show) {
-                on(document.getElementById("foo"), mouse.enter, function(evt){ show.bar(); });
-            }
-            );            
-        </script>         
-
-        <%--script type="text/javascript">
-            // загрузить модуль
-            dojo.require("dtdg.ShowRecipies");
-            dojo.require("dojox.xml.parser");
-            dojo.addOnLoad(function() {
-                dojo.xhrGet({
-                    url : "getAjaxXML.action",  //the relative URL
-                    load : function(response, ioArgs) {
-                        console.log("successful xhrGet", response, ioArgs);
-                        console.log(response);
+            require(["dojo/_base/xhr", "dojo/dom", "dojo/domReady!"],
+            function(xhr, dom) {
+                xhr.get({
+                    url: "getAjaxXML.action",
+                    load: function(response) {
                         var str = response.toString();
-                        //var arr = new Array('[' + str + ']');
-                        console.log("str = " + str);
-                        
-                        
-                        dojo.byId("foo").innerHTML = response;
+                        dom.byId("foo").innerHTML = str;
+                        return response;
+                    },
+                    error: function(response) {
+                        console.log("failed xhrGet", response);
                         return response; //always return the response back
                     },
-                    error : function(response, ioArgs) {
-                        console.log("failed xhrGet", response, ioArgs);
-                        return response; //always return the response back
-                    }
+                    preventCache: true
                 });
-            });                
-        </script--%>        
+                on(dom.byId("refreshButton"), "click", refreshContent);
+            });            
+        </script>         
     </head>
     <body>
         <div id="foo"></div>
