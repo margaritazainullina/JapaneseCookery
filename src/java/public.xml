@@ -12,8 +12,7 @@
         <action name="register" class="action.Index">
             <result>/WEB-INF/public/register.jsp</result>
         </action>  
-        
-        <action name="record_user" class="action.RecordUser">
+        <action name="recordUser" class="action.RecordUser">
             <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
             <result name="input" type="dispatcher">/WEB-INF/public/register.jsp</result>
         </action>        
@@ -29,9 +28,15 @@
                 <param name="bufferSize">1024</param>    
             </result>
         </action> 
+        <action name="getAjaxXML" class="action.Ajax">
+            <result name="success" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">xmlStream</param>
+                <param name="bufferSize">1024</param>    
+            </result>
+        </action>
         <action name="fake">
             <result name="success" type="dispatcher">/WEB-INF/public/fake.jsp</result>
         </action>
     </package>
 </struts>
-
