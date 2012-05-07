@@ -31,7 +31,9 @@
                     url: "getAjaxXML.action",
                     load: function(response) {
                         var str = response.toString();
-                        dom.byId("foo").innerHTML = str;
+                        var array = str.split(",");
+                        dom.byId("foo").innerHTML = array;
+                        
                         return response;
                     },
                     error: function(response) {
@@ -40,7 +42,6 @@
                     },
                     preventCache: true
                 });
-                on(dom.byId("refreshButton"), "click", refreshContent);
             });            
         </script>         
     </head>
