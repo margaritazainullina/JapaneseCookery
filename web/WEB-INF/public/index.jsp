@@ -23,14 +23,30 @@
         </script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"
                 data-dojo-config="async: true">
-        </script>        
-        <script type="text/javascript">
-            require(
-            ["dojo/dom", "dojox/xml/parser", "recipies/show", "dojo/domReady!"],
-            function(dom, parser, show) {
-                dom.byId("xmlContent").innerHTML = show.bar;
-            }
-        );            
+        </script>     
+
+        <script type="text/javascript"> 
+            <s:if test="#attr.recipe">
+                require(
+                ["dojo/dom", "dojox/xml/parser", "recipies/show", "dojo/domReady!"],
+                function(dom, parser, show) {
+                    var xml = '<s:property value="recipe.xml" escape="false"/>';
+                    var dom = parser.parse(xml);
+                    var start = xml.indexOf("<image>", 0) + 7;
+                    var stop = xml.indexOf("</image>", start);
+                    var imageStr = xml.substr(start, stop - start);
+                    show.recipe(dom, "xmlContent", imageStr); // Convert to an HTML table
+                } );           
+            </s:if>
+            <s:else>
+                require(
+                ["dojo/dom", "dojo/domReady!"],
+                function(dom) {
+                    var a = dom.byId("xmlContent");
+                    a.appendChild(document.createTextNode("Ни одного рецепта нет в базе"));                
+                }                
+            );
+            </s:else>
         </script>         
     </head>
     <body>
@@ -81,7 +97,7 @@
                 <div class="hint"><s:text name="hint.message"/></div>
             <div class="recofday1"><s:text name="recofday.message"/></div>
             <div class="content">
-                <div id="xmlContent">Hello ajax!</div>
+                <div id="xmlContent"></div>
             </div>
         </div>
         <div class="hFooter"></div>
