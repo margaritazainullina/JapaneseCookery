@@ -18,8 +18,6 @@
                     load : function(response, ioArgs) {
                         console.log("successful xhrGet", response, ioArgs);
                         console.log(response);
-                        
-                        
                         dojo.byId("foo").innerHTML = response;
                         return response; //always return the response back
                     },
