@@ -54,6 +54,6 @@ public class Hint extends ActionSupport {
     }
     public int randomNum(int max){
        Random random = new Random();
-       return random.nextInt(max+1);
+       return random.nextInt(max);
     }
 }
