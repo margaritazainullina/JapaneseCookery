@@ -25,27 +25,27 @@
                 data-dojo-config="async: true">
         </script>     
         <script type="text/javascript">
-            require(["dojo/_base/xhr", "dojo/dom", "dojo/domReady!"],
-            function(xhr, dom) {
-                xhr.get({
-                    url: "getAjaxXML.action",
-                    load: function(response) {
-                        var str = response.toString();
-                        var array = str.split(",");
-                        dom.byId("foo").innerHTML = array;
-                        
-                        return response;
-                    },
-                    error: function(response) {
-                        console.log("failed xhrGet", response);
-                        return response; //always return the response back
-                    },
-                    preventCache: true
-                });
-            });            
+            require(["dojo/_base/xhr", "dojo/dom", "recipies/showRecipies", "dojo/domReady!"],
+                function(xhr, dom, showRecipies) {
+                    xhr.get({
+                        url: "getAjaxXML.action",
+                        load: function(response) {
+                            var str = response.toString();
+                            var array = str.split(",");
+                            showRecipies.bar(dom, array, "xmlContent");
+                            return response;
+                        },
+                        error: function(response) {
+                            console.log("failed xhrGet", response);
+                            return response; //always return the response back
+                        },
+                        preventCache: true
+                    });
+                }
+            );  
         </script>         
     </head>
     <body>
-        <div id="foo"></div>
+        <div id="xmlContent" />
     </body>
 </html>
