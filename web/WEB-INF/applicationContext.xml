@@ -47,4 +47,12 @@
     <bean name="publicIndex" class="action.Index">
         <property name="recipeService" ref="recipeService"/>
     </bean>    
+    
+    <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="problemDS"/>
+    </bean>
+        
+    <bean name="hint" class="action.Hint">
+        <property ref="jdbcTemplate" name="jdbcTemplate"/>
+    </bean>
 </beans>

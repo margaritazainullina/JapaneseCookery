@@ -47,7 +47,28 @@
                 }                
             );
             </s:else>
-        </script>         
+        </script>   
+        
+        
+         <script type="text/javascript">
+            require(["dojo/_base/xhr", "dojo/on", "dojo/dom", "dojo/domReady!"],
+            function(xhr, on, dom) {
+                function refreshContent() {
+                    xhr.get({
+                        url: "hint.action",
+                        load: function(newContent) {
+                            dom.byId("a1").innerHTML = newContent;
+                        },
+                        error: function() {},
+                        preventCache: true
+                    });
+                }
+                refreshContent();
+                on(dom.byId("a1"), "click", refreshContent);
+            });
+        </script>
+        
+        
     </head>
     <body>
         <div class="main">
@@ -94,7 +115,7 @@
                     <s:a href="%{url}"><s:text name="profile.message"/></s:a></li>
                 </ul> 
 
-                <div class="hint"><s:text name="hint.message"/></div>
+                <div id="a1" class="hint"></div>
             <div class="recofday1"><s:text name="recofday.message"/></div>
             <div class="content">
                 <div id="xmlContent"></div>
