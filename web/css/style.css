@@ -4,7 +4,7 @@ html,body {
     height: 100%; 
     font-family: Verdana; 
     font-size: 11pt;
-    background-color: #ffeedd; 
+    background-color: #ffffcc; 
     color: #333; 
 }
 .main { 
@@ -61,7 +61,7 @@ html,body {
     text-decoration: none;
     font-size: 14pt;
     font-family: Verdana; 
-    color: #ffeedd;
+    color: #ffffcc;
 }
 .recofday1 {
     margin-top: 15px;
@@ -96,7 +96,7 @@ html,body {
     position: absolute;
     left: 290px;
     top: 90px;
-    margin: 25px;
+    margin: 5px;
 }
 .content1{
     font-size: 12pt;
