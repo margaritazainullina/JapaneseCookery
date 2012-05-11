@@ -25,7 +25,7 @@ define(
             table.appendChild(trInfo);
     
             // Создаем tr 'Ингредиенты'
-            var trIngredientTitle = document.createElement("tr");
+            var trIngredientTitle = document.createElement("tr").setAttribute("bgcolor", "#000000");
             var cellIngredientTitle = document.createElement("td");
             cellIngredientTitle.appendChild(document.createTextNode("Ингредиенты"));
             trIngredientTitle.appendChild(cellIngredientTitle);    

@@ -48,9 +48,9 @@
             );
             </s:else>
         </script>   
-        
-        
-         <script type="text/javascript">
+
+
+        <script type="text/javascript">
             require(["dojo/_base/xhr", "dojo/on", "dojo/dom", "dojo/domReady!"],
             function(xhr, on, dom) {
                 function refreshContent() {
@@ -67,8 +67,8 @@
                 on(dom.byId("a1"), "click", refreshContent);
             });
         </script>
-        
-        
+
+
     </head>
     <body>
         <div class="main">
@@ -113,11 +113,11 @@
                 <li><s:a href="%{fake}"><s:text name="desserts.message"/></s:a></li>
                 <li><s:url id="url" action="index" namespace="/private" />
                     <s:a href="%{url}"><s:text name="profile.message"/></s:a></li>
-                </ul> 
+            </ul> 
 
-                <div id="a1" class="hint"></div>
-            <div class="recofday1"><s:text name="recofday.message"/></div>
-            <div class="content">
+            <div id="a1" class="hint"></div>
+            <div class="content"> 
+                <div class="recofday1"><s:text name="recofday.message"/></div>
                 <div id="xmlContent"></div>
             </div>
         </div>
