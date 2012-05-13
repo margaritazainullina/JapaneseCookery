@@ -34,7 +34,10 @@
                                     load: function(response) {
                                         var domDoc = parser.parse(response);
                                         var node = domConstruct.create("div");
-                                        showRecipies.bar(domDoc, node);
+                                        var start = response.indexOf("<image>", 0) + 7;
+                                        var stop = response.indexOf("</image>", start);
+                                        var imageStr = response.substr(start, stop - start);
+                                        showRecipies.bar(domDoc, node, imageStr);
                                         
                                         domConstruct.place(node, dom.byId(xmlContent));
                                         return response;
