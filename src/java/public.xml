@@ -38,5 +38,13 @@
         <action name="fake">
             <result name="success" type="dispatcher">/WEB-INF/public/fake.jsp</result>
         </action>
+
+        <action name="getByIdRecipeXML" class="action.GetByIdRecipeXML">
+            <result name="success" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">xmlStream</param>
+                <param name="bufferSize">1024</param>    
+            </result>
+        </action>
     </package>
 </struts>

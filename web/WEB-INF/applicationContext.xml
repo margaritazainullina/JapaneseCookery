@@ -46,5 +46,8 @@
     </bean>     
     <bean name="publicIndex" class="action.Index">
         <property name="recipeService" ref="recipeService"/>
+    </bean>  
+    <bean name="GetByIdRecipeXML" class="action.GetByIdRecipeXML">
+        <property name="recipeService" ref="recipeService"/>
     </bean>    
 </beans>

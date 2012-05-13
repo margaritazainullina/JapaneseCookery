@@ -43,4 +43,7 @@ public class RecipeService {
     public List<Recipe> getAllRecipe(){
         return recipeDAO.getAllRecipies();
     }
+    public Recipe findById(Long id){
+        return recipeDAO.find(id);
+    }    
 }
