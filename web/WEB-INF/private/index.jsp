@@ -52,8 +52,7 @@
                     <s:a href="%{url}">Добавить рецепт</s:a>
                 </li>
             </ul>
-            <div class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
-
+           
             <div class="content">
                 <div class="title">Мой профиль</div> 
                 Имя: <s:property value="#session.user.firstName"/><br/>

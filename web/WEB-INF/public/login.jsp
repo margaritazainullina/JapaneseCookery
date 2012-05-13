@@ -42,7 +42,7 @@
             <hr/>
             <br/>
         </div>
-        <div class="content1">
+                <div class="content1" style="margin-bottom: 500px">
             Авторизуйтесь, пожалуйста!<br/>
             <s:actionerror theme="xhtml" />
             <s:form action="authentication" theme="simple" namespace="/" name="authorization" 

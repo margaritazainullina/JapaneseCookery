@@ -53,7 +53,7 @@
                 <li><s:url id="url_image" namespace="/private" action="recipeProduction" method="image"/>
                     <s:a href="%{url_image}">Добавить фото</s:a> </li>
                 </ul> 
-                <div class="content">
+                <div class="content" style="margin-top: 15px">
                     <div class="title">Конструктор рецептов</div>
                 <s:if test="#session.xpath=='root/info'">
                     <s:form theme="xhtml" action="recipeProduction" namespace="/private">
@@ -66,17 +66,17 @@
                 <s:if test="#session.xpath=='root/prepare'">
                     <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                         <s:label value="Ингридиенты:" />
-                        <s:select list="{'чайная ложка', 'столовая ложка', 'грамм'}" 
-                                  name="unit" label="Единица измерения" />
+                        <s:select list="{'ч. л.', 'ст. л.', 'грамм', 'шт.'}" 
+                                  name="unit" label="единица измерения" />
                         <s:textfield label="количество" name="amount" value=""/>
-                        <s:textarea name="text" rows="2" cols="60" value="" />
+                        <s:textarea label="ингридиент" name="text" rows="1" cols="30" value="" />
                         <s:submit value="Добавить" />
                     </s:form>
                 </s:if>            
                 <s:if test="#session.xpath=='root/cook'">
                     <s:form theme="xhtml" action="recipeProduction" namespace="/private">
                         <s:label value="Приготовление" />
-                        <s:textarea name="text" rows="4" cols="60" value="" />
+                        <s:textarea name="text" rows="3" cols="60" value="" />
                         <s:submit value="Добавить" />
                     </s:form>
                 </s:if> 
