@@ -49,6 +49,12 @@
             </s:else>
         </script>   
 
+        <script type="text/javascript"> 
+            require(["dojo/query", "dojo/dom-style", "dojo/domReady!"], function(query, domStyle){
+                var nodes = query('div#xmlContent table');
+                 
+            });
+        </script>
 
         <script type="text/javascript">
             require(["dojo/_base/xhr", "dojo/on", "dojo/dom", "dojo/domReady!"],
@@ -100,10 +106,10 @@
                         <s:param name="request_locale">jp</s:param>
                     </s:url>
                     <s:a href="%{url}">日本語</s:a>
-                    </div>
                 </div>
-                <hr/>
-                <br/>
+            </div>
+            <hr/>
+            <br/>
             <s:url id="fake" namespace="/" action="fake"/>
             <ul class="menu">
                 <li><s:a href="%{fake}"><s:text name="soup.message"/></s:a></li>
@@ -113,11 +119,11 @@
                 <li><s:a href="%{fake}"><s:text name="desserts.message"/></s:a></li>
                 <li><s:url id="url" action="index" namespace="/private" />
                     <s:a href="%{url}"><s:text name="profile.message"/></s:a></li>
-                </ul> 
+            </ul> 
 
-                <div id="a1" class="hint"></div>
-                <div class="content">
-                    <div class="recofday1"><s:text name="recofday.message"/></div>
+            <div id="a1" class="hint"></div>
+            <div class="content">
+                <div class="recofday1"><s:text name="recofday.message"/></div>
                 <div id="xmlContent"></div>
             </div>
         </div>

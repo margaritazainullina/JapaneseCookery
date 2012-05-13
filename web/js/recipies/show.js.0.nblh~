@@ -63,7 +63,7 @@ define(
                 table.appendChild(stepTr);
             }    
             // Покажем фотку если она есть!
-            var image = new Image(400);
+            var image = new Image(600);
             image.src = 'data:image/jpg/png/gif;base64,' + imageStr; //xmldoc.getElementsByTagName("image")[0].firstChild.data;
            
             var imgTr = document.createElement("tr");

@@ -35,14 +35,21 @@ define(
             var ingredientRows = xmldoc.getElementsByTagName("ingredient");
             for(var i = 0; i < ingredientRows.length; i++) {
                 var ingredientTr = document.createElement("tr");
+                
                 var ingredientCell = document.createElement("td");
                 var currentIngredient = ingredientRows[i];
-                var cellIngredientText = currentIngredient.getAttribute("unit") + ' ' + 
-                currentIngredient.getAttribute("amount") + ' ' 
-                + currentIngredient.firstChild.data;
+                var cellIngredientText = currentIngredient.firstChild.data; 
+                               
+                var amountCell = document.createElement("td");
+                var cellAmountText = currentIngredient.firstChild.data; 
+                var amountIngredientText = currentIngredient.getAttribute("amount") + ' ' 
+                +   currentIngredient.getAttribute("unit");  
+            
                 ingredientCell.appendChild(document.createTextNode(cellIngredientText));
                 ingredientTr.appendChild(ingredientCell);    
+                ingredientTr.appendChild(amountCell);
                 table.appendChild(ingredientTr);
+               
             }
             // Создаем tr 'Готовка'
             var trCookTitle = document.createElement("tr");
