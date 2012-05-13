@@ -5,16 +5,22 @@ define(["dojo/domReady!"],
                 require(["dojo/_base/array", "dojo/dom-construct"], 
                     function(array, domConstruct){
                         var table = domConstruct.create("table", null ,node);
+                        // name
                         domConstruct.create("td", {                            
                             innerHTML: domDoc.getElementsByTagName("name")[0].firstChild.data
                         }, domConstruct.create("tr", null, table));
+                        // info
                         domConstruct.create("td", {                            
                             innerHTML: domDoc.getElementsByTagName("info")[0].firstChild.data
                         }, domConstruct.create("tr", null, table));
+                        // title Ингредиенты
                         domConstruct.create("td", { innerHTML: "Ингредиенты"
                         }, domConstruct.create("tr", null, table));
+                        // ingredients
                         array.forEach(domDoc.getElementsByTagName("ingredient"), function(entry, i){
-                            domConstruct.create("td", { innerHTML: entry.firstChild.data
+                            var unit = entry.getAttribute("unit");
+                            var amount = entry.getAttribute("amount");
+                            domConstruct.create("td", { innerHTML: entry.firstChild.data + " " + amount + " " + unit
                             }, domConstruct.create("tr", null, table));
                         });
                         domConstruct.create("td", { innerHTML: "Готовка" }, 
