@@ -11,8 +11,9 @@ define(["dojo/domReady!"],
                         domConstruct.create("td", {                            
                             innerHTML: domDoc.getElementsByTagName("info")[0].firstChild.data
                         }, domConstruct.create("tr", null, table));
-                        domConstruct.create("td", {                            
-                            innerHTML: "Ингредиенты"
+                        domConstruct.create("td", { 
+                            innerHTML: "Ингредиенты",
+                            className: "recipetitle2"
                         }, domConstruct.create("tr", null, table));
                         array.forEach(domDoc.getElementsByTagName("ingredient"), function(entry, i){
                             domConstruct.create("td", {                            
