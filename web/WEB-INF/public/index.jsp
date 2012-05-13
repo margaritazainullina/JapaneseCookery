@@ -35,7 +35,7 @@
                     var start = xml.indexOf("<image>", 0) + 7;
                     var stop = xml.indexOf("</image>", start);
                     var imageStr = xml.substr(start, stop - start);
-                    show.recipe(dom, "xmlContent", imageStr); // Convert to an HTML table
+                    show.recipe(dom, "xmlContent", imageStr);
                 } );           
             </s:if>
             <s:else>
