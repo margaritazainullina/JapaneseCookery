@@ -2,8 +2,7 @@ package action;
 
 import java.io.InputStream;
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.ByteArrayInputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -45,6 +44,6 @@ public class Hint extends ActionSupport {
         return jdbcTemplate.queryForInt(sql);
     }
     public int randomNum(int max){
-       return new Random().nextInt(max);
+       return (new Random().nextInt(max) + 1);
     }
 }
