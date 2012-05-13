@@ -13,15 +13,10 @@ define(["dojo/domReady!"],
                         domConstruct.create("td", {                            
                             innerHTML: domDoc.getElementsByTagName("info")[0].firstChild.data
                         }, domConstruct.create("tr", null, table));
-<<<<<<< HEAD
+
                         domConstruct.create("td", { 
                             innerHTML: "Ингредиенты",
-                            className: "recipetitle2"
-=======
-                        // title Ингредиенты
-                        domConstruct.create("td", { innerHTML: "Ингредиенты"
->>>>>>> 7e19ff1b74f2380b432404c0697291f3f5572cfc
-                        }, domConstruct.create("tr", null, table));
+                            className: "recipetitle2"}, domConstruct.create("tr", null, table));
                         // ingredients
                         array.forEach(domDoc.getElementsByTagName("ingredient"), function(entry, i){
                             var unit = entry.getAttribute("unit");
