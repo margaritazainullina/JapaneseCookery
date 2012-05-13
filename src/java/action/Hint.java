@@ -2,15 +2,11 @@ package action;
 
 import java.io.InputStream;
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.ByteArrayInputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.io.*;
+import java.util.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Hint extends ActionSupport {
-
     private InputStream xmlStream;
     private JdbcTemplate jdbcTemplate;
 
@@ -19,7 +15,6 @@ public class Hint extends ActionSupport {
     }
 
     public String execute() throws Exception {
-        Date date = new Date();
         xmlStream = convert(getHint(randomNum(countHints())));
         return SUCCESS;
     }
@@ -32,10 +27,6 @@ public class Hint extends ActionSupport {
             e.printStackTrace();
         }
         return is;
-    }
-
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
     }
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -53,7 +44,6 @@ public class Hint extends ActionSupport {
         return jdbcTemplate.queryForInt(sql);
     }
     public int randomNum(int max){
-       Random random = new Random();
-       return random.nextInt(max+1);
+       return (new Random().nextInt(max) + 1);
     }
 }

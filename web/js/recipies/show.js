@@ -77,4 +77,6 @@ define(
             element.appendChild(table);
         };
         return ret;    
-    });
+    }
+);
+  
