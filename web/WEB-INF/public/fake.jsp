@@ -61,6 +61,42 @@
         </script>         
     </head>
     <body>
-        <div id="xmlContent" />
+        <div>
+            <div class="maintitle" align="center">Клуб рецептов японской кухни</div>
+            <hr/>
+            <div class="statusbar">
+
+                <s:if test="#session.user">
+                    <s:text name="hello.message"/> <s:property value="#session.user.firstName"/>!        
+                </s:if>
+                <s:else>
+                    <s:text name="Вы не авторизованы. "/>
+                    <s:url id="urlLogin" action="login" namespace="/"/>
+                    <s:a href="%{urlLogin}"><s:text name="Вход "/></s:a> /
+                    <s:url id="urlRegister" action="register" namespace="/"/>
+                    <s:a href="%{urlRegister}"><s:text name="Регистрация"/></s:a>
+                </s:else>
+
+                <div class="language">
+                    <s:text name="Язык"/>
+                    <s:url id="url" action="index" namespace="/">
+                        <s:param name="request_locale">en</s:param>
+                    </s:url>
+                    <s:a href="%{url}">English /</s:a>
+                    <s:url id="url" action="index" namespace="/">
+                        <s:param name="request_locale">ru</s:param>
+                    </s:url>
+                    <s:a href="%{url}">Русский /</s:a>
+                    <s:url id="url" action="index" namespace="/">
+                        <s:param name="request_locale">jp</s:param>
+                    </s:url>
+                    <s:a href="%{url}">日本語</s:a>
+                </div>
+            </div>
+            <hr/>
+            <br/>
+        </div>
+        <div id="xmlContent" class="content"/>
+        
     </body>
 </html>
