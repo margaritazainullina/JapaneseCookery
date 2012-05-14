@@ -4,7 +4,7 @@ define(
         var ret = {};
         ret.recipe = function(xmldoc, element, imageStr) {
             var table = document.createElement("table");
-          domStyle.set(table, class="recipetitle2");
+          
             // Create the header row of <th> elements in a <tr> in a <thead>
             var thead = document.createElement("thead");
             var header = document.createElement("tr");
