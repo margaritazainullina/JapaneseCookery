@@ -15,8 +15,7 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
     private UserService userService;
 
     private Map<String, Object> session;
-    private String category;
-    private String recipeName, info, unit, text;
+    private String category, recipeName, info, unit, text;
     private Integer amount;
 
     @Override
@@ -73,7 +72,6 @@ public class RecipeProduction extends ActionSupport implements SessionAware {
         String xPath = (String) session.get("xpath");
         if (xPath.equals("root/image")|xPath.equals("root/cook")) {
             Recipe recipe = (Recipe) session.get("recipe");
-            recipe.setHtml(UtilXML.xsltTransform(recipe.getXml()));
             recipeService.save(recipe);
             User user = (User)session.get("user");
             userService.addRecipeToUser(user.getId(), recipe);
