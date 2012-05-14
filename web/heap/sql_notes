@@ -1,1 +1,0 @@
-insert into users(email, name_first, name_last, sex, pwd) values('margarita.zainullina@gmail.com', 'Маргарита', 'Зайнуллина', 0, '12345');

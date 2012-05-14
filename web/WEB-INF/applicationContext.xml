@@ -52,7 +52,7 @@
     </bean>    
     
     <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="problemDS"/>
+        <property name="dataSource" ref="recipeDS"/>
     </bean>
         
     <bean name="hint" class="action.Hint">

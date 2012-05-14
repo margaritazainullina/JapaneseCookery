@@ -23,9 +23,6 @@ public class Recipe implements Serializable {
     private String xml;
     @Column(name = "category", nullable = false)    
     private String category;
-    @Lob    
-    @Column(name = "html", nullable = true)
-    private String html;      
     @Transient
     private Boolean isPhotoAdded;
 
@@ -64,17 +61,9 @@ public class Recipe implements Serializable {
     public String toString(){
         return this.getXml();
     }
-    public String getHtml() {
-        return html;
-    }
-    public void setHtml(String html) {
-        this.html = html;
-    }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -83,9 +72,9 @@ public class Recipe implements Serializable {
         if (!(o instanceof Recipe)) return false;
 
         final Recipe recipe = (Recipe) o;
-        return getHtml().equals(recipe.getHtml());
+        return getXml().equals(recipe.getXml());
     }
     public int hashCode() {
-        return getHtml().hashCode();
+        return getXml().hashCode();
     }    
 }
