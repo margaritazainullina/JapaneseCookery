@@ -9,10 +9,7 @@
             @import "http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/claro.css";
         </style>
         <script type="text/javascript">
-            var dojoConfig = {
-                async: true, 
-                tlmSiblingOfDojo: false,
-                parseOnLoad: true, 
+            var dojoConfig = { async: true, tlmSiblingOfDojo: false, parseOnLoad: true, 
                 packages: [
                     { location: "../dijit", name: "dijit" },
                     { location: "../dojox", name: "dojox" },
@@ -24,18 +21,19 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"
                 data-dojo-config="async: true">
         </script>     
-
         <script type="text/javascript"> 
             <s:if test="#attr.recipe">
                 require(
-                ["dojo/dom", "dojox/xml/parser", "recipies/show", "dojo/domReady!"],
-                function(dom, parser, show) {
+                ["dojo/dom-construct", "dojo/dom", "dojox/xml/parser", "recipies/showRecipies", "dojo/domReady!"],
+                function(domConstruct, dom, parser, showRecipies) {
                     var xml = '<s:property value="recipe.xml" escape="false"/>';
-                    var dom = parser.parse(xml);
+                    var domDoc = parser.parse(xml);
                     var start = xml.indexOf("<image>", 0) + 7;
                     var stop = xml.indexOf("</image>", start);
                     var imageStr = xml.substr(start, stop - start);
-                    show.recipe(dom, "xmlContent", imageStr);
+                    var node = domConstruct.create("div");
+                    showRecipies.bar(domDoc, node, imageStr);
+                    domConstruct.place(node, dom.byId(xmlContent));
                 } );           
             </s:if>
             <s:else>
@@ -48,14 +46,6 @@
             );
             </s:else>
         </script>   
-
-        <script type="text/javascript"> 
-            require(["dojo/query", "dojo/dom-style", "dojo/domReady!"], function(query, domStyle){
-                var nodes = query('div#xmlContent table');
-                 
-            });
-        </script>
-
         <script type="text/javascript">
             require(["dojo/_base/xhr", "dojo/on", "dojo/dom", "dojo/domReady!"],
             function(xhr, on, dom) {
@@ -73,8 +63,6 @@
                 on(dom.byId("a1"), "click", refreshContent);
             });
         </script>
-
-
     </head>
     <body>
         <div class="main">
@@ -91,7 +79,6 @@
                     <s:url id="urlRegister" action="register" namespace="/"/>
                     <s:a href="%{urlRegister}"><s:text name="register.message"/></s:a>
                 </s:else>
-
                 <div class="language">
                     <s:text name="language.message"/>
                     <s:url id="url" action="index" namespace="/">
@@ -120,11 +107,11 @@
                 <li><s:url id="url" action="index" namespace="/private" />
                     <s:a href="%{url}"><s:text name="profile.message"/></s:a></li>
             </ul> 
-
             <div id="a1" class="hint"></div>
             <div class="content">
                 <div class="recofday1"><s:text name="recofday.message"/></div>
                 <div id="xmlContent"></div>
+
             </div>
         </div>
         <div class="hFooter"></div>
