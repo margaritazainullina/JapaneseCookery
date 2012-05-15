@@ -3,8 +3,10 @@ package service;
 import dao.RecipeDAO;
 import entity.*;
 import java.util.*;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class RecipeService {
+    private JdbcTemplate jdbcTemplate;
     private RecipeDAO recipeDAO;
 
     public RecipeDAO getRecipeDAO() {
@@ -46,4 +48,27 @@ public class RecipeService {
     public Recipe findById(Long id){
         return recipeDAO.find(id);
     }    
+
+    public String getUserIDsRecipies(User user) {
+        Long[] params = { user.getId() };
+        List<Map> rows = jdbcTemplate.queryForList("select recipe_id from user_recipe tab where tab.user_id = ?", params);
+        if (rows.size() == 0) return "";
+        
+        StringBuilder sb = new StringBuilder();
+        for (Map row: rows){
+            String str = ((Long) row.get("recipe_id")).toString();
+            sb.append(str).append(",");
+        }
+        String result = sb.substring(0, sb.lastIndexOf(","));
+        
+        return result;
+    }
+
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 }

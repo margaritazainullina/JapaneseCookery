@@ -31,6 +31,7 @@
         <property name="target">
             <bean class="service.RecipeService">
                 <property name="recipeDAO" ref="recipeDao"/>
+                <property name="jdbcTemplate" ref="jdbcTemplate"/>
             </bean>
         </property>
     </bean>    
@@ -41,21 +42,23 @@
     <bean name="imageUpload" class="action.ImageUpload">
         <property name="recipeService" ref="recipeService"/>
     </bean>
-    <bean name="recipeViewMyRecipies" class="action.RecipeViewMyRecipies">
-        <property name="userService" ref="userService"/>
-    </bean>     
     <bean name="publicIndex" class="action.Index">
         <property name="recipeService" ref="recipeService"/>
     </bean>  
-    <bean name="GetByIdRecipeXML" class="action.GetByIdRecipeXML">
+    <bean name="getByIdRecipeXML" class="action.GetByIdRecipeXML">
         <property name="recipeService" ref="recipeService"/>
     </bean>    
+    <bean name="getByIdRecipeXML_1" class="action.GetByIdRecipeXML_1">
+        <property name="recipeService" ref="recipeService"/>
+    </bean>     
     
     <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="recipeDS"/>
     </bean>
-        
     <bean name="hint" class="action.Hint">
         <property ref="jdbcTemplate" name="jdbcTemplate"/>
     </bean>
-</beans>
+    <bean name="myRecipies" class="action.MyRecipies">
+        <property name="recipeService" ref="recipeService"/>
+    </bean>     
+ </beans>
