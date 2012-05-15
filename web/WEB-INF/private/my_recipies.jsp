@@ -93,9 +93,10 @@
                     <s:a href="%{url}">Добавить рецепт</s:a></li>
             </ul>    
             <div class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
+            <div class="content">
             <h4 class="title">Мои рецепты</h4> 
             <div id="xmlContent"></div>
+            </div>
         </div>
-        <jsp:include page="/WEB-INF/common/footer.jsp" />
     </body>
 </html>
