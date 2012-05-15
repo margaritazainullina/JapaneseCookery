@@ -22,16 +22,14 @@
                         require(["recipies/showRecipies","dojox/xml/parser","dojo/_base/xhr","dojo/dom","dojo/dom-construct"],
                         function(showRecipies, parser, xhr, dom, domConstruct) {
                             xhr.get({
-                                url: "getByIdRecipeXML_1.action", content: { id: entry },
+                                url: "/cook/getByIdRecipeXML.action", content: { id: entry },
                                 load: function(response) {
                                     var domDoc = parser.parse(response);
                                     var node = domConstruct.create("div");
                                     var start = response.indexOf("<image>", 0) + 7;
                                     var stop = response.indexOf("</image>", start);
                                     var imageStr = response.substr(start, stop - start);
-                                    
                                     showRecipies.bar(domDoc, node, imageStr);
-                                        
                                     domConstruct.place(node, dom.byId("xmlContent"));
                                     return response;
                                 },
