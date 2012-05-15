@@ -12,7 +12,6 @@
             <div class="maintitle" align="center">Клуб рецептов японской кухни</div>
             <hr/>
             <div class="statusbar">
-
                 <s:if test="#session.user">
                     <s:text name="hello.message"/> <s:property value="#session.user.firstName"/>!        
                 </s:if>

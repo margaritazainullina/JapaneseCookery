@@ -76,10 +76,10 @@
                 <param name="contentDisposition">attachment;filename="photo.jpg"</param>
                 <param name="bufferSize">1024</param>    
             </result>
-        </action>         
-        <action name="myRecipies" class="action.RecipeViewMyRecipies">
+        </action>  
+        
+        <action name="myRecipies" class="action.MyRecipies">
             <result name="success" type="dispatcher">/WEB-INF/private/my_recipies.jsp</result>
-            <result name="back" type="redirect">index</result>
-        </action>         
+        </action>   
     </package>
 </struts>

@@ -1,7 +1,6 @@
 package dao;
 
-import entity.Recipe;
-import entity.User;
+import entity.*;
 import java.util.List;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
