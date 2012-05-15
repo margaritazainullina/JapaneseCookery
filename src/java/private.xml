@@ -80,6 +80,13 @@
         
         <action name="myRecipies" class="action.MyRecipies">
             <result name="success" type="dispatcher">/WEB-INF/private/my_recipies.jsp</result>
-        </action>         
+        </action>   
+        <action name="getByIdRecipeXML_1" class="action.GetByIdRecipeXML_1">
+            <result name="success" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">xmlStream</param>
+                <param name="bufferSize">1024</param>    
+            </result>
+        </action>        
     </package>
 </struts>

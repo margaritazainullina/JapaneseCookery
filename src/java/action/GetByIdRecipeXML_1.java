@@ -5,7 +5,7 @@ import entity.Recipe;
 import java.io.*;
 import service.RecipeService;
 
-public class GetByIdRecipeXML extends ActionSupport {
+public class GetByIdRecipeXML_1 extends ActionSupport {
     private RecipeService recipeService;
     private InputStream xmlStream;
     private String id;
@@ -18,8 +18,7 @@ public class GetByIdRecipeXML extends ActionSupport {
         xmlStream = convert(xml); // 
         return SUCCESS;
     }
-    public GetByIdRecipeXML(){}
-    
+
     private static InputStream convert(String str) {
         InputStream is = null;
         try {

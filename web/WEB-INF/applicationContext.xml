@@ -45,9 +45,13 @@
     <bean name="publicIndex" class="action.Index">
         <property name="recipeService" ref="recipeService"/>
     </bean>  
-    <bean name="GetByIdRecipeXML" class="action.GetByIdRecipeXML">
+    <bean name="getByIdRecipeXML" class="action.GetByIdRecipeXML">
         <property name="recipeService" ref="recipeService"/>
     </bean>    
+    <bean name="getByIdRecipeXML_1" class="action.GetByIdRecipeXML_1">
+        <property name="recipeService" ref="recipeService"/>
+    </bean>     
+    
     <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="recipeDS"/>
     </bean>

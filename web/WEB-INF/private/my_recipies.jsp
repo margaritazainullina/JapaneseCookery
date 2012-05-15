@@ -22,7 +22,7 @@
                         require(["recipies/showRecipies","dojox/xml/parser","dojo/_base/xhr","dojo/dom","dojo/dom-construct"],
                         function(showRecipies, parser, xhr, dom, domConstruct) {
                             xhr.get({
-                                url: "getByIdRecipeXML.action", content: { id: entry },
+                                url: "getByIdRecipeXML_1.action", content: { id: entry },
                                 load: function(response) {
                                     var domDoc = parser.parse(response);
                                     var node = domConstruct.create("div");
@@ -32,7 +32,7 @@
                                     
                                     showRecipies.bar(domDoc, node, imageStr);
                                         
-                                    domConstruct.place(node, dom.byId(xmlContent));
+                                    domConstruct.place(node, dom.byId("xmlContent"));
                                     return response;
                                 },
                                 error: function(response) {
@@ -96,7 +96,7 @@
             </ul>    
             <div class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
             <h4 class="title">Мои рецепты</h4> 
-            <div id="xmlContent"/>
+            <div id="xmlContent"></div>
         </div>
         <jsp:include page="/WEB-INF/common/footer.jsp" />
     </body>
