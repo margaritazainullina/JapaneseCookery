@@ -6,6 +6,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>Клуб рецептов японской кулинарии</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
+        <style type="text/css">
+            @import "http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/claro.css";
+        </style>
         <script type="text/javascript">
             var dojoConfig = { async: true, tlmSiblingOfDojo: false, parseOnLoad: true, 
                 packages:[{location: "../dijit", name: "dijit"},{location: "../dojox",name: "dojox"},{location: ".", name: "dojo"},                        
@@ -18,8 +21,9 @@
                 var arr = <s:property value="jsonIdCategory"/>;
                 if (arr != ""){
                     array.forEach(arr, function(entry, i){
-                        require(["recipies/showRecipies","dojox/xml/parser","dojo/_base/xhr","dojo/dom","dojo/dom-construct"],
-                        function(showRecipies, parser, xhr, dom, domConstruct) {
+                        require(["recipies/showRecipies","dojox/xml/parser","dojo/_base/xhr","dojo/dom",
+                            "dojo/dom-construct", "dojo/dom-class"],
+                        function(showRecipies, parser, xhr, dom, domConstruct, domClass) {
                             xhr.get({
                                 url: "/cook/getByIdRecipeXML.action", content: { id: entry.id },
                                 load: function(response) {
@@ -28,6 +32,7 @@
                                     var node = domConstruct.create("div", {
                                         category: entry.category
                                     }, null);
+                                    domClass.add(node, "recipeClass");
                                     
                                     var start = response.indexOf("<image>", 0) + 7;
                                     var stop = response.indexOf("</image>", start);
@@ -53,11 +58,37 @@
             });           
         </script>   
         <script type="text/javascript"> 
-            require( ["dojo/_base/array",  "dojo/domReady!"],
-            function(array) {
-                
+            require(["dojo/query", "dojo/_base/array", "dojo/ready", "dijit/Menu", 
+                "dijit/MenuItem", "dojo/dom-style", "dojo/_base/fx", "dojo/domReady!"], 
+            function(query, array, ready, Menu, MenuItem, domStyle, baseFx){
+                ready(function(){
+                    var pMenu = new Menu({ targetNodeIds: ["progmenu"] });
+                    var arr = <s:property value="jsonIdCategory"/>;
+                    array.forEach(arr, function(entry, i){
+                        pMenu.addChild(new MenuItem({
+                            label: entry.category,
+                            onClick: function(){
 
-            });
+                                array.forEach(query(".recipeClass"), function(entry,i){
+                                    if(domStyle.get(entry, 'category') == entry.category){
+                                        console.log(domStyle.get(entry, 'category'));
+                                        baseFx.animateProperty({
+                                            node: entry, properties: { display: 'block' }
+                                        }).play();
+                                    }else{
+                                        console.log(domStyle.get(entry, 'category'));
+                                        baseFx.animateProperty({
+                                            node: entry, properties: { display: 'none' }
+                                        }).play();
+                                    }
+                                });
+                                
+                            }                        
+                        }));
+                    });
+                    pMenu.startup();
+                });
+            });            
         </script>         
     </head>
     <body>
@@ -66,7 +97,7 @@
             <hr/>
             <div class="statusbar">
                 <s:if test="#session.user">
-                    <s:text name="hello.message"/> <s:property value="#session.user.firstName"/>!        
+                    <s:text name="hello.message"/><s:property value="#session.user.firstName"/>!        
                 </s:if>
                 <s:else>
                     <s:text name="notauthorized.message"/>
@@ -102,10 +133,10 @@
                 <li><s:url id="url" namespace="/private" action="recipeBuilder"/>
                     <s:a href="%{url}">Добавить рецепт</s:a></li>
             </ul>    
-            <div class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
+            <div id="hint" class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
             <div class="content">
                 <h4 class="title">Мои рецепты</h4> 
-                
+                <span id="progmenu">Правый клик - выбор категории рецепта</span>
                 <div id="xmlContent"></div>
             </div>
         </div>
