@@ -49,19 +49,22 @@ public class RecipeService {
         return recipeDAO.find(id);
     }    
 
-    public String getUserIDsRecipies(User user) {
+    public String getUserIdCategory(User user) {
         Long[] params = { user.getId() };
         List<Map> rows = jdbcTemplate.queryForList("select recipe_id from user_recipe tab where tab.user_id = ?", params);
         if (rows.size() == 0) return "";
         
-        StringBuilder sb = new StringBuilder();
+        
+        StringBuilder sb = new StringBuilder("[");
         for (Map row: rows){
-            String str = ((Long) row.get("recipe_id")).toString();
-            sb.append(str).append(",");
+            Long id = (Long) row.get("recipe_id");
+            sb.append("{'id':").append(id.toString()).append(",");
+            String category = getCategoryById(id);
+            sb.append("'category':'").append(category).append("'}");
+            sb.append(",");
         }
         String result = sb.substring(0, sb.lastIndexOf(","));
-        
-        return result;
+        return result + "]";
     }
 
     public JdbcTemplate getJdbcTemplate() {
@@ -70,5 +73,12 @@ public class RecipeService {
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    private String getCategoryById(Long id) {
+        Long[] params = {id};
+        String category = (String) jdbcTemplate.queryForObject("select category from recipe where id=?", params, java.lang.String.class);
+        return category;
+        
     }
 }

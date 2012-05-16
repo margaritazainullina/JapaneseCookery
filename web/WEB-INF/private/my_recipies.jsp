@@ -15,17 +15,20 @@
         <script type="text/javascript"> 
             require( ["dojo/_base/array",  "dojo/domReady!"],
             function(array) {
-                var xml = '<s:property value="ids"/>';
-                if (xml != ""){
-                    var arr = xml.split(",");
+                var arr = <s:property value="jsonIdCategory"/>;
+                if (arr != ""){
                     array.forEach(arr, function(entry, i){
                         require(["recipies/showRecipies","dojox/xml/parser","dojo/_base/xhr","dojo/dom","dojo/dom-construct"],
                         function(showRecipies, parser, xhr, dom, domConstruct) {
                             xhr.get({
-                                url: "/cook/getByIdRecipeXML.action", content: { id: entry },
+                                url: "/cook/getByIdRecipeXML.action", content: { id: entry.id },
                                 load: function(response) {
                                     var domDoc = parser.parse(response);
-                                    var node = domConstruct.create("div");
+                                    
+                                    var node = domConstruct.create("div", {
+                                        category: entry.category
+                                    }, null);
+                                    
                                     var start = response.indexOf("<image>", 0) + 7;
                                     var stop = response.indexOf("</image>", start);
                                     var imageStr = response.substr(start, stop - start);
@@ -48,7 +51,14 @@
                     });
                 }
             });           
-        </script>           
+        </script>   
+        <script type="text/javascript"> 
+            require( ["dojo/_base/array",  "dojo/domReady!"],
+            function(array) {
+                
+
+            });
+        </script>         
     </head>
     <body>
         <div class="main">
@@ -80,12 +90,12 @@
                         <s:param name="request_locale">jp</s:param>
                     </s:url>
                     <s:a href="%{url}">日本語</s:a>
+                    </div>
                 </div>
-            </div>
-            <hr/>
-            <br/>
-            <ul class="menu">
-                <li><s:url id="main" namespace="/" action="index"/>
+                <hr/>
+                <br/>
+                <ul class="menu">
+                    <li><s:url id="main" namespace="/" action="index"/>
                     <s:a href="%{main}">Главная</s:a> </li>
                 <li><s:url id="exit" namespace="/private" action="exit"/>
                     <s:a href="%{exit}">Выйти</s:a></li>
@@ -93,9 +103,11 @@
                     <s:a href="%{url}">Добавить рецепт</s:a></li>
             </ul>    
             <div class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
-            <h4 class="title">Мои рецепты</h4> 
-            <div id="xmlContent"></div>
+            <div class="content">
+                <h4 class="title">Мои рецепты</h4> 
+                
+                <div id="xmlContent"></div>
+            </div>
         </div>
-        <jsp:include page="/WEB-INF/common/footer.jsp" />
     </body>
 </html>
