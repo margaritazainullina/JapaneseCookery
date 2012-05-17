@@ -58,25 +58,28 @@
             });           
         </script>   
         <script type="text/javascript"> 
-            require(["dojo/query", "dojo/_base/array", "dojo/ready", "dijit/Menu", 
+            require(["dojo/dom-attr", "dojo/query", "dojo/_base/array", "dojo/ready", "dijit/Menu", 
                 "dijit/MenuItem", "dojo/dom-style", "dojo/_base/fx", "dojo/domReady!"], 
-            function(query, array, ready, Menu, MenuItem, domStyle, baseFx){
+            function(domAttr, query, array, ready, Menu, MenuItem, domStyle, baseFx){
                 ready(function(){
                     var pMenu = new Menu({ targetNodeIds: ["progmenu"] });
                     var arr = <s:property value="jsonIdCategory"/>;
-                    array.forEach(arr, function(entry, i){
+                    array.forEach(arr, function(item, num){
                         pMenu.addChild(new MenuItem({
-                            label: entry.category,
+                            label: item.category,
                             onClick: function(){
-
                                 array.forEach(query(".recipeClass"), function(entry,i){
-                                    if(domStyle.get(entry, 'category') == entry.category){
-                                        console.log(domStyle.get(entry, 'category'));
+                                    if(domAttr.get(entry, 'category') == item.category){
+                                        console.log("if - " + domAttr.get(entry, 'category'));
+                                        console.log("if - " + item.category);
+                                        console.log("if - " + domAttr.get(entry, 'category') == item.category);
                                         baseFx.animateProperty({
                                             node: entry, properties: { display: 'block' }
                                         }).play();
                                     }else{
-                                        console.log(domStyle.get(entry, 'category'));
+                                        console.log("else - " + domAttr.get(entry, 'category'));
+                                        console.log("else - " + item.category);
+                                        console.log("else - " + domAttr.get(entry, 'category') == item.category);                                        
                                         baseFx.animateProperty({
                                             node: entry, properties: { display: 'none' }
                                         }).play();
