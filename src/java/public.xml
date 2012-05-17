@@ -13,7 +13,7 @@
             <result>/WEB-INF/public/register.jsp</result>
         </action>  
         <action name="recordUser" class="action.RecordUser">
-            <result name="success" type="dispatcher">/WEB-INF/public/index.jsp</result>
+            <result name="success" type="redirect">index</result>
             <result name="input" type="dispatcher">/WEB-INF/public/register.jsp</result>
         </action>        
          <action name="authentication" class="action.Authentication">

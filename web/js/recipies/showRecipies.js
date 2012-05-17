@@ -47,4 +47,3 @@ define(["dojo/domReady!"],
             }
         }
     })
-
