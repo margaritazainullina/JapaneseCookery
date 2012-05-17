@@ -58,40 +58,60 @@
             });           
         </script>   
         <script type="text/javascript"> 
-            require(["dojo/dom-attr", "dojo/query", "dojo/_base/array", "dojo/ready", "dijit/Menu", 
-                "dijit/MenuItem", "dojo/dom-style", "dojo/_base/fx", "dojo/domReady!"], 
-            function(domAttr, query, array, ready, Menu, MenuItem, domStyle, baseFx){
-                ready(function(){
-                    var pMenu = new Menu({ targetNodeIds: ["progmenu"] });
-                    var arr = <s:property value="jsonIdCategory"/>;
-                    array.forEach(arr, function(item, num){
-                        pMenu.addChild(new MenuItem({
-                            label: item.category,
-                            onClick: function(){
-                                array.forEach(query(".recipeClass"), function(entry,i){
-                                    if(domAttr.get(entry, 'category') == item.category){
-                                        console.log("if - " + domAttr.get(entry, 'category'));
-                                        console.log("if - " + item.category);
-                                        console.log("if - " + domAttr.get(entry, 'category') == item.category);
-                                        baseFx.animateProperty({
-                                            node: entry, properties: { display: 'block' }
-                                        }).play();
-                                    }else{
-                                        console.log("else - " + domAttr.get(entry, 'category'));
-                                        console.log("else - " + item.category);
-                                        console.log("else - " + domAttr.get(entry, 'category') == item.category);                                        
-                                        baseFx.animateProperty({
-                                            node: entry, properties: { display: 'none' }
-                                        }).play();
-                                    }
-                                });
-                                
-                            }                        
-                        }));
+            require(["dojo/_base/event", "dojo/on", "dojo/dom", "dojo/dom-attr", "dojo/query", 
+                "dojo/_base/array",  "dojo/dom-style", "dojo/_base/fx", "dojo/domReady!"], 
+            function(event, on, dom, domAttr, query, array, domStyle, baseFx){
+                on(dom.byId("soup"),"click",function(e){
+                    event.stop(e);
+                    array.forEach(query(".recipeClass"), function(entry,i){
+                        if(domAttr.get(entry, "category") == "супы"){
+                            domStyle.set(entry, "display", "block");
+                        }else{
+                            domStyle.set(entry, "display", "none");
+                        }
                     });
-                    pMenu.startup();
                 });
-            });            
+                on(dom.byId("noodles"),"click",function(e){
+                    event.stop(e);
+                    array.forEach(query(".recipeClass"), function(entry,i){
+                        if(domAttr.get(entry, "category") == "лапша"){
+                            domStyle.set(entry, "display", "block");
+                        }else{
+                            domStyle.set(entry, "display", "none");
+                        }
+                    });
+                });
+                on(dom.byId("sushi"),"click",function(e){
+                    event.stop(e);
+                    array.forEach(query(".recipeClass"), function(entry,i){
+                        if(domAttr.get(entry, "category") == "суши"){
+                            domStyle.set(entry, "display", "block");
+                        }else{
+                            domStyle.set(entry, "display", "none");
+                        }
+                    });
+                });
+                on(dom.byId("dessert"),"click",function(e){
+                    event.stop(e);
+                    array.forEach(query(".recipeClass"), function(entry,i){
+                        if(domAttr.get(entry, "category") == "десерты"){
+                            domStyle.set(entry, "display", "block");
+                        }else{
+                            domStyle.set(entry, "display", "none");
+                        }
+                    });
+                });
+                on(dom.byId("other"),"click",function(e){
+                    event.stop(e);
+                    array.forEach(query(".recipeClass"), function(entry,i){
+                        if(domAttr.get(entry, "category") == "другое"){
+                            domStyle.set(entry, "display", "block");
+                        }else{
+                            domStyle.set(entry, "display", "none");
+                        }
+                    });
+                });                
+            })
         </script>         
     </head>
     <body>
@@ -124,12 +144,12 @@
                         <s:param name="request_locale">jp</s:param>
                     </s:url>
                     <s:a href="%{url}">日本語</s:a>
-                    </div>
                 </div>
-                <hr/>
-                <br/>
-                <ul class="menu">
-                    <li><s:url id="main" namespace="/" action="index"/>
+            </div>
+            <hr/>
+            <br/>
+            <ul class="menu">
+                <li><s:url id="main" namespace="/" action="index"/>
                     <s:a href="%{main}">Главная</s:a> </li>
                 <li><s:url id="exit" namespace="/private" action="exit"/>
                     <s:a href="%{exit}">Выйти</s:a></li>
@@ -139,7 +159,9 @@
             <div id="hint" class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
             <div class="content">
                 <h4 class="title">Мои рецепты</h4> 
-                <span id="progmenu">Правый клик - выбор категории рецепта</span>
+                <table>
+                    <tr><td id="soup">супы</td><td id="noodles">лапша</td><td id="sushi">суши</td><td id="dessert">десерты</td><td id="other">другое</td></tr>
+                </table>
                 <div id="xmlContent"></div>
             </div>
         </div>
