@@ -90,7 +90,6 @@
             </div>
             <br/>
             <hr/>
-
             <div id="recipeDisplay" align="center">
                 <div class="title">Как будет отображаться рецепт</div>
                 <s:action executeResult="true" name="recipePreview" />
@@ -102,7 +101,6 @@
             </div>
             <s:debug />
         </div>
-
         <div class="hFooter"></div>
     </div>
     <div class="footer"><hr/>
