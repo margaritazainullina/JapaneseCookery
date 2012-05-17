@@ -15,7 +15,7 @@ public class GetByIdRecipeXML extends ActionSupport {
         Recipe recipe = recipeService.findById(new Long(id));
         String xml = recipe.getXml();
         
-        xmlStream = convert(xml); // 
+        xmlStream = convert(xml);
         return SUCCESS;
     }
     public GetByIdRecipeXML(){}

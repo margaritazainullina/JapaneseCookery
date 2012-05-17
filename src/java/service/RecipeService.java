@@ -54,7 +54,6 @@ public class RecipeService {
         List<Map> rows = jdbcTemplate.queryForList("select recipe_id from user_recipe tab where tab.user_id = ?", params);
         if (rows.size() == 0) return "";
         
-        
         StringBuilder sb = new StringBuilder("[");
         for (Map row: rows){
             Long id = (Long) row.get("recipe_id");
@@ -66,19 +65,37 @@ public class RecipeService {
         String result = sb.substring(0, sb.lastIndexOf(","));
         return result + "]";
     }
-
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
     }
-
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
     private String getCategoryById(Long id) {
         Long[] params = {id};
         String category = (String) jdbcTemplate.queryForObject("select category from recipe where id=?", params, java.lang.String.class);
         return category;
-        
+    }
+    public String getRecipiesByCategory(String category){
+        String[] params = { translate(category) };
+        List<Map> rows = jdbcTemplate.queryForList("select id from recipe tab where tab.category = ?", params);
+        StringBuilder sb = new StringBuilder("[");
+        for (Map row: rows){
+            Long id = (Long) row.get("id");
+            sb.append("{'id':").append(id.toString()).append(",");
+            sb.append("'category':'").append(category).append("'}");
+            sb.append(",");
+        }
+        if (sb.lastIndexOf(",") > 0) sb.substring(0, sb.lastIndexOf(","));
+
+        return sb.toString() + "]";
+    }    
+    private String translate(String eng){
+        if (eng.equals("soup")) return "супы";
+        if (eng.equals("noodles")) return "лапша";
+        if (eng.equals("sushi")) return "суши";
+        if (eng.equals("dessert")) return "десерты";
+        if (eng.equals("other")) return "другое";
+        else return "другое";
     }
 }

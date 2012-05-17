@@ -97,15 +97,16 @@
             </div>
             <hr/>
             <br/>
-            <s:url id="fake" namespace="/" action="fake"/>
+            <s:url id="recipesByCategory" namespace="/" action="recipesByCategory"/>
             <ul class="menu">
-                <li><s:a href="%{fake}"><s:text name="soup.message"/></s:a></li>
-                <li><s:a href="%{fake}"><s:text name="noodles.message"/></s:a></li>
-                <li><s:a href="%{fake}"><s:text name="sushi.message"/></s:a></li>
-                <li><s:a href="%{fake}"><s:text name="other.message"/></s:a></li>
-                <li><s:a href="%{fake}"><s:text name="desserts.message"/></s:a></li>
+                <li><s:a href="%{recipesByCategory}?category=soup"><s:text name="soup.message"/></s:a></li>
+                <li><s:a href="%{recipesByCategory}?category=noodles"><s:text name="noodles.message"/></s:a></li>
+                <li><s:a href="%{recipesByCategory}?category=sushi"><s:text name="sushi.message"/></s:a></li>
+                <li><s:a href="%{recipesByCategory}?category=other"><s:text name="other.message"/></s:a></li>
+                <li><s:a href="%{recipesByCategory}?category=desserts"><s:text name="desserts.message"/></s:a></li>
                 <li><s:url id="url" action="index" namespace="/private" />
-                    <s:a href="%{url}"><s:text name="profile.message"/></s:a></li>
+                    <s:a href="%{url}"><s:text name="profile.message"/></s:a>
+                </li>
             </ul> 
             <div id="a1" class="hint"></div>
             <div class="content">

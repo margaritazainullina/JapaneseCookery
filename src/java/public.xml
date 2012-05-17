@@ -42,8 +42,12 @@
                 <param name="bufferSize">1024</param>    
             </result>
         </action>
-        <action name="fake">
-            <result name="success" type="dispatcher">/WEB-INF/public/fake.jsp</result>
+        <action name="recipesByCategory" class="action.RecipesByCategory">
+            <result name="soup" type="dispatcher">/WEB-INF/public/soup.jsp</result>
+            <result name="noodles" type="dispatcher">/WEB-INF/public/noodles.jsp</result>
+            <result name="sushi" type="dispatcher">/WEB-INF/public/sushi.jsp</result>
+            <result name="other" type="dispatcher">/WEB-INF/public/other.jsp</result>
+            <result name="desserts" type="dispatcher">/WEB-INF/public/desserts.jsp</result>
         </action>
 
         <action name="getByIdRecipeXML" class="action.GetByIdRecipeXML">
