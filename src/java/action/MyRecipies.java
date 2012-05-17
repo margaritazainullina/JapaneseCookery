@@ -9,6 +9,7 @@ import service.RecipeService;
 public class MyRecipies extends ActionSupport implements SessionAware {
     private Map<String, Object> session;    
     private RecipeService recipeService;
+    //id рецептов конкретного пользователя
     private String ids;
 
     public String execute() throws Exception {
