@@ -14,9 +14,7 @@
                     { location: "../dijit", name: "dijit" },
                     { location: "../dojox", name: "dojox" },
                     { location: ".",        name: "dojo" },                        
-                    { location: "/cook/js/recipies", name: "recipies" }
-                ]
-            };
+                    { location: "/cook/js/recipies", name: "recipies" }]};
         </script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"
                 data-dojo-config="async: true">
