@@ -27,7 +27,7 @@ html,body {
     font-size: 9pt;
     font-family: Verdana; 
     font-weight: normal;
-    
+
 }
 .footer1 { 
     height: 50px; 
@@ -36,7 +36,7 @@ html,body {
     font-size: 9pt;
     font-family: Verdana; 
     font-weight: normal;
-    
+
 }
 .maintitle {
     color: #a52a2a; 
@@ -144,4 +144,13 @@ a.none{
     color:#a52a2a;
     font-size: 14pt;
 }
-
+.my_recipies_button{
+    border: 1px solid #A52A2A;
+    height: 45px;
+    text-align: center;
+    width: 20%;
+}
+.recipeClass{
+    border-bottom: 1px solid #A52A2A;
+    margin-bottom: 30px;
+}
