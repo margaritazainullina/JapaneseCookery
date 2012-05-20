@@ -158,9 +158,15 @@
             </ul>    
             <div id="hint" class="hint">На сайте онлайн: гостей, зарегистрированные пользователи</div>
             <div class="content">
-                <h4 class="title">Мои рецепты</h4> 
                 <table>
-                    <tr><td id="soup">супы</td><td id="noodles">лапша</td><td id="sushi">суши</td><td id="dessert">десерты</td><td id="other">другое</td></tr>
+                    <tr>
+                        <td><h4 class="title">Мои рецепты</h4></td>
+                        <td id="soup" class="my_recipies_button">супы</td>
+                        <td id="noodles" class="my_recipies_button">лапша</td>
+                        <td id="sushi" class="my_recipies_button">суши</td>
+                        <td id="dessert" class="my_recipies_button">десерты</td>
+                        <td id="other" class="my_recipies_button">другое</td>
+                    </tr>
                 </table>
                 <div id="xmlContent"></div>
             </div>
