@@ -1,4 +1,11 @@
-﻿CREATE TABLE `category` (
+CREATE TABLE `hints` (
+`id` INT(10) NULL DEFAULT NULL,
+`hint` TEXT NULL
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+CREATE TABLE `category` (
 	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
 	`info` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
